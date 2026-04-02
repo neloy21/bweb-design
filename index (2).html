@@ -1,0 +1,1911 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BWEB Design — Siti Webflow Premium</title>
+<meta name="description" content="Siti Webflow premium per ristoranti, e-commerce e professionisti. Veloci, belli, facili da gestire.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Nunito:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#F5F3EE;--bg2:#FFFFFF;--bg-blue:#EBF2F8;--bg-sage:#EDF4EF;
+  --navy:#2B4666;--navy-l:#3A5A80;--teal:#3D8A9E;--teal-l:#5BA8BB;--sage:#4E8A6A;
+  --text:#1C2D3E;--text-mid:#4A5F72;--text-muted:#7A909E;
+  --border:#DDE4EA;--border-s:#EBF0F4;
+  --shadow-sm:0 2px 8px rgba(43,70,102,.07);
+  --shadow-md:0 4px 24px rgba(43,70,102,.10);
+  --shadow-lg:0 8px 48px rgba(43,70,102,.13);
+  --font-d:'Lora',Georgia,serif;--font-b:'Nunito',system-ui,sans-serif;
+  --r-sm:8px;--r-md:14px;--r-lg:20px;--r-xl:28px;
+}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:var(--font-b);font-size:16px;line-height:1.65;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+.container{max-width:1140px;margin:0 auto;padding:0 32px}
+.container-sm{max-width:780px;margin:0 auto;padding:0 32px}
+.chip{display:inline-flex;align-items:center;gap:6px;background:var(--bg-blue);color:var(--navy);border:1px solid rgba(43,70,102,.14);border-radius:100px;padding:5px 14px;font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase}
+.chip-dot{width:6px;height:6px;border-radius:50%;background:var(--teal);flex-shrink:0}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:16px 0;transition:background .35s,box-shadow .35s}
+nav.scrolled{background:rgba(245,243,238,.93);backdrop-filter:blur(14px);box-shadow:0 1px 0 var(--border)}
+.nav-inner{max-width:1140px;margin:0 auto;padding:0 32px;display:flex;align-items:center;justify-content:space-between;gap:24px}
+.logo{font-family:var(--font-d);font-size:21px;font-weight:600;color:var(--navy);text-decoration:none;letter-spacing:-.01em}
+.logo span{color:var(--teal)}
+.nav-links{display:flex;gap:28px;list-style:none}
+.nav-links a{font-size:14px;font-weight:500;color:var(--text-mid);text-decoration:none;transition:color .2s}
+.nav-links a:hover{color:var(--navy)}
+.btn-nav{background:var(--navy);color:#fff;font-size:14px;font-weight:600;padding:10px 22px;border-radius:100px;text-decoration:none;transition:background .2s,transform .15s;white-space:nowrap}
+.btn-nav:hover{background:var(--navy-l);transform:translateY(-1px)}
+
+/* HERO */
+.hero{padding:120px 0 80px;position:relative;overflow:hidden;min-height:100vh;display:flex;align-items:center}
+.hero-bg1{position:absolute;width:640px;height:640px;border-radius:50%;background:radial-gradient(circle,rgba(61,138,158,.1) 0%,transparent 68%);top:-160px;right:-180px;pointer-events:none}
+.hero-bg2{position:absolute;width:420px;height:420px;border-radius:50%;background:radial-gradient(circle,rgba(43,70,102,.06) 0%,transparent 68%);bottom:-60px;left:-120px;pointer-events:none}
+.hero-inner{position:relative;z-index:2;display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:center;width:100%}
+.hero h1{font-family:var(--font-d);font-size:clamp(38px,4.8vw,60px);font-weight:500;line-height:1.13;color:var(--navy);margin-bottom:20px;letter-spacing:-.02em}
+.hero h1 em{font-style:italic;color:var(--teal)}
+.hero-lead{font-size:17px;font-weight:400;color:var(--text-mid);line-height:1.75;margin-bottom:34px;max-width:440px}
+.hero-cta{display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin-bottom:36px}
+.btn-p{display:inline-flex;align-items:center;gap:8px;background:var(--navy);color:#fff;font-size:15px;font-weight:600;padding:14px 30px;border-radius:100px;text-decoration:none;transition:background .2s,transform .15s,box-shadow .2s}
+.btn-p:hover{background:var(--navy-l);transform:translateY(-2px);box-shadow:var(--shadow-lg)}
+.btn-s{display:inline-flex;align-items:center;gap:8px;background:var(--bg2);color:var(--navy);font-size:15px;font-weight:600;padding:14px 30px;border-radius:100px;border:1.5px solid var(--border);text-decoration:none;transition:border-color .2s,transform .15s}
+.btn-s:hover{border-color:var(--navy);transform:translateY(-2px)}
+.trust-row{display:flex;align-items:center;gap:20px;flex-wrap:wrap}
+.trust-i{display:flex;align-items:center;gap:8px;font-size:13px;font-weight:500;color:var(--text-muted)}
+.trust-ic{width:28px;height:28px;border-radius:50%;background:var(--bg-sage);display:flex;align-items:center;justify-content:center;font-size:13px;flex-shrink:0}
+
+/* Hero mock card */
+.hcard{background:var(--bg2);border-radius:var(--r-xl);box-shadow:var(--shadow-lg);padding:32px;border:1px solid var(--border-s)}
+.hc-head{display:flex;align-items:center;gap:14px;margin-bottom:24px}
+.hc-av{width:50px;height:50px;border-radius:14px;background:linear-gradient(135deg,#3D8A9E,#2B4666);display:flex;align-items:center;justify-content:center;font-size:20px;color:#fff;font-weight:700;font-family:var(--font-d);flex-shrink:0}
+.hc-t{font-family:var(--font-d);font-size:17px;font-weight:600;color:var(--navy)}
+.hc-s{font-size:12px;color:var(--text-muted);margin-top:2px}
+.hc-metrics{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:22px}
+.hc-m{background:var(--bg);border-radius:var(--r-md);padding:12px;text-align:center}
+.hc-mv{font-family:var(--font-d);font-size:24px;font-weight:500;line-height:1;margin-bottom:4px;color:var(--navy)}
+.hc-mv.tc{color:var(--teal)}.hc-mv.sc{color:var(--sage)}
+.hc-ml{font-size:10px;color:var(--text-muted);font-weight:500}
+.bar-row{margin-bottom:14px}
+.bar-lbl{display:flex;justify-content:space-between;font-size:12px;color:var(--text-mid);font-weight:500;margin-bottom:5px}
+.bar-bg{height:7px;background:var(--bg);border-radius:100px;overflow:hidden}
+.bar-fill{height:100%;border-radius:100px;background:linear-gradient(to right,var(--teal-l),var(--navy))}
+.hc-badge{display:inline-flex;align-items:center;gap:6px;background:var(--bg-sage);border-radius:100px;padding:7px 14px;font-size:12px;font-weight:600;color:var(--sage)}
+.fb{position:absolute;background:var(--bg2);border-radius:var(--r-md);box-shadow:var(--shadow-md);border:1px solid var(--border-s);padding:10px 14px;display:flex;align-items:center;gap:10px;font-size:12px;font-weight:600;color:var(--navy);white-space:nowrap}
+.fb.f1{top:-14px;left:-16px;animation:flt 4s ease-in-out infinite}
+.fb.f2{bottom:24px;right:-16px;animation:flt 4s ease-in-out infinite 2s}
+@keyframes flt{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
+.fv{font-size:15px;font-weight:700}
+
+/* BAND */
+.band{background:var(--bg2);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.band-in{max-width:1140px;margin:0 auto;padding:20px 32px;display:flex;align-items:center;gap:24px;flex-wrap:wrap}
+.band-lbl{font-size:11px;font-weight:700;color:var(--text-muted);letter-spacing:.08em;text-transform:uppercase;white-space:nowrap}
+.bl{font-family:var(--font-d);font-size:13px;font-weight:500;color:var(--text-muted);display:flex;align-items:center;gap:7px}
+
+/* SECTIONS */
+section{padding:96px 0}
+.sh{margin-bottom:48px}
+.h2{font-family:var(--font-d);font-size:clamp(32px,3.8vw,50px);font-weight:500;line-height:1.15;color:var(--navy);letter-spacing:-.02em;margin-bottom:12px}
+.h2 em{font-style:italic;color:var(--teal)}
+.lead{font-size:17px;color:var(--text-mid);line-height:1.75;max-width:530px}
+
+/* PERCHÉ NOI */
+.perche-sec{background:var(--bg2)}
+.pc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.pc{background:var(--bg);border-radius:var(--r-lg);padding:32px 28px;border:1px solid var(--border-s);transition:transform .25s,box-shadow .25s}
+.pc:hover{transform:translateY(-5px);box-shadow:var(--shadow-md)}
+.pc-ico{width:48px;height:48px;border-radius:var(--r-md);display:flex;align-items:center;justify-content:center;font-size:22px;margin-bottom:20px}
+.ic-blue{background:var(--bg-blue)}.ic-sage{background:var(--bg-sage)}.ic-warm{background:#FBF2E8}.ic-sky{background:#E8F4FB}.ic-mint{background:#E8F4EE}.ic-lav{background:#EEE8F4}
+.pc h3{font-family:var(--font-d);font-size:19px;font-weight:600;color:var(--navy);margin-bottom:9px}
+.pc p{font-size:14px;color:var(--text-mid);line-height:1.75}
+
+/* SERVIZI */
+.srv-head{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:end;margin-bottom:48px}
+.srv-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.sc{background:var(--bg2);border-radius:var(--r-lg);border:1.5px solid var(--border);overflow:hidden;transition:transform .25s,box-shadow .25s,border-color .25s}
+.sc:hover{transform:translateY(-5px);box-shadow:var(--shadow-lg);border-color:var(--teal)}
+.sc-head{padding:26px 26px 22px;border-bottom:1px solid var(--border-s)}
+.sc-emoji{font-size:30px;margin-bottom:12px;display:block}
+.sc-cat{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--teal);margin-bottom:7px}
+.sc h3{font-family:var(--font-d);font-size:21px;font-weight:500;color:var(--navy);line-height:1.25}
+.sc-body{padding:22px 26px}
+.sc p{font-size:14px;color:var(--text-mid);line-height:1.75;margin-bottom:20px}
+.sc-list{list-style:none}
+.sc-list li{display:flex;align-items:flex-start;gap:10px;font-size:13px;color:var(--text-mid);padding:7px 0;border-bottom:1px solid var(--border-s);line-height:1.5}
+.sc-list li:last-child{border-bottom:none}
+.sc-ck{width:17px;height:17px;border-radius:50%;background:var(--bg-sage);display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px;font-size:9px;color:var(--sage)}
+
+/* PAGAMENTI */
+.pag-strip{background:var(--bg2);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:28px 0}
+.pag-in{max-width:1140px;margin:0 auto;padding:0 32px;display:flex;align-items:center;gap:18px;flex-wrap:wrap;justify-content:space-between}
+.pag-lbl{font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--text-muted);white-space:nowrap}
+.pag-methods{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.pm{display:flex;align-items:center;gap:8px;background:var(--bg);border:1.5px solid var(--border);border-radius:var(--r-md);padding:10px 16px;transition:border-color .2s,transform .15s}
+.pm:hover{border-color:var(--teal);transform:translateY(-2px)}
+.pm-name{font-size:13px;font-weight:700;color:var(--navy)}
+.pm-sub{font-size:10px;color:var(--text-muted)}
+
+/* NUMERI */
+.nums-sec{background:var(--navy);padding:68px 0}
+.nums-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:32px}
+.nv{text-align:center}
+.nv-val{font-family:var(--font-d);font-size:50px;font-weight:500;color:#fff;line-height:1;margin-bottom:6px}
+.nv-val em{font-style:italic;color:var(--teal-l)}
+.nv-lbl{font-size:14px;color:rgba(255,255,255,.58);line-height:1.5}
+.nd{width:1px;background:rgba(255,255,255,.12);align-self:stretch}
+
+/* PROCESSO */
+.proc-sec{background:var(--bg2)}
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:28px;margin-top:52px;position:relative}
+.steps::before{content:'';position:absolute;top:27px;left:14%;right:14%;height:1px;background:repeating-linear-gradient(to right,var(--border) 0,var(--border) 8px,transparent 8px,transparent 16px)}
+.step-num{width:54px;height:54px;border-radius:50%;background:var(--bg2);border:2px solid var(--border);display:flex;align-items:center;justify-content:center;font-family:var(--font-d);font-size:17px;font-weight:600;color:var(--navy);margin-bottom:20px;position:relative;z-index:1;transition:background .25s,border-color .25s}
+.step:hover .step-num{background:var(--bg-blue);border-color:var(--teal);color:var(--teal)}
+.step h4{font-family:var(--font-d);font-size:17px;font-weight:600;color:var(--navy);margin-bottom:9px}
+.step p{font-size:14px;color:var(--text-mid);line-height:1.7}
+.step-t{display:inline-block;background:var(--bg-blue);color:var(--navy);font-size:11px;font-weight:700;letter-spacing:.05em;border-radius:100px;padding:4px 10px;margin-top:10px}
+
+/* PORTFOLIO */
+.pf-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:52px}
+.pfc{background:var(--bg2);border-radius:var(--r-xl);border:1.5px solid var(--border);overflow:hidden;transition:transform .28s,box-shadow .28s,border-color .28s}
+.pfc:hover{transform:translateY(-6px);box-shadow:var(--shadow-lg);border-color:var(--teal)}
+.pfc-vis{height:200px;background:var(--bg-blue);position:relative;overflow:hidden}
+.pfc-bar{position:absolute;top:0;left:0;right:0;height:28px;background:var(--bg2);border-bottom:1px solid var(--border-s);display:flex;align-items:center;padding:0 10px;gap:5px}
+.pfc-dot{width:8px;height:8px;border-radius:50%}
+.pfc-url{flex:1;height:14px;background:var(--bg);border-radius:3px;margin:0 8px;display:flex;align-items:center;padding:0 7px;font-size:9px;color:var(--text-muted)}
+.pfc-mock{position:absolute;top:28px;left:0;right:0;bottom:0;padding:12px 14px;display:flex;flex-direction:column;gap:7px}
+.pfc-info{padding:18px 20px 22px}
+.pfc-meta{display:flex;align-items:center;gap:8px;margin-bottom:8px}
+.pfc-cat{font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--teal)}
+.pfc-res{font-size:10px;font-weight:600;color:var(--sage);background:var(--bg-sage);border-radius:100px;padding:2px 8px}
+.pfc-info h3{font-family:var(--font-d);font-size:17px;font-weight:500;color:var(--navy);margin-bottom:5px}
+.pfc-info p{font-size:13px;color:var(--text-mid);line-height:1.65}
+.pfc-pills{display:flex;gap:5px;flex-wrap:wrap;margin-top:10px}
+.pfc-pill{font-size:11px;font-weight:600;color:var(--text-mid);background:var(--bg);border:1px solid var(--border-s);border-radius:100px;padding:3px 9px}
+
+/* TESTIMONIANZE */
+.tg{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:48px}
+.tc{background:var(--bg2);border-radius:var(--r-lg);border:1px solid var(--border);padding:30px;transition:box-shadow .25s}
+.tc:hover{box-shadow:var(--shadow-md)}
+.tc-stars{font-size:13px;color:#F5A623;letter-spacing:2px;margin-bottom:14px}
+.tc blockquote{font-family:var(--font-d);font-size:15px;font-style:italic;line-height:1.65;color:var(--text);margin-bottom:22px}
+.tc-auth{display:flex;align-items:center;gap:12px}
+.tc-av{width:38px;height:38px;border-radius:50%;background:var(--bg-blue);display:flex;align-items:center;justify-content:center;font-family:var(--font-d);font-size:14px;font-weight:600;color:var(--navy);flex-shrink:0}
+.tc-name{font-size:14px;font-weight:600;color:var(--navy)}
+.tc-role{font-size:12px;color:var(--text-muted);margin-top:2px}
+
+/* GARANZIE */
+.gar-sec{background:var(--bg2)}
+.gar-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;margin-top:48px}
+.gc{background:var(--bg);border-radius:var(--r-lg);border:1px solid var(--border-s);padding:30px 32px;display:flex;gap:20px;align-items:flex-start;transition:border-color .25s,transform .25s}
+.gc:hover{border-color:var(--border);transform:translateY(-2px)}
+.g-ico{width:46px;height:46px;border-radius:var(--r-md);background:var(--bg-blue);display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0}
+.gc h4{font-family:var(--font-d);font-size:17px;font-weight:600;color:var(--navy);margin-bottom:7px}
+.gc p{font-size:14px;color:var(--text-mid);line-height:1.7}
+
+/* PREZZI */
+.prezzi-sec{background:var(--bg)}
+.prezzi-intro{text-align:center;margin-bottom:48px}
+
+
+.pz-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.pcard{background:var(--bg2);border-radius:var(--r-xl);border:1.5px solid var(--border);overflow:hidden;transition:transform .25s,box-shadow .25s}
+.pcard:hover{transform:translateY(-5px);box-shadow:var(--shadow-lg)}
+.pcard.feat{border-color:var(--teal);box-shadow:0 0 0 3px rgba(61,138,158,.15),var(--shadow-lg);transform:scale(1.02)}
+.pcard.feat:hover{transform:scale(1.02) translateY(-5px)}
+.pc-top{padding:22px 22px 18px;border-bottom:1px solid var(--border-s)}
+.pc-badge{display:inline-block;background:var(--teal);color:#fff;font-size:11px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;border-radius:100px;padding:4px 12px;margin-bottom:14px}
+.pc-emoji{font-size:28px;display:block;margin-bottom:12px}
+.pc-cat{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--teal);margin-bottom:6px}
+.pcard h3{font-family:var(--font-d);font-size:20px;font-weight:500;color:var(--navy);line-height:1.2}
+.pc-pricing{padding:18px 22px 16px;border-bottom:1px solid var(--border-s)}
+.price-row{display:flex;align-items:baseline;gap:8px;margin-bottom:5px}
+.price-old{font-family:var(--font-d);font-size:16px;color:var(--text-muted);text-decoration:line-through}
+.price-disc{background:#ECFDF5;color:#166534;border-radius:100px;padding:2px 9px;font-size:11px;font-weight:700}
+.price-new{font-family:var(--font-d);font-size:36px;font-weight:600;color:var(--navy);line-height:1}
+.price-new.tc{color:var(--teal)}
+.price-note{font-size:12px;color:var(--text-muted)}
+.pc-body{padding:18px 22px 22px}
+.pc-feats{list-style:none;margin-bottom:22px}
+.pc-feats li{display:flex;align-items:flex-start;gap:10px;font-size:13px;color:var(--text-mid);padding:6px 0;border-bottom:1px solid var(--border-s);line-height:1.5}
+.pc-feats li:last-child{border-bottom:none}
+.pf-ck{width:16px;height:16px;border-radius:50%;background:var(--bg-sage);display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px;font-size:9px;color:var(--sage)}
+.pcard-cta{display:block;text-align:center;background:var(--bg-blue);color:var(--navy);font-size:14px;font-weight:600;padding:12px 20px;border-radius:100px;text-decoration:none;border:1.5px solid rgba(43,70,102,.2);transition:background .2s,border-color .2s,transform .15s;cursor:pointer;font-family:var(--font-b);width:100%}
+.pcard-cta:hover{border-color:var(--navy);transform:translateY(-1px)}
+.pcard.feat .pcard-cta{background:var(--navy);color:#fff;border-color:var(--navy)}
+.pcard.feat .pcard-cta:hover{background:var(--navy-l)}
+.mant-box{max-width:760px;margin:32px auto 0;background:var(--bg2);border-radius:var(--r-lg);border:1px solid var(--border);padding:24px 32px;display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap}
+.mb-l{display:flex;align-items:center;gap:16px}
+.mb-ico{width:44px;height:44px;border-radius:var(--r-md);background:var(--bg-blue);display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0}
+.mb-l h4{font-family:var(--font-d);font-size:16px;font-weight:600;color:var(--navy);margin-bottom:3px}
+.mb-l p{font-size:13px;color:var(--text-muted)}
+.mb-price strong{display:block;font-family:var(--font-d);font-size:24px;font-weight:500;color:var(--navy);line-height:1}
+.mb-price span{font-size:12px;color:var(--text-muted)}
+
+/* CHI SIAMO */
+.about-sec{background:var(--bg2)}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:center}
+.about-frame{background:var(--bg-blue);border-radius:var(--r-xl);aspect-ratio:4/3;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}
+.about-mono{font-family:var(--font-d);font-size:96px;font-weight:600;color:var(--teal);opacity:.18;user-select:none}
+.about-tag{position:absolute;bottom:24px;left:24px;background:var(--bg2);border-radius:var(--r-lg);box-shadow:var(--shadow-md);border:1px solid var(--border-s);padding:12px 18px;display:flex;align-items:center;gap:10px}
+.about-tag-val{font-family:var(--font-d);font-size:22px;font-weight:500;color:var(--navy)}
+.about-tag-lbl{font-size:11px;color:var(--text-muted);font-weight:600;text-transform:uppercase;letter-spacing:.06em}
+.av-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:24px 0}
+.av{background:var(--bg);border-radius:var(--r-md);border:1px solid var(--border-s);padding:18px 16px;transition:border-color .2s,transform .2s}
+.av:hover{border-color:var(--border);transform:translateY(-2px)}
+.av-ico{font-size:22px;margin-bottom:8px;display:block}
+.av h4{font-size:14px;font-weight:700;color:var(--navy);margin-bottom:4px}
+.av p{font-size:12px;color:var(--text-muted);line-height:1.6}
+
+/* PREVENTIVO */
+.prev-sec{background:var(--navy);position:relative;overflow:hidden}
+.prev-bg{position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.03) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.03) 1px,transparent 1px);background-size:48px 48px}
+.prev-in{position:relative;z-index:2;max-width:1140px;margin:0 auto;padding:80px 32px;display:grid;grid-template-columns:1fr 1.2fr;gap:72px;align-items:center}
+.prev-in h2{font-family:var(--font-d);font-size:clamp(30px,4vw,48px);font-weight:500;line-height:1.15;color:#fff;margin-bottom:14px;letter-spacing:-.02em}
+.prev-in h2 em{font-style:italic;color:var(--teal-l)}
+.prev-in>div:first-child p{font-size:16px;color:rgba(255,255,255,.65);line-height:1.75;margin-bottom:24px}
+.pt-item{display:flex;align-items:center;gap:10px;font-size:13px;color:rgba(255,255,255,.7);margin-bottom:8px}
+.pt-chk{width:20px;height:20px;border-radius:50%;background:rgba(61,138,158,.3);display:flex;align-items:center;justify-content:center;font-size:10px;color:var(--teal-l);flex-shrink:0}
+.pf-box{background:var(--bg2);border-radius:var(--r-xl);padding:36px;box-shadow:var(--shadow-lg)}
+.pf-box h3{font-family:var(--font-d);font-size:22px;font-weight:500;color:var(--navy);margin-bottom:4px}
+.pf-sub{font-size:13px;color:var(--text-muted);margin-bottom:22px}
+.pf-fld{display:flex;flex-direction:column;gap:5px;margin-bottom:14px}
+.pf-fld label{font-size:12px;font-weight:700;color:var(--navy);text-transform:uppercase;letter-spacing:.06em}
+.pf-fld input,.pf-fld select{padding:12px 14px;border:1.5px solid var(--border);border-radius:var(--r-md);background:var(--bg);font-family:var(--font-b);font-size:14px;color:var(--text);outline:none;transition:border-color .2s;appearance:none}
+.pf-fld input:focus,.pf-fld select:focus{border-color:var(--teal)}
+.pf-fld select{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%237A909E' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 14px center;padding-right:36px}
+.pf-est{background:var(--bg-blue);border-radius:var(--r-md);padding:14px 16px;margin-bottom:14px;display:flex;justify-content:space-between;align-items:center}
+.pf-est-lbl{font-size:12px;color:var(--text-mid);font-weight:600}
+.pf-est-val{font-family:var(--font-d);font-size:22px;font-weight:500;color:var(--navy)}
+.pf-btn{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;padding:14px;border-radius:100px;background:#25D366;color:#fff;font-family:var(--font-b);font-size:15px;font-weight:700;border:none;cursor:pointer;transition:background .2s,transform .15s}
+.pf-btn:hover{background:#1eb85a;transform:translateY(-1px)}
+.pf-note{font-size:11px;color:var(--text-muted);text-align:center;margin-top:10px}
+
+/* FORM CONTATTI */
+.contact-sec{background:var(--bg2)}
+.contact-grid{display:grid;grid-template-columns:1fr 1.1fr;gap:60px;align-items:start;margin-top:48px}
+.contact-left h3{font-family:var(--font-d);font-size:22px;font-weight:500;color:var(--navy);margin-bottom:14px}
+.contact-left p{font-size:15px;color:var(--text-mid);line-height:1.75;margin-bottom:26px}
+.cm{display:flex;align-items:center;gap:14px;padding:14px 18px;background:var(--bg);border-radius:var(--r-md);border:1px solid var(--border-s);text-decoration:none;margin-bottom:12px;transition:border-color .2s,transform .15s}
+.cm:hover{border-color:var(--border);transform:translateX(3px)}
+.cm-ico{width:38px;height:38px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0}
+.cm-lbl{font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--text-muted)}
+.cm-val{font-size:14px;font-weight:600;color:var(--navy);margin-top:1px}
+.cf{display:flex;flex-direction:column;gap:14px}
+.cf-row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.cf-grp{display:flex;flex-direction:column;gap:5px}
+.cf-grp label{font-size:13px;font-weight:700;color:var(--navy)}
+.cf-grp input,.cf-grp select,.cf-grp textarea{width:100%;padding:12px 14px;border:1.5px solid var(--border);border-radius:var(--r-md);background:var(--bg);font-family:var(--font-b);font-size:14px;color:var(--text);outline:none;transition:border-color .2s;appearance:none;resize:none}
+.cf-grp input:focus,.cf-grp select:focus,.cf-grp textarea:focus{border-color:var(--teal);box-shadow:0 0 0 3px rgba(61,138,158,.1)}
+.cf-grp select{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%237A909E' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 14px center;padding-right:36px}
+.cf-grp input::placeholder,.cf-grp textarea::placeholder{color:var(--text-muted)}
+#routing-hint{display:none;margin-top:6px;padding:9px 14px;border-radius:var(--r-md);font-size:12px;font-weight:600}
+.cf-submit{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;padding:14px 28px;border-radius:100px;background:var(--navy);color:#fff;font-family:var(--font-b);font-size:15px;font-weight:700;border:none;cursor:pointer;transition:background .2s,transform .15s,box-shadow .2s;margin-top:4px}
+.cf-submit:hover{background:var(--navy-l);transform:translateY(-2px);box-shadow:var(--shadow-lg)}
+.cf-privacy{font-size:12px;color:var(--text-muted);text-align:center}
+.cf-privacy a{color:var(--teal);text-decoration:none}
+#formSuccess{display:none;text-align:center;padding:32px 24px;background:var(--bg-sage);border-radius:var(--r-lg)}
+.reassure{display:flex;justify-content:center;gap:24px;flex-wrap:wrap;margin-top:20px}
+.re{display:flex;align-items:center;gap:7px;font-size:13px;font-weight:500;color:var(--text-muted)}
+
+/* FAQ */
+.faq-list{max-width:720px;margin:48px auto 0}
+.faq-item{border-bottom:1px solid var(--border)}
+.faq-q{width:100%;background:none;border:none;text-align:left;padding:20px 4px;display:flex;justify-content:space-between;align-items:center;gap:20px;cursor:pointer}
+.faq-qt{font-size:15px;font-weight:600;color:var(--navy);line-height:1.4}
+.faq-tog{width:30px;height:30px;border-radius:50%;flex-shrink:0;background:var(--bg);border:1.5px solid var(--border);display:flex;align-items:center;justify-content:center;transition:background .2s,border-color .2s}
+.faq-tog svg{transition:transform .3s}
+.faq-item.open .faq-tog{background:var(--bg-blue);border-color:var(--teal)}
+.faq-item.open .faq-tog svg{transform:rotate(45deg)}
+.faq-a{max-height:0;overflow:hidden;transition:max-height .4s ease}
+.faq-ai{font-size:15px;color:var(--text-mid);line-height:1.8;padding:0 4px 20px}
+
+/* FOOTER */
+footer{background:var(--navy);padding:60px 0 34px;color:rgba(255,255,255,.7)}
+.fg{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:44px;margin-bottom:48px}
+.logo-f{font-family:var(--font-d);font-size:20px;font-weight:600;color:#fff;display:block;margin-bottom:12px;text-decoration:none}
+.logo-f span{color:var(--teal-l)}
+footer h5{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.38);margin-bottom:16px}
+footer ul{list-style:none}
+footer ul li{margin-bottom:9px}
+footer ul li a{font-size:13px;color:rgba(255,255,255,.62);text-decoration:none;transition:color .2s}
+footer ul li a:hover{color:#fff}
+.f-bot{border-top:1px solid rgba(255,255,255,.1);padding-top:26px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px}
+.f-bot p{font-size:12px;color:rgba(255,255,255,.38)}
+.f-bot a{color:var(--teal-l);text-decoration:none}
+.f-ck-btn{background:none;border:none;color:var(--teal-l);font-size:12px;cursor:pointer;font-family:var(--font-b)}
+.f-ck-btn:hover{text-decoration:underline}
+
+/* COOKIE */
+#ck-banner{position:fixed;bottom:0;left:0;right:0;z-index:9999;background:var(--bg2);border-top:1px solid var(--border);box-shadow:0 -4px 32px rgba(43,70,102,.12);padding:18px 32px;display:none;align-items:center;gap:20px;flex-wrap:wrap;justify-content:space-between;transform:translateY(100%);transition:transform .45s cubic-bezier(.22,.68,0,1.2)}
+#ck-banner.vis{transform:translateY(0)}
+.ck-btn-base{font-family:var(--font-b);font-size:13px;font-weight:600;padding:10px 18px;border-radius:100px;cursor:pointer}
+
+/* ONBOARDING OVERLAY */
+#ob-ov{position:fixed;inset:0;z-index:2000;background:var(--bg);transform:translateX(100%);transition:transform .45s cubic-bezier(.22,.68,0,1.05);overflow-y:auto;overscroll-behavior:contain}
+#ob-ov.open{transform:translateX(0)}
+.ob-top{background:var(--bg2);border-bottom:1px solid var(--border);padding:14px 32px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:10}
+#ob-prog-wrap{background:var(--bg2);border-bottom:1px solid var(--border-s);padding:16px 32px 0;position:sticky;top:65px;z-index:9}
+.ob-dots{display:flex;margin-top:14px}
+.ob-dot{flex:1;text-align:center;padding-bottom:12px;border-bottom:2px solid transparent}
+.ob-dot.done{border-bottom-color:var(--teal)}
+.ob-dot.active{border-bottom-color:var(--navy)}
+.ob-dn{width:26px;height:26px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;background:var(--bg);border:1.5px solid var(--border);color:var(--text-muted);transition:all .3s;margin-bottom:4px}
+.ob-dot.done .ob-dn{background:var(--teal);border-color:var(--teal);color:#fff}
+.ob-dot.active .ob-dn{background:var(--navy);border-color:var(--navy);color:#fff}
+.ob-dl{font-size:10px;color:var(--text-muted);font-weight:600;letter-spacing:.04em;display:block}
+.ob-dot.active .ob-dl{color:var(--navy)}
+.ob-dot.done .ob-dl{color:var(--teal)}
+.ob-main{max-width:760px;margin:0 auto;padding:40px 32px 80px}
+.ob-step{display:none;animation:obIn .35s ease}
+.ob-step.active{display:block}
+@keyframes obIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+#ob-success{display:none;text-align:center;padding:60px 20px}
+.ob-close{display:inline-flex;align-items:center;gap:7px;font-size:13px;font-weight:600;color:var(--text-muted);background:none;border:1.5px solid var(--border);padding:8px 18px;border-radius:100px;cursor:pointer;font-family:var(--font-b);transition:color .2s,border-color .2s}
+.ob-close:hover{color:var(--navy);border-color:var(--navy)}
+
+/* REVEAL */
+.rv{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s ease}
+.rv.in{opacity:1;transform:none}
+.d1{transition-delay:.1s}.d2{transition-delay:.2s}.d3{transition-delay:.3s}.d4{transition-delay:.4s}
+
+/* RESPONSIVE */
+@media(max-width:1024px){
+  .hero-inner{grid-template-columns:1fr;gap:40px}
+  .hero-visual{display:none}
+  .pc-grid{grid-template-columns:repeat(2,1fr)}
+  .srv-head{grid-template-columns:1fr;gap:16px}
+  .srv-cards{grid-template-columns:1fr;gap:14px}
+  .pz-grid{grid-template-columns:repeat(2,1fr);gap:14px}
+  .pfc.feat{transform:none}
+  .steps{grid-template-columns:1fr 1fr}
+  .steps::before{display:none}
+  .nums-grid{grid-template-columns:repeat(2,1fr)}
+  .nd{display:none}
+  .tg{grid-template-columns:1fr}
+  .gar-grid{grid-template-columns:1fr}
+  .pf-grid{grid-template-columns:1fr}
+  .about-grid{grid-template-columns:1fr;gap:40px}
+  .prev-in{grid-template-columns:1fr;gap:40px;padding:60px 20px}
+  .contact-grid{grid-template-columns:1fr;gap:36px}
+  .fg{grid-template-columns:1fr 1fr}
+}
+@media(max-width:768px){
+  .container,.container-sm{padding:0 20px}
+  section{padding:64px 0}
+  .nav-links{display:none}
+  .pz-grid{grid-template-columns:1fr}
+  .pc-grid{grid-template-columns:1fr}
+  .steps{grid-template-columns:1fr}
+  .nums-grid{grid-template-columns:1fr 1fr}
+  .fg{grid-template-columns:1fr}
+  .f-bot{flex-direction:column;text-align:center}
+  .cf-row{grid-template-columns:1fr}
+  .av-grid{grid-template-columns:1fr}
+  .srv-cards{grid-template-columns:1fr}
+  .ob-top,.ob-main,#ob-prog-wrap{padding-left:20px;padding-right:20px}
+  .ob-dl{display:none}
+  #ck-banner{padding:16px 20px}
+  .band-in{flex-direction:column;align-items:flex-start;gap:12px}
+}
+</style>
+</head>
+<body>
+
+<!-- COOKIE BANNER -->
+<div id="ck-banner">
+  <p style="flex:1;min-width:260px;font-size:13px;color:var(--text-mid);line-height:1.65;">
+    <strong style="color:var(--navy);">Rispettiamo la tua privacy.</strong>
+    Usiamo cookie tecnici necessari e, con il tuo consenso, cookie analitici (Google Analytics) e di marketing (Meta Pixel).
+    <a href="privacy-policy.html" style="color:var(--teal);font-weight:600;">Privacy Policy</a>
+  </p>
+  <div style="display:flex;gap:10px;flex-shrink:0;">
+    <button class="ck-btn-base" onclick="openCkModal()" style="border:1.5px solid var(--border);background:var(--bg);">⚙️ Preferenze</button>
+    <button class="ck-btn-base" onclick="saveCookies('essential')" style="border:1.5px solid var(--border);background:var(--bg);">Solo necessari</button>
+    <button class="ck-btn-base" onclick="saveCookies('all')" style="border:none;background:var(--navy);color:#fff;">✓ Accetta tutti</button>
+  </div>
+</div>
+
+<!-- COOKIE MODAL -->
+<div id="ck-modal" onclick="closeCkModalOutside(event)" style="display:none;position:fixed;inset:0;z-index:10000;background:rgba(28,45,62,.55);align-items:center;justify-content:center;padding:20px;">
+  <div style="background:var(--bg2);border-radius:28px;border:1px solid var(--border);box-shadow:var(--shadow-lg);width:100%;max-width:520px;padding:32px;max-height:90vh;overflow-y:auto;">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;">
+      <h3 style="font-family:var(--font-d);font-size:20px;font-weight:500;color:var(--navy);">Impostazioni cookie</h3>
+      <button onclick="closeCkModal()" style="background:none;border:none;cursor:pointer;font-size:20px;color:var(--text-muted);">✕</button>
+    </div>
+    <p style="font-size:14px;color:var(--text-mid);line-height:1.7;margin-bottom:20px;">Scegli quali cookie abilitare. I cookie tecnici sono sempre attivi perché necessari al funzionamento del sito.</p>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:24px;">
+      <div style="background:var(--bg);border-radius:14px;border:1px solid var(--border-s);padding:14px;">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;"><span style="font-size:13px;font-weight:700;color:var(--navy);">🔧 Tecnici</span><input type="checkbox" checked disabled style="width:16px;height:16px;accent-color:var(--teal);"></div>
+        <p style="font-size:12px;color:var(--text-muted);">Necessari al funzionamento del sito. Sempre attivi.</p>
+      </div>
+      <div style="background:var(--bg);border-radius:14px;border:1px solid var(--border-s);padding:14px;">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;"><span style="font-size:13px;font-weight:700;color:var(--navy);">📊 Analytics</span><input type="checkbox" id="ck-analytics" style="width:16px;height:16px;accent-color:var(--teal);"></div>
+        <p style="font-size:12px;color:var(--text-muted);">Google Analytics 4 — statistiche anonime e aggregate.</p>
+      </div>
+      <div style="background:var(--bg);border-radius:14px;border:1px solid var(--border-s);padding:14px;">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;"><span style="font-size:13px;font-weight:700;color:var(--navy);">📣 Marketing</span><input type="checkbox" id="ck-marketing" style="width:16px;height:16px;accent-color:var(--teal);"></div>
+        <p style="font-size:12px;color:var(--text-muted);">Meta Pixel per campagne pubblicitarie mirate.</p>
+      </div>
+      <div style="background:var(--bg);border-radius:14px;border:1px solid var(--border-s);padding:14px;">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;"><span style="font-size:13px;font-weight:700;color:var(--navy);">⚙️ Preferenze</span><input type="checkbox" id="ck-prefs" style="width:16px;height:16px;accent-color:var(--teal);"></div>
+        <p style="font-size:12px;color:var(--text-muted);">Ricordano le tue scelte tra una visita e l'altra.</p>
+      </div>
+    </div>
+    <div style="display:flex;gap:10px;justify-content:flex-end;">
+      <button onclick="saveCustomCookies()" class="ck-btn-base" style="border:1.5px solid var(--border);background:var(--bg);">Salva selezione</button>
+      <button onclick="saveCookies('all')" class="ck-btn-base" style="border:none;background:var(--navy);color:#fff;">✓ Accetta tutti</button>
+    </div>
+  </div>
+</div>
+
+<!-- NAV -->
+<nav id="nav">
+  <div class="nav-inner">
+    <a href="#" onclick="window.scrollTo({top:0,behavior:'smooth'});" class="logo">B<span>WEB</span> Design</a>
+    <ul class="nav-links">
+      <li><a href="#chi-siamo" onclick="smoothTo('chi-siamo');">Chi Siamo</a></li>
+      <li><a href="#servizi" onclick="smoothTo('servizi');">Servizi</a></li>
+      <li><a href="#preventivo" onclick="smoothTo('preventivo');">Preventivo</a></li>
+      <li><a href="#prezzi" onclick="smoothTo('prezzi');">Prezzi</a></li>
+      <li><a href="#portfolio" onclick="smoothTo('portfolio');">Portfolio</a></li>
+      <li><a href="#faq" onclick="smoothTo('faq');">FAQ</a></li>
+    </ul>
+    <a href="https://wa.me/393348927948?text=Ciao%21%20Vorrei%20una%20consulenza%20gratuita%20per%20il%20mio%20sito%20web%20con%20BWEB%20Design." onclick="openWA('https://wa.me/393348927948?text=Ciao%21%20Vorrei%20una%20consulenza%20gratuita%20per%20il%20mio%20sito%20web%20con%20BWEB%20Design.');" class="btn-nav">💬 Consulenza gratuita</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg1"></div><div class="hero-bg2"></div>
+  <div class="container">
+    <div class="hero-inner">
+      <div>
+        <div class="rv" style="margin-bottom:20px;"><span class="chip"><span class="chip-dot"></span>Agenzia Webflow · Verona</span></div>
+        <h1 class="rv d1">Il sito che fa crescere<br>la tua <em>attività.</em></h1>
+        <p class="hero-lead rv d2">Costruiamo siti professionali su Webflow per ristoranti, negozi online e professionisti. Veloci, belli, facili da gestire.</p>
+        <div class="hero-cta rv d3">
+          <a href="https://wa.me/393348927948?text=Ciao%21%20Vorrei%20una%20consulenza%20gratuita%20per%20il%20mio%20sito%20web%20con%20BWEB%20Design." onclick="openWA('https://wa.me/393348927948?text=Ciao%21%20Vorrei%20una%20consulenza%20gratuita%20per%20il%20mio%20sito%20web%20con%20BWEB%20Design.');" class="btn-p">💬 Consulenza gratuita su WhatsApp</a>
+          <a href="#servizi" onclick="smoothTo('servizi');" class="btn-s">Scopri i servizi</a>
+        </div>
+        <div class="trust-row rv d4">
+          <div class="trust-i"><div class="trust-ic">✓</div>Nessun tecnicismo</div>
+          <div class="trust-i"><div class="trust-ic">⏱</div>Pronto in 3 settimane</div>
+          <div class="trust-i"><div class="trust-ic">🛡</div>Supporto incluso</div>
+        </div>
+      </div>
+      <div class="hero-visual rv d2" style="position:relative;">
+        <div class="fb f1"><span style="font-size:17px;">📈</span><div><div style="font-size:10px;color:var(--text-muted);font-weight:500;">Prenotazioni</div><span class="fv" style="color:var(--sage);">+210%</span></div></div>
+        <div class="hcard">
+          <div class="hc-head"><div class="hc-av">B</div><div><div class="hc-t">Ristorante Da Marco</div><div class="hc-s">Dashboard · Marzo 2025</div></div></div>
+          <div class="hc-metrics">
+            <div class="hc-m"><div class="hc-mv">847</div><div class="hc-ml">Visite/mese</div></div>
+            <div class="hc-m"><div class="hc-mv tc">124</div><div class="hc-ml">Prenotazioni</div></div>
+            <div class="hc-m"><div class="hc-mv sc">98</div><div class="hc-ml">PageSpeed</div></div>
+          </div>
+          <div class="bar-row"><div class="bar-lbl"><span>Visibilità Google</span><span style="font-weight:600;color:var(--navy);">82%</span></div><div class="bar-bg"><div class="bar-fill" style="width:82%;"></div></div></div>
+          <div class="bar-row"><div class="bar-lbl"><span>Conversione</span><span style="font-weight:600;color:var(--sage);">67%</span></div><div class="bar-bg"><div class="bar-fill" style="width:67%;background:linear-gradient(to right,#7BBE9A,var(--sage));"></div></div></div>
+          <div class="bar-row" style="margin-bottom:16px;"><div class="bar-lbl"><span>Velocità mobile</span><span style="font-weight:600;color:var(--navy);">91%</span></div><div class="bar-bg"><div class="bar-fill" style="width:91%;"></div></div></div>
+          <div class="hc-badge">✓ Gestito autonomamente dal titolare</div>
+        </div>
+        <div class="fb f2"><span style="font-size:17px;">⚡</span><div><div style="font-size:10px;color:var(--text-muted);font-weight:500;">Caricamento</div><span class="fv" style="color:var(--teal);">1.4s</span></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BAND -->
+<div class="band">
+  <div class="band-in">
+    <span class="band-lbl">Scelti da</span>
+    <div style="width:1px;height:20px;background:var(--border);"></div>
+    <div style="display:flex;gap:24px;flex-wrap:wrap;">
+      <div class="bl"><span>🍽️</span>Osteria del Centro</div>
+      <div class="bl"><span>⚖️</span>Studio Legale Bianchi</div>
+      <div class="bl"><span>📐</span>Studio Archi Milano</div>
+      <div class="bl"><span>🛍️</span>Atelier Rossi</div>
+      <div class="bl"><span>📷</span>Foto Studio Verona</div>
+    </div>
+  </div>
+</div>
+
+<!-- CHI SIAMO -->
+<section class="about-sec" id="chi-siamo">
+  <div class="container">
+    <div class="about-grid">
+      <div class="rv">
+        <div class="about-frame">
+          <span class="about-mono">BW</span>
+          <div class="about-tag">
+            <span style="font-size:20px;">🏆</span>
+            <div><div class="about-tag-val">50+</div><div class="about-tag-lbl">Clienti soddisfatti</div></div>
+          </div>
+        </div>
+      </div>
+      <div class="rv d1">
+        <span class="chip" style="margin-bottom:16px;"><span class="chip-dot"></span>Chi siamo</span>
+        <h2 class="h2">Non siamo una grande agenzia.<br><em>È il nostro punto di forza.</em></h2>
+        <p style="font-size:16px;color:var(--text-mid);line-height:1.8;margin:16px 0 12px;">Siamo un piccolo team specializzato su Webflow, basato a Verona. Ogni progetto viene seguito personalmente — non finisce in una pipeline da 50 clienti.</p>
+        <p style="font-size:15px;color:var(--text-mid);line-height:1.8;margin-bottom:24px;">Il nostro obiettivo non è fare tanti siti, ma fare <strong style="color:var(--navy);">pochi siti davvero buoni</strong> che portino risultati misurabili.</p>
+        <div class="av-grid">
+          <div class="av"><span class="av-ico">🎯</span><h4>Specializzazione</h4><p>Solo Webflow, solo PMI.</p></div>
+          <div class="av"><span class="av-ico">🤝</span><h4>Trasparenza</h4><p>Prezzi fissi, zero sorprese.</p></div>
+          <div class="av"><span class="av-ico">🔧</span><h4>Autonomia cliente</h4><p>Ti formiamo finché sei indipendente.</p></div>
+          <div class="av"><span class="av-ico">📈</span><h4>Risultati reali</h4><p>Siti che portano clienti veri.</p></div>
+        </div>
+        <a href="https://wa.me/393348927948?text=Ciao%21%20Vorrei%20una%20consulenza%20gratuita%20per%20il%20mio%20sito%20web%20con%20BWEB%20Design." onclick="openWA('https://wa.me/393348927948?text=Ciao%21%20Vorrei%20una%20consulenza%20gratuita%20per%20il%20mio%20sito%20web%20con%20BWEB%20Design.');" class="btn-p" style="display:inline-flex;">💬 Parliamo del tuo progetto</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PERCHÉ NOI -->
+<section class="perche-sec">
+  <div class="container">
+    <div class="sh rv">
+      <span class="chip"><span class="chip-dot"></span>Perché BWEB</span>
+      <h2 class="h2" style="margin-top:14px;">Tutto quello che ti serve.<br><em>Niente di quello che non ti serve.</em></h2>
+      <p class="lead">Lavoriamo con ristoratori, commercianti e liberi professionisti. Conosciamo le vostre esigenze e parliamo la vostra lingua.</p>
+    </div>
+    <div class="pc-grid">
+      <div class="pc rv"><div class="pc-ico ic-blue">🚀</div><h3>Veloce da subito</h3><p>I nostri siti caricano in meno di 2 secondi. Google premia la velocità, i clienti non aspettano.</p></div>
+      <div class="pc rv d1"><div class="pc-ico ic-sage">🛠️</div><h3>Lo gestisci tu</h3><p>Aggiorna prezzi, foto e testi direttamente dal tuo smartphone. Zero tecnici, zero attese.</p></div>
+      <div class="pc rv d2"><div class="pc-ico ic-warm">💬</div><h3>Sempre raggiungibili</h3><p>Rispondiamo entro 24 ore via WhatsApp, email o telefono. Nessun ticket complicato.</p></div>
+      <div class="pc rv d1"><div class="pc-ico ic-sky">🔍</div><h3>Trovato su Google</h3><p>Ogni sito viene ottimizzato per i motori di ricerca fin dal primo giorno.</p></div>
+      <div class="pc rv d2"><div class="pc-ico ic-mint">📱</div><h3>Perfetto su mobile</h3><p>Il 75% delle visite arriva da smartphone. I nostri siti funzionano perfettamente ovunque.</p></div>
+      <div class="pc rv d3"><div class="pc-ico ic-lav">🔒</div><h3>Sicuro e affidabile</h3><p>Webflow gestisce sicurezza e aggiornamenti. Nessun rischio di hack o siti "rotti".</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVIZI -->
+<section id="servizi">
+  <div class="container">
+    <div class="srv-head">
+      <div class="rv"><span class="chip"><span class="chip-dot"></span>Servizi</span><h2 class="h2" style="margin-top:14px;">Specializzati in tre settori<br><em>che conosciamo a fondo.</em></h2></div>
+      <p class="lead rv d1">Non facciamo tutto per tutti. Siamo concentrati su tre categorie con soluzioni già pensate e testate.</p>
+    </div>
+    <div class="srv-cards">
+      <div class="sc rv">
+        <div class="sc-head"><span class="sc-emoji">🍽️</span><div class="sc-cat">Ristoranti & Locali</div><h3>Porta i tavoli sempre pieni.</h3></div>
+        <div class="sc-body"><p>Un sito che trasforma le visite online in prenotazioni reali. Con menù QR digitale e integrazione con i sistemi di prenotazione più usati.</p>
+        <ul class="sc-list"><li><div class="sc-ck">✓</div>Menù QR digitale aggiornabile</li><li><div class="sc-ck">✓</div>Sistema prenotazioni (OpenTable, TheFork)</li><li><div class="sc-ck">✓</div>Scheda Google Maps ottimizzata</li><li><div class="sc-ck">✓</div>Galleria foto locale e piatti</li><li><div class="sc-ck">✓</div>Velocità mobile garantita</li></ul></div>
+      </div>
+      <div class="sc rv d1">
+        <div class="sc-head"><span class="sc-emoji">🛒</span><div class="sc-cat">E-commerce</div><h3>Vendi online, anche di notte.</h3></div>
+        <div class="sc-body"><p>Negozio online professionale con design che ispira fiducia, checkout semplice e gestione prodotti intuitiva anche per chi non è tecnico.</p>
+        <ul class="sc-list"><li><div class="sc-ck">✓</div>Schede prodotto ad alta conversione</li><li><div class="sc-ck">✓</div>Pagamenti Stripe, PayPal, Klarna</li><li><div class="sc-ck">✓</div>Gestione ordini e inventario</li><li><div class="sc-ck">✓</div>SEO prodotti e categorie</li><li><div class="sc-ck">✓</div>Integrazione corrieri automatica</li></ul></div>
+      </div>
+      <div class="sc rv d2">
+        <div class="sc-head"><span class="sc-emoji">💼</span><div class="sc-cat">Professionisti</div><h3>Il tuo miglior commerciale, sempre online.</h3></div>
+        <div class="sc-body"><p>Per avvocati, architetti, consulenti, fotografi. Un sito che comunica serietà e genera contatti qualificati ogni giorno.</p>
+        <ul class="sc-list"><li><div class="sc-ck">✓</div>Design su misura per il settore</li><li><div class="sc-ck">✓</div>Portfolio e galleria lavori</li><li><div class="sc-ck">✓</div>Prenotazione appuntamenti online</li><li><div class="sc-ck">✓</div>Blog e articoli SEO</li><li><div class="sc-ck">✓</div>Form contatti intelligenti</li></ul></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PREVENTIVO -->
+<section class="prev-sec" id="preventivo">
+  <div class="prev-bg"></div>
+  <div class="prev-in">
+    <div class="rv">
+      <h2>Scopri subito<br><em>il tuo preventivo.</em></h2>
+      <p>Compila i 3 campi a destra e ricevi all'istante una stima del costo del tuo sito. Senza impegno, in 10 secondi.</p>
+      <div class="prev-trust">
+        <div class="pt-item"><div class="pt-chk">✓</div>Preventivo dettagliato in 24 ore</div>
+        <div class="pt-item"><div class="pt-chk">✓</div>Prima consulenza sempre gratuita</div>
+        <div class="pt-item"><div class="pt-chk">✓</div>Nessun costo nascosto mai</div>
+        <div class="pt-item"><div class="pt-chk">✓</div></div>
+      </div>
+    </div>
+    <div class="rv d1">
+      <div class="pf-box">
+        <h3>Calcola il preventivo</h3>
+        <p class="pf-sub">Risposta istantanea • Nessun obbligo</p>
+        <div class="pf-fld"><label>Il tuo nome</label><input type="text" id="pf-nome" placeholder="Mario Rossi"></div>
+        <div class="pf-fld"><label>Tipo di sito *</label>
+          <select id="pf-tipo" onchange="calcPrev()">
+            <option value="" disabled selected>Seleziona...</option>
+            <option value="starter">⚡ Sito Starter (one-page)</option>
+            <option value="vetrina">💼 Sito Vetrina Professionale</option>
+            <option value="ristorante">🍽️ Sito Ristorante + Menù QR</option>
+            <option value="shop">🛒 Shop Online / E-commerce</option>
+          </select></div>
+        <div class="pf-fld"><label>Hai già un sito da migrare?</label>
+          <select id="pf-mig" onchange="calcPrev()">
+            <option value="no">No, è il mio primo sito</option>
+            <option value="si">Sì, ho un vecchio sito</option>
+          </select></div>
+        <div class="pf-est"><span class="pf-est-lbl">Stima indicativa</span><span class="pf-est-val" id="pf-val">Seleziona il tipo →</span></div>
+        <button class="pf-btn" onclick="inviaPrev()">💬 Ricevi il preventivo su WhatsApp</button>
+        <p class="pf-note">🔒 I tuoi dati non vengono mai condivisi con terzi</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PREZZI -->
+<section class="prezzi-sec" id="prezzi">
+  <div class="container">
+    <div class="prezzi-intro rv">
+      <span class="chip"><span class="chip-dot"></span>Prezzi trasparenti</span>
+      <h2 class="h2" style="margin-top:14px;">Sai già quanto spenderai.<br><em>Prima ancora di chiamarci.</em></h2>
+      <p class="lead" style="margin:0 auto 22px;">Prezzi fissi, nessuna sorpresa. Ogni piano include hosting Webflow del primo anno, formazione e 30 giorni di supporto post-lancio.</p>
+    </div>
+    <div class="pz-grid">
+      <div class="pcard rv">
+        <div class="pc-top"><span class="pc-emoji">⚡</span><div class="pc-cat">Per iniziare</div><h3>Starter</h3><p style="font-size:12px;color:var(--text-muted);">One-page, veloce da lanciare</p></div>
+        <div class="pc-pricing"><div class="price-new">€990</div><p class="price-note">Pagamento unico · IVA esclusa</p></div>
+        <div class="pc-body"><ul class="pc-feats"><li><div class="pf-ck">✓</div>1 pagina completa (one-page)</li><li><div class="pf-ck">✓</div>Design professionale su misura</li><li><div class="pf-ck">✓</div>Form contatto + Google Analytics</li><li><div class="pf-ck">✓</div>SEO base configurata</li><li><div class="pf-ck">✓</div>Consegna in 7-10 giorni</li></ul>
+        <button class="pcard-cta" onclick="openOnboarding('starter')">Inizia con Starter →</button></div>
+      </div>
+      <div class="pcard rv d1">
+        <div class="pc-top"><span class="pc-emoji">💼</span><div class="pc-cat">Professionisti</div><h3>Vetrina Pro</h3><p style="font-size:12px;color:var(--text-muted);">Portfolio, studi, consulenti</p></div>
+        <div class="pc-pricing"><div class="price-new">€1.790</div><p class="price-note">Pagamento in 2 rate · IVA esclusa</p></div>
+        <div class="pc-body"><ul class="pc-feats"><li><div class="pf-ck">✓</div>Fino a 8 pagine personalizzate</li><li><div class="pf-ck">✓</div>Portfolio e galleria lavori</li><li><div class="pf-ck">✓</div>Blog con CMS gestibile da solo</li><li><div class="pf-ck">✓</div>SEO avanzata + Analytics</li><li><div class="pf-ck">✓</div>Hosting Webflow 1° anno incluso</li></ul>
+        <button class="pcard-cta" onclick="openOnboarding('vetrina')">Scegli Vetrina Pro →</button></div>
+      </div>
+      <div class="pcard feat rv d2">
+        <div class="pc-top"><span class="pc-badge">⭐ Più richiesto</span><span class="pc-emoji">🍽️</span><div class="pc-cat">Ristoranti & Locali</div><h3>Ristorante</h3><p style="font-size:12px;color:var(--text-muted);">Menù QR + prenotazioni integrate</p></div>
+        <div class="pc-pricing"><div class="price-new tc">€2.490</div><p class="price-note">Pagamento in 2 rate · IVA esclusa</p></div>
+        <div class="pc-body"><ul class="pc-feats"><li><div class="pf-ck">✓</div>Tutto del piano Vetrina Pro</li><li><div class="pf-ck">✓</div>Menù QR digitale aggiornabile</li><li><div class="pf-ck">✓</div>Prenotazioni (OpenTable / TheFork)</li><li><div class="pf-ck">✓</div>Pagina eventi e promozioni</li><li><div class="pf-ck">✓</div>SEO locale avanzata</li></ul>
+        <button class="pcard-cta" onclick="openOnboarding('ristorante')">Scegli Ristorante →</button></div>
+      </div>
+      <div class="pcard rv d3">
+        <div class="pc-top"><span class="pc-emoji">🛒</span><div class="pc-cat">E-commerce</div><h3>Shop Online</h3><p style="font-size:12px;color:var(--text-muted);">Negozio completo, pronto a vendere</p></div>
+        <div class="pc-pricing"><div class="price-new">€3.690</div><p class="price-note">Pagamento in 3 rate · IVA esclusa</p></div>
+        <div class="pc-body"><ul class="pc-feats"><li><div class="pf-ck">✓</div>Tutto del piano Vetrina Pro</li><li><div class="pf-ck">✓</div>Fino a 100 prodotti caricati</li><li><div class="pf-ck">✓</div>Stripe, PayPal, Klarna, Scalapay</li><li><div class="pf-ck">✓</div>Gestione ordini e spedizioni</li><li><div class="pf-ck">✓</div>SEO prodotti e categorie</li></ul>
+        <button class="pcard-cta" onclick="openOnboarding('shop')">Scegli Shop Online →</button></div>
+      </div>
+    </div>
+    <p style="text-align:center;margin-bottom:16px;font-size:14px;color:var(--text-muted);">Vuoi sapere come effettuare il pagamento? <a href="pagamento.html" style="color:var(--teal);font-weight:700;">Vedi tutti i metodi →</a></p>
+    <div class="mant-box rv">
+      <div class="mb-l"><div class="mb-ico">🛡️</div><div><h4>Piano Manutenzione Mensile</h4><p>Aggiornamenti, backup, monitoraggio e 2 ore di modifiche incluse ogni mese.</p></div></div>
+      <div class="mb-price"><strong>€89<span style="font-size:16px;font-weight:400;">/mese</span></strong><span>Opzionale · senza vincoli</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- METODI PAGAMENTO -->
+<div class="pag-strip">
+  <div class="pag-in">
+    <span class="pag-lbl">Pagamenti accettati</span>
+    <div class="pag-methods">
+      <div class="pm"><span style="font-size:18px;">💳</span><div><div class="pm-name">Stripe</div><div class="pm-sub">Carte di credito/debito</div></div></div>
+      <div class="pm"><span style="font-size:18px;">🅿️</span><div><div class="pm-name">PayPal</div><div class="pm-sub">Conto o carta</div></div></div>
+      <div class="pm"><span style="font-size:18px;">🏦</span><div><div class="pm-name">Bonifico</div><div class="pm-sub">Bancario / SEPA</div></div></div>
+      <div class="pm"><span style="font-size:18px;">🟣</span><div><div class="pm-name">Klarna</div><div class="pm-sub">Paga in 3 rate 0%</div></div></div>
+      <div class="pm"><span style="font-size:18px;">🔴</span><div><div class="pm-name">Satispay</div><div class="pm-sub">Pagamento rapido</div></div></div>
+      <div class="pm"><span style="font-size:18px;">🟠</span><div><div class="pm-name">Scalapay</div><div class="pm-sub">Paga in 3 rate</div></div></div>
+    </div>
+    <span style="font-size:12px;color:var(--text-muted);display:flex;align-items:center;gap:6px;">🔒 Transazioni sicure e cifrate</span>
+  </div>
+</div>
+
+<!-- NUMERI -->
+<section class="nums-sec">
+  <div class="container">
+    <div class="nums-grid">
+      <div class="nv rv"><div class="nv-val"><em>50+</em></div><div class="nv-lbl">Siti realizzati con successo</div></div>
+      <div class="nd"></div>
+      <div class="nv rv d1"><div class="nv-val">3 sett.</div><div class="nv-lbl">Dal primo incontro al sito online</div></div>
+      <div class="nd"></div>
+      <div class="nv rv d2"><div class="nv-val"><em>98%</em></div><div class="nv-lbl">Clienti soddisfatti a fine progetto</div></div>
+      <div class="nd"></div>
+      <div class="nv rv d3"><div class="nv-val">&lt;2s</div><div class="nv-lbl">Velocità di caricamento garantita</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESSO -->
+<section class="proc-sec" id="processo">
+  <div class="container">
+    <div class="sh rv" style="text-align:center;">
+      <span class="chip"><span class="chip-dot"></span>Come funziona</span>
+      <h2 class="h2" style="margin-top:14px;">Semplice, chiaro,<br><em>senza sorprese.</em></h2>
+      <p class="lead" style="margin:0 auto;">Ogni progetto segue un processo in 4 passi. Sai sempre a che punto siamo e cosa aspettarti.</p>
+    </div>
+    <div class="steps">
+      <div class="step rv"><div class="step-num">01</div><h4>Chiamata conoscitiva</h4><p>30 minuti gratuiti per capire il tuo business e i tuoi obiettivi.</p><span class="step-t">Giorno 1</span></div>
+      <div class="step rv d1"><div class="step-num">02</div><h4>Design & approvazione</h4><p>Progettiamo le bozze grafiche. Niente viene costruito finché non approvi.</p><span class="step-t">Settimana 1-2</span></div>
+      <div class="step rv d2"><div class="step-num">03</div><h4>Sviluppo su Webflow</h4><p>Realizziamo il sito e ti formiamo sul CMS. In un'ora sei già indipendente.</p><span class="step-t">Settimana 2-3</span></div>
+      <div class="step rv d3"><div class="step-num">04</div><h4>Lancio & supporto</h4><p>Go live con SEO iniziale. 30 giorni di supporto incluso.</p><span class="step-t">Fine settimana 3</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- PORTFOLIO -->
+<section id="portfolio">
+  <div class="container">
+    <div class="sh rv" style="text-align:center;">
+      <span class="chip"><span class="chip-dot"></span>Il nostro lavoro</span>
+      <h2 class="h2" style="margin-top:14px;">Progetti reali,<br><em>risultati misurabili.</em></h2>
+    </div>
+    <div class="pf-grid">
+      <div class="pfc rv">
+        <div class="pfc-vis" style="background:linear-gradient(135deg,#E8F4EE,#D0EDD8);">
+          <div class="pfc-bar"><div class="pfc-dot" style="background:#FF5F57;"></div><div class="pfc-dot" style="background:#FFBD2E;"></div><div class="pfc-dot" style="background:#28C840;"></div><div class="pfc-url">ristorantedamarco.it</div></div>
+          <div class="pfc-mock">
+            <div style="height:50px;border-radius:8px;background:linear-gradient(135deg,#3D5A40,#5A8A60);display:flex;align-items:center;justify-content:center;"><span style="color:rgba(255,255,255,.9);font-family:var(--font-d);font-size:13px;">Ristorante Da Marco</span></div>
+            <div style="display:flex;gap:7px;"><div style="background:var(--teal);border-radius:100px;padding:5px 12px;font-size:8px;color:#fff;font-weight:700;">Prenota un tavolo</div><div style="border:1px solid var(--border);border-radius:100px;padding:5px 12px;font-size:8px;color:var(--text-mid);font-weight:600;">Vedi il menù</div></div>
+            <div style="display:flex;gap:5px;"><div style="flex:1;height:38px;border-radius:7px;background:rgba(255,255,255,.6);"></div><div style="flex:1;height:38px;border-radius:7px;background:rgba(255,255,255,.6);"></div><div style="width:38px;height:38px;border-radius:7px;background:var(--navy);display:grid;grid-template-columns:1fr 1fr;gap:3px;padding:5px;"><div style="background:rgba(255,255,255,.8);border-radius:1px;"></div><div style="background:rgba(255,255,255,.8);border-radius:1px;"></div><div style="background:rgba(255,255,255,.8);border-radius:1px;"></div><div style="background:rgba(255,255,255,.8);border-radius:1px;"></div></div></div>
+          </div>
+        </div>
+        <div class="pfc-info"><div class="pfc-meta"><span class="pfc-cat">🍽️ Ristorante</span><span class="pfc-res">+210% prenotazioni</span></div><h3>Ristorante Da Marco</h3><p>Sito con menù QR digitale, sistema prenotazioni integrato e SEO locale. Il titolare aggiorna il menù da solo.</p><div class="pfc-pills"><span class="pfc-pill">Webflow CMS</span><span class="pfc-pill">Menù QR</span><span class="pfc-pill">SEO locale</span></div></div>
+      </div>
+      <div class="pfc rv d1">
+        <div class="pfc-vis" style="background:linear-gradient(135deg,#E8F0FB,#D0DFF0);">
+          <div class="pfc-bar"><div class="pfc-dot" style="background:#FF5F57;"></div><div class="pfc-dot" style="background:#FFBD2E;"></div><div class="pfc-dot" style="background:#28C840;"></div><div class="pfc-url">studiolongoarchitettura.it</div></div>
+          <div class="pfc-mock">
+            <div style="height:16px;width:55%;background:var(--navy);border-radius:3px;opacity:.8;"></div>
+            <div style="height:10px;width:75%;background:var(--border);border-radius:2px;"></div>
+            <div style="display:flex;gap:4px;flex-wrap:wrap;margin-top:4px;"><span style="background:var(--bg-blue);border-radius:100px;padding:3px 8px;font-size:7px;font-weight:600;color:var(--navy);">Residenziale</span><span style="background:var(--bg-blue);border-radius:100px;padding:3px 8px;font-size:7px;font-weight:600;color:var(--navy);">Commerciale</span></div>
+            <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:5px;margin-top:4px;"><div style="height:52px;border-radius:6px;background:linear-gradient(135deg,var(--bg-blue),var(--bg-sage));"></div><div style="height:36px;border-radius:6px;background:var(--bg-blue);"></div><div style="height:36px;border-radius:6px;background:var(--bg-sage);"></div></div>
+          </div>
+        </div>
+        <div class="pfc-info"><div class="pfc-meta"><span class="pfc-cat">💼 Portfolio</span><span class="pfc-res">3× richieste contatto</span></div><h3>Studio Longo Architettura</h3><p>Portfolio professionale con galleria dinamica, blog e prenotazione consulenze. Prima pagina Google per "architetta Verona".</p><div class="pfc-pills"><span class="pfc-pill">Webflow CMS</span><span class="pfc-pill">Calendly</span><span class="pfc-pill">Blog SEO</span></div></div>
+      </div>
+      <div class="pfc rv d2">
+        <div class="pfc-vis" style="background:linear-gradient(135deg,#F0E8FB,#E0D0F0);">
+          <div class="pfc-bar"><div class="pfc-dot" style="background:#FF5F57;"></div><div class="pfc-dot" style="background:#FFBD2E;"></div><div class="pfc-dot" style="background:#28C840;"></div><div class="pfc-url">atelierrossi.it/shop</div></div>
+          <div class="pfc-mock">
+            <div style="height:40px;border-radius:7px;background:linear-gradient(135deg,#6B4F8C,#9B7CC0);display:flex;align-items:center;justify-content:space-between;padding:0 10px;"><span style="font-size:9px;color:rgba(255,255,255,.9);font-weight:600;">Atelier Rossi</span><span style="font-size:9px;color:rgba(255,255,255,.9);">🛒 2</span></div>
+            <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:5px;margin-top:4px;">
+              <div style="border-radius:7px;overflow:hidden;border:1px solid var(--border-s);"><div style="height:34px;background:linear-gradient(135deg,#F2D6E8,#E8B4D0);"></div><div style="padding:4px 5px;"><div style="height:6px;background:var(--border);border-radius:2px;margin-bottom:3px;"></div><div style="height:6px;width:50%;background:var(--teal);border-radius:2px;opacity:.6;"></div></div></div>
+              <div style="border-radius:7px;overflow:hidden;border:1px solid var(--border-s);"><div style="height:34px;background:linear-gradient(135deg,#D6E8F2,#B4D0E8);"></div><div style="padding:4px 5px;"><div style="height:6px;background:var(--border);border-radius:2px;margin-bottom:3px;"></div><div style="height:6px;width:50%;background:var(--teal);border-radius:2px;opacity:.6;"></div></div></div>
+              <div style="border-radius:7px;overflow:hidden;border:1px solid var(--border-s);"><div style="height:34px;background:linear-gradient(135deg,#D6F2E0,#B4E8C4);"></div><div style="padding:4px 5px;"><div style="height:6px;background:var(--border);border-radius:2px;margin-bottom:3px;"></div><div style="height:6px;width:50%;background:var(--teal);border-radius:2px;opacity:.6;"></div></div></div>
+            </div>
+            <div style="height:20px;border-radius:5px;background:var(--navy);display:flex;align-items:center;justify-content:center;margin-top:5px;"><span style="font-size:8px;color:#fff;font-weight:600;">Aggiungi al carrello</span></div>
+          </div>
+        </div>
+        <div class="pfc-info"><div class="pfc-meta"><span class="pfc-cat">🛒 E-commerce</span><span class="pfc-res">+180% vendite online</span></div><h3>Atelier Rossi — Shop Online</h3><p>Negozio moda artigianale con 80+ prodotti, Stripe e Klarna, integrazione BRT. Gestito dalla titolare in autonomia.</p><div class="pfc-pills"><span class="pfc-pill">Webflow Commerce</span><span class="pfc-pill">Stripe</span><span class="pfc-pill">Klarna</span></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIANZE -->
+<section id="clienti" style="background:var(--bg2);">
+  <div class="container">
+    <div class="sh rv" style="text-align:center;">
+      <span class="chip"><span class="chip-dot"></span>Clienti soddisfatti</span>
+      <h2 class="h2" style="margin-top:14px;">Le loro parole<br><em>valgono più delle nostre.</em></h2>
+    </div>
+    <div class="tg">
+      <div class="tc rv"><div class="tc-stars">★★★★★</div><blockquote>"Ero scettico, ma il team mi ha guidato passo passo. Ora gestisco il menù dal telefono da solo e le prenotazioni sono raddoppiate nel primo mese."</blockquote><div class="tc-auth"><div class="tc-av">MV</div><div><div class="tc-name">Marco Veraldi</div><div class="tc-role">Ristorante Da Marco · Verona</div></div></div></div>
+      <div class="tc rv d1"><div class="tc-stars">★★★★★</div><blockquote>"Finalmente un sito che si presenta da solo. Ricevo richieste di preventivo anche il weekend, mentre sono fuori ufficio. Impagabile."</blockquote><div class="tc-auth"><div class="tc-av">SL</div><div><div class="tc-name">Sara Longo</div><div class="tc-role">Architetta · Studio Longo</div></div></div></div>
+      <div class="tc rv d2"><div class="tc-stars">★★★★★</div><blockquote>"Ho provato con altre agenzie ma non mi capivano. Con BWEB ho sentito subito che sapevano quello che facevano. Il negozio online funziona benissimo."</blockquote><div class="tc-auth"><div class="tc-av">CM</div><div><div class="tc-name">Chiara Martini</div><div class="tc-role">Fondatrice · Atelier Rossi</div></div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- GARANZIE -->
+<section class="gar-sec" id="garanzie">
+  <div class="container">
+    <div class="sh rv" style="text-align:center;">
+      <span class="chip"><span class="chip-dot"></span>Le nostre garanzie</span>
+      <h2 class="h2" style="margin-top:14px;">Impegni chiari.<br><em>Scritti nero su bianco.</em></h2>
+    </div>
+    <div class="gar-grid">
+      <div class="gc rv"><div class="g-ico">📅</div><div><h4>Consegna nei tempi concordati</h4><p>Se non rispettiamo la data di lancio per colpa nostra, il mese di manutenzione successivo è completamente gratuito.</p></div></div>
+      <div class="gc rv d1"><div class="g-ico">💡</div><div><h4>Nessun costo nascosto</h4><p>Il preventivo che firmi è il prezzo finale. Niente sorprese in corsa, niente lavori extra non concordati.</p></div></div>
+      <div class="gc rv d2"><div class="g-ico">🎓</div><div><h4>Formazione inclusa sempre</h4><p>Ogni sito viene consegnato con una sessione di formazione e video tutorial. Autonomo in meno di un'ora.</p></div></div>
+      <div class="gc rv d3"><div class="g-ico">🤝</div><div><h4>30 giorni di supporto post-lancio</h4><p>Dopo il lancio non spariremo. Per 30 giorni puoi contarci per qualsiasi dubbio o piccola modifica.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq" style="padding:96px 0;">
+  <div class="container-sm">
+    <div class="sh rv" style="text-align:center;">
+      <span class="chip"><span class="chip-dot"></span>Domande frequenti</span>
+      <h2 class="h2" style="margin-top:14px;">Hai domande?<br><em>Abbiamo già le risposte.</em></h2>
+    </div>
+    <div class="faq-list">
+      <div class="faq-item rv"><button class="faq-q" onclick="doFaq(this)"><span class="faq-qt">Quanto costa un sito con BWEB?</span><div class="faq-tog"><svg width="11" height="11" viewBox="0 0 24 24" fill="none"><path d="M12 5v14M5 12h14" stroke="var(--navy)" stroke-width="2.5" stroke-linecap="round"/></svg></div></button><div class="faq-a"><p class="faq-ai">I progetti partono da <strong>€840</strong> per un sito Starter e arrivano a <strong>€3.135+</strong> per e-commerce completi. Ogni preventivo è personalizzato e gratuito — lo prepariamo dopo la chiamata conoscitiva di 30 minuti.</p></div></div>
+      <div class="faq-item rv d1"><button class="faq-q" onclick="doFaq(this)"><span class="faq-qt">Perché Webflow e non WordPress?</span><div class="faq-tog"><svg width="11" height="11" viewBox="0 0 24 24" fill="none"><path d="M12 5v14M5 12h14" stroke="var(--navy)" stroke-width="2.5" stroke-linecap="round"/></svg></div></button><div class="faq-a"><p class="faq-ai">Webflow è più veloce, più sicuro (niente plugin da aggiornare, niente rischi di hack) e ti permette di gestire i contenuti da solo senza rompere nulla. Per chi vuole concentrarsi sul proprio lavoro, è la scelta giusta.</p></div></div>
+      <div class="faq-item rv d2"><button class="faq-q" onclick="doFaq(this)"><span class="faq-qt">Riesco davvero ad aggiornare il sito da solo?</span><div class="faq-tog"><svg width="11" height="11" viewBox="0 0 24 24" fill="none"><path d="M12 5v14M5 12h14" stroke="var(--navy)" stroke-width="2.5" stroke-linecap="round"/></svg></div></button><div class="faq-a"><p class="faq-ai">Sì, assolutamente. Ogni sito viene consegnato con sessione formativa e video tutorial personalizzati. Dopo un'ora sai già cambiare testi, foto e prezzi direttamente dallo smartphone.</p></div></div>
+      <div class="faq-item rv"><button class="faq-q" onclick="doFaq(this)"><span class="faq-qt">In quanto tempo è pronto il sito?</span><div class="faq-tog"><svg width="11" height="11" viewBox="0 0 24 24" fill="none"><path d="M12 5v14M5 12h14" stroke="var(--navy)" stroke-width="2.5" stroke-linecap="round"/></svg></div></button><div class="faq-a"><p class="faq-ai">In media <strong>2-3 settimane</strong> dalla firma. I tempi dipendono anche dalla velocità con cui ci fornisci i materiali (logo, testi, foto). Siamo trasparenti sulla timeline fin dall'inizio.</p></div></div>
+      <div class="faq-item rv d1"><button class="faq-q" onclick="doFaq(this)"><span class="faq-qt">Cosa succede dopo la consegna?</span><div class="faq-tog"><svg width="11" height="11" viewBox="0 0 24 24" fill="none"><path d="M12 5v14M5 12h14" stroke="var(--navy)" stroke-width="2.5" stroke-linecap="round"/></svg></div></button><div class="faq-a"><p class="faq-ai">30 giorni di supporto post-lancio inclusi per qualsiasi dubbio o piccola modifica. Dopo, offriamo piani di manutenzione mensile opzionali con aggiornamenti, backup e supporto prioritario.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTATTI -->
+<section class="contact-sec" id="contatti">
+  <div class="container">
+    <div class="sh rv" style="text-align:center;">
+      <span class="chip"><span class="chip-dot"></span>Inizia adesso</span>
+      <h2 class="h2" style="margin-top:14px;">Parliamoci.<br><em>È gratuito e senza impegni.</em></h2>
+      <p class="lead" style="margin:0 auto;">Compila il form o scrivici direttamente. Ti risponderemo entro 24 ore.</p>
+    </div>
+    <div class="contact-grid">
+      <div class="rv">
+        <h3>Preferisci contattarci direttamente?</h3>
+        <p>Siamo disponibili lunedì-venerdì 9:00-18:00. Rispondiamo anche su WhatsApp nei fine settimana.</p>
+        <a href="/cdn-cgi/l/email-protection#2841464e474a5f4d4a4c4d5b414f465b684f45494144064b4745" onclick="window.open('mailto:infobwebdesigns@gmail.com');" class="cm">
+          <div class="cm-ico" style="background:var(--bg-blue);">📧</div>
+          <div><div class="cm-lbl">Email</div><div class="cm-val"><span class="__cf_email__" data-cfemail="d0b9beb6bfb2a7b5b2b4b5a3b9b7bea390b7bdb1b9bcfeb3bfbd">[email&#160;protected]</span></div></div>
+        </a>
+        <a href="https://wa.me/393348927948" onclick="openWA('https://wa.me/393348927948');" class="cm">
+          <div class="cm-ico" style="background:#E8FBF0;">💬</div>
+          <div><div class="cm-lbl">WhatsApp</div><div class="cm-val">+39 334 892 7948</div></div>
+        </a>
+        <p style="font-size:13px;color:var(--text-muted);display:flex;align-items:center;gap:6px;margin-top:8px;"><span style="width:6px;height:6px;border-radius:50%;background:var(--sage);flex-shrink:0;display:inline-block;"></span>Risposta garantita entro 24 ore lavorative</p>
+        <p style="font-size:13px;color:var(--text-muted);display:flex;align-items:center;gap:6px;margin-top:6px;"><span style="width:6px;height:6px;border-radius:50%;background:var(--sage);flex-shrink:0;display:inline-block;"></span>Prima consulenza sempre gratuita</p>
+      </div>
+      <div class="rv d1">
+        <div class="cf" id="contactForm">
+          <input type="hidden" name="access_key" value="e5e5f2e2-7713-49a8-9e09-84d645c24680">
+          <div class="cf-row">
+            <div class="cf-grp"><label>Nome e cognome *</label><input type="text" id="cf-nome" placeholder="Mario Rossi"></div>
+            <div class="cf-grp"><label>Email *</label><input type="email" id="cf-email" placeholder="mario@esempio.it"></div>
+          </div>
+          <div class="cf-row">
+            <div class="cf-grp"><label>Telefono</label><input type="tel" id="cf-telefono" placeholder="+39 333 123 4567"></div>
+            <div class="cf-grp"><label>Tipo di attività *</label>
+              <select id="cf-settore">
+                <option value="" disabled selected>Seleziona...</option>
+                <option>🍽️ Ristorante / Bar / Locale</option>
+                <option>🛒 Negozio / E-commerce</option>
+                <option>💼 Libero professionista</option>
+                <option>🏢 Azienda / Studio</option>
+                <option>🔄 Altro</option>
+              </select>
+            </div>
+          </div>
+          <div class="cf-grp"><label>Piano di interesse</label>
+            <select id="cf-piano" onchange="showRouting(this.value)">
+              <option value="" disabled selected>Seleziona un piano (opzionale)</option>
+              <option>⚡ Starter — €840</option>
+              <option>💼 Vetrina Pro — €1.520</option>
+              <option>🍽️ Ristorante — €2.115</option>
+              <option>🛒 Shop Online — €3.135</option>
+              <option>Non so ancora, voglio una consulenza</option>
+            </select>
+            <div id="routing-hint"></div>
+          </div>
+          <div class="cf-grp"><label>Il tuo messaggio</label><textarea id="cf-msg" rows="4" placeholder="Descrivi brevemente la tua attività e cosa vorresti ottenere dal nuovo sito..."></textarea></div>
+          <button class="cf-submit" id="cf-btn" onclick="submitForm(event)">
+            <span id="cf-btn-text">Invia la richiesta</span>
+            <span id="cf-btn-loading" style="display:none;">Invio in corso...</span>
+            <svg id="cf-btn-arrow" width="15" height="15" viewBox="0 0 24 24" fill="none"><path stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </button>
+          <p id="cf-error" style="display:none;color:#E24B4A;font-size:13px;text-align:center;margin-top:4px;">Errore nell'invio. <a href="https://wa.me/393348927948" onclick="openWA('https://wa.me/393348927948');" style="color:#E24B4A;font-weight:700;">Scrivici su WhatsApp →</a></p>
+          <p class="cf-privacy">Inviando accetti la nostra <a href="privacy-policy.html">Privacy Policy</a>. Dati non ceduti a terzi.</p>
+        </div>
+        <div id="formSuccess">
+          <div style="font-size:36px;margin-bottom:10px;" id="fs-icon">✅</div>
+          <h4 id="fs-title" style="font-family:var(--font-d);font-size:20px;font-weight:500;color:var(--navy);margin-bottom:8px;">Messaggio inviato!</h4>
+          <p id="fs-text" style="font-size:14px;color:var(--text-mid);">Ti risponderemo entro 24 ore con una valutazione personalizzata.</p>
+        </div>
+        <div class="reassure" style="margin-top:16px;">
+          <div class="re"><span style="color:var(--sage);">✓</span>Nessun costo nascosto</div>
+          <div class="re"><span style="color:var(--sage);">✓</span>Preventivo in 24 ore</div>
+          <div class="re"><span style="color:var(--sage);">✓</span>Consulenza gratuita</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="fg">
+      <div><a href="#" onclick="window.scrollTo({top:0,behavior:'smooth'});" class="logo-f">B<span>WEB</span> Design</a><p style="font-size:13px;line-height:1.75;max-width:230px;">Siti Webflow premium per ristoranti, e-commerce e professionisti. Facili da gestire, veloci, affidabili.</p></div>
+      <div><h5>Servizi</h5><ul><li><a href="#servizi" onclick="smoothTo('servizi');">Siti per Ristoranti</a></li><li><a href="#servizi" onclick="smoothTo('servizi');">E-commerce</a></li><li><a href="#servizi" onclick="smoothTo('servizi');">Portfolio Professionisti</a></li><li><a href="#preventivo" onclick="smoothTo('preventivo');">Preventivo Rapido</a></li>
+      <li><a href="pagamento.html">Come pagare</a></li><li><a href="https://wa.me/393348927948" onclick="openWA('https://wa.me/393348927948');">Manutenzione Siti</a></li></ul></div>
+      <div><h5>Agenzia</h5><ul><li><a href="#chi-siamo" onclick="smoothTo('chi-siamo');">Chi siamo</a></li><li><a href="#portfolio" onclick="smoothTo('portfolio');">Portfolio</a></li><li><a href="#clienti" onclick="smoothTo('clienti');">Testimonianze</a></li><li><a href="#faq" onclick="smoothTo('faq');">FAQ</a></li></ul></div>
+      <div><h5>Contatti</h5><ul><li><a href="/cdn-cgi/l/email-protection#b7ded9d1d8d5c0d2d5d3d2c4ded0d9c4f7d0dad6dedb99d4d8da" onclick="window.open('mailto:infobwebdesigns@gmail.com');"><span class="__cf_email__" data-cfemail="e881868e878a9f8d8a8c8d9b818f869ba88f85898184c68b8785">[email&#160;protected]</span></a></li><li><a href="https://wa.me/393348927948" onclick="openWA('https://wa.me/393348927948');">WhatsApp +39 334 892 7948</a></li><li><a href="https://instagram.com" onclick="window.open('https://instagram.com','_blank');">Instagram</a></li><li><a href="https://linkedin.com" onclick="window.open('https://linkedin.com','_blank');">LinkedIn</a></li></ul></div>
+    </div>
+    <div class="f-bot">
+      <p>© 2025 BWEB Design. Tutti i diritti riservati. P.IVA: XXXXXXXXXXXXXXX</p>
+      <p><a href="privacy-policy.html">Privacy Policy</a> · <a href="privacy-policy.html#cookie">Cookie Policy</a> · <button class="f-ck-btn" onclick="openCkModal()">Gestisci cookie</button></p>
+    </div>
+  </div>
+</footer>
+
+<!-- ONBOARDING OVERLAY -->
+<div id="ob-ov" role="dialog" aria-label="Inizia il tuo progetto">
+  <header class="ob-top">
+    <a href="#" onclick="window.scrollTo({top:0,behavior:'smooth'});" class="logo">B<span>WEB</span> Design</a>
+    <div style="display:flex;align-items:center;gap:12px;">
+      <a href="https://wa.me/393348927948" onclick="openWA('https://wa.me/393348927948');" class="btn-nav" style="font-size:13px;padding:8px 16px;">💬 Aiuto</a>
+      <button class="ob-close" onclick="closeOnboarding();">← Torna al sito</button>
+    </div>
+  </header>
+  <div id="ob-prog-wrap">
+    <div class="container-sm">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;">
+        <span style="font-size:13px;font-weight:600;color:var(--navy);" id="ob-prog-lbl">Step 1 di 7</span>
+        <span style="font-size:12px;color:var(--text-muted);" id="ob-prog-cnt">Informazioni attività</span>
+      </div>
+      <div style="height:4px;background:var(--border-s);border-radius:100px;overflow:hidden;">
+        <div id="ob-prog-fill" style="height:100%;width:14%;background:linear-gradient(to right,var(--teal),var(--navy));border-radius:100px;transition:width .5s;"></div>
+      </div>
+      <div class="ob-dots">
+        <div class="ob-dot active" data-step="1"><div class="ob-dn">1</div><span class="ob-dl">Attività</span></div>
+        <div class="ob-dot" data-step="2"><div class="ob-dn">2</div><span class="ob-dl">Brand</span></div>
+        <div class="ob-dot" data-step="3"><div class="ob-dn">3</div><span class="ob-dl">Stile</span></div>
+        <div class="ob-dot" data-step="4"><div class="ob-dn">4</div><span class="ob-dl">Funzioni</span></div>
+        <div class="ob-dot" data-step="5"><div class="ob-dn">5</div><span class="ob-dl">Contenuti</span></div>
+        <div class="ob-dot" data-step="6"><div class="ob-dn">6</div><span class="ob-dl">Tecnico</span></div>
+        <div class="ob-dot" data-step="7"><div class="ob-dn">7</div><span class="ob-dl">Contatti</span></div>
+      </div>
+    </div>
+  </div>
+<main class="ob-main">
+
+  <!-- STEP 1: Info attività -->
+  <div class="ob-step active" id="ob-s1">
+    <div class="ob-badge" id="plan-badge">⚡ Piano Starter</div>
+    <h1 class="step-title">Parlaci della tua<br><em>attività.</em></h1>
+    <p class="step-desc">Queste informazioni ci permettono di costruire un sito che rispecchi davvero il tuo business. Compila con cura — meno ti chiederemo dopo.</p>
+
+    <div class="row-2">
+      <div class="field-group">
+        <label for="s1-nome">Il tuo nome e cognome *</label>
+        <input type="text" id="ob-s1-nome" placeholder="Mario Rossi">
+      </div>
+      <div class="field-group">
+        <label for="s1-bizname">Nome dell'attività *</label>
+        <input type="text" id="ob-s1-bizname" placeholder="Ristorante Da Marco">
+      </div>
+    </div>
+
+    <div class="field-group">
+      <label for="s1-settore">Settore / tipo di attività *</label>
+      <select id="ob-s1-settore">
+        <option value="" disabled selected>Seleziona...</option>
+        <option>🍽️ Ristorante / Trattoria / Pizzeria</option>
+        <option>☕ Bar / Caffetteria / Pasticceria</option>
+        <option>🍷 Wine Bar / Enoteca</option>
+        <option>⚖️ Studio legale / Avvocato</option>
+        <option>🏗️ Architetto / Studio di progettazione</option>
+        <option>📷 Fotografo / Videomaker</option>
+        <option>💆 Centro benessere / SPA</option>
+        <option>🏋️ Personal trainer / Palestra</option>
+        <option>👗 Moda / Abbigliamento / Accessori</option>
+        <option>🛒 Negozio / E-commerce generico</option>
+        <option>💊 Farmacia / Parafarmacia</option>
+        <option>🏠 Agenzia immobiliare</option>
+        <option>🎨 Artista / Designer</option>
+        <option>💼 Consulente / Coach</option>
+        <option>🔧 Artigiano / Tecnico</option>
+        <option>🏢 Azienda / Studio professionale</option>
+        <option>Altro</option>
+      </select>
+    </div>
+
+    <div class="field-group">
+      <label for="s1-desc">Descrivi la tua attività in 2-3 righe *</label>
+      <span class="hint">Cosa fai, per chi, dove sei. Questo testo potrà entrare direttamente nel sito.</span>
+      <textarea id="ob-s1-desc" rows="4" placeholder="Siamo una trattoria familiare a Verona centro, aperta dal 1987. Cucina veronese tradizionale, specialità: risotto all'Amarone e bollito. Aperta a pranzo e cena dal martedì alla domenica."></textarea>
+    </div>
+
+    <div class="row-2">
+      <div class="field-group">
+        <label for="s1-citta">Città / zona *</label>
+        <input type="text" id="ob-s1-citta" placeholder="Verona, centro storico">
+      </div>
+      <div class="field-group">
+        <label for="s1-anno">Anno di fondazione</label>
+        <input type="text" id="ob-s1-anno" placeholder="es. 1987">
+      </div>
+    </div>
+
+    <div class="field-group">
+      <label for="s1-punti">Quali sono i 3 punti di forza della tua attività?</label>
+      <span class="hint">Cosa ti distingue dalla concorrenza? Perché i clienti scelgono te?</span>
+      <textarea id="ob-s1-punti" rows="3" placeholder="1. Ingredienti freschi locali ogni giorno&#10;2. Ambiente accogliente e familiare&#10;3. Prezzi onesti con porzioni generose"></textarea>
+    </div>
+
+    <div class="field-group">
+      <label for="s1-target">Chi è il tuo cliente ideale?</label>
+      <textarea id="ob-s1-target" rows="2" placeholder="Famiglie con bambini, turisti che vogliono mangiare veronese autentico, lavoratori a pranzo..."></textarea>
+    </div>
+
+    <div class="ob-nav">
+      <div></div>
+      <span class="step-nav-note">I tuoi dati sono al sicuro 🔒</span>
+      <button class="btn-next" onclick="obNext(1)">Avanti → Brand & Logo</button>
+    </div>
+  </div>
+
+  <!-- STEP 2: Brand & Logo -->
+  <div class="ob-step" id="ob-s2">
+    <div class="ob-badge" id="plan-badge-2">⚡ Piano Starter</div>
+    <h1 class="step-title">Brand e<br><em>identità visiva.</em></h1>
+    <p class="step-desc">Carica il tuo logo e dimmi i colori della tua attività. Se non hai ancora un logo, non preoccuparti — te lo chiediamo solo per capire lo stile.</p>
+
+    <div class="info-box">
+      <span class="info-box-ico">💡</span>
+      <p><strong>Non hai un logo?</strong> Nessun problema. Indica i colori che ti piacciono e lo stile che preferisci. Ti daremo alcune opzioni nella fase di design.</p>
+    </div>
+
+    <div class="upload-zone" id="logo-upload">
+      <input type="file" id="ob-s2-logo" accept="image/*,.pdf,.ai,.eps,.svg" onchange="obUpload('logo-upload','s2-logo')">
+      <div class="upload-ico">🎨</div>
+      <div class="upload-title">Carica il tuo logo</div>
+      <div class="upload-sub">PNG, SVG, PDF, AI, EPS — fino a 10MB</div>
+      <div class="upload-note" id="logo-upload-note">Clicca o trascina qui il file</div>
+    </div>
+
+    <div class="field-group">
+      <label>Colori principali della tua attività</label>
+      <span class="hint">Scegli fino a 3 colori che rappresentano il tuo brand.</span>
+      <div class="color-pickers">
+        <div class="cp-item">
+          <input type="color" id="ob-s2-color1" value="#2B4666">
+          <span>Principale</span>
+        </div>
+        <div class="cp-item">
+          <input type="color" id="ob-s2-color2" value="#3D8A9E">
+          <span>Secondario</span>
+        </div>
+        <div class="cp-item">
+          <input type="color" id="ob-s2-color3" value="#F5F3EE">
+          <span>Sfondo</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="field-group">
+      <label for="s2-colori-note">Note sui colori o brand</label>
+      <span class="hint">Hai già uno stile definito? Colori che assolutamente NON vuoi?</span>
+      <textarea id="ob-s2-colori-note" rows="2" placeholder="Es: uso sempre il bordeaux e l'oro, mai il blu. Il mio brand è caldo e tradizionale."></textarea>
+    </div>
+
+    <div class="upload-zone" id="materiali-upload">
+      <input type="file" id="ob-s2-materiali" accept="image/*,.pdf" multiple onchange="obUpload('materiali-upload','s2-materiali')">
+      <div class="upload-ico">🖼️</div>
+      <div class="upload-title">Carica materiali esistenti</div>
+      <div class="upload-sub">Biglietti da visita, brochure, menù cartaceo, locandine — qualsiasi materiale visivo</div>
+      <div class="upload-note" id="materiali-upload-note">Clicca o trascina qui (multipli OK)</div>
+    </div>
+
+    <div class="field-group">
+      <label for="s2-social">Link ai tuoi profili social</label>
+      <span class="hint">Instagram, Facebook, TripAdvisor, Google Maps... anche solo quelli che hai.</span>
+      <textarea id="ob-s2-social" rows="3" placeholder="Instagram: instagram.com/ristorantedamarco&#10;Facebook: facebook.com/ristorantedamarco&#10;TripAdvisor: (link)"></textarea>
+    </div>
+
+    <div class="ob-nav">
+      <button class="btn-back" onclick="obBack(2)">← Indietro</button>
+      <span class="step-nav-note"></span>
+      <button class="btn-next" onclick="obNext(2)">Avanti → Stile grafico</button>
+    </div>
+  </div>
+
+  <!-- STEP 3: Stile -->
+  <div class="ob-step" id="ob-s3">
+    <h1 class="step-title">Che stile deve<br>avere il sito?</h1>
+    <p class="step-desc">Scegli l'atmosfera che vuoi trasmettere ai tuoi visitatori. Puoi selezionarne più d'uno.</p>
+
+    <div class="choices col-2" id="ob-stile">
+      <div class="choice-card" onclick="obChoice(this)">
+        <span class="choice-emoji">🏛️</span>
+        <span class="choice-title">Elegante & Professionale</span>
+        <span class="choice-desc">Raffinato, colori neutri, tipografia curata. Per studi, professionisti, luxury.</span>
+      </div>
+      <div class="choice-card" onclick="obChoice(this)">
+        <span class="choice-emoji">🌿</span>
+        <span class="choice-title">Caldo & Autentico</span>
+        <span class="choice-desc">Colori caldi, texture naturali, familiare. Perfetto per ristoranti tradizionali.</span>
+      </div>
+      <div class="choice-card" onclick="obChoice(this)">
+        <span class="choice-emoji">⚡</span>
+        <span class="choice-title">Moderno & Pulito</span>
+        <span class="choice-desc">Minimalista, bianco e spazio, design contemporaneo. Per attività giovani e dinamiche.</span>
+      </div>
+      <div class="choice-card" onclick="obChoice(this)">
+        <span class="choice-emoji">🎨</span>
+        <span class="choice-title">Creativo & Bold</span>
+        <span class="choice-desc">Colori vivaci, grafica originale, personalità forte. Per creativi e brand caratteriali.</span>
+      </div>
+      <div class="choice-card" onclick="obChoice(this)">
+        <span class="choice-emoji">🛒</span>
+        <span class="choice-title">Commerciale & Chiaro</span>
+        <span class="choice-desc">CTA evidenti, layout orientato alla conversione, prezzi in primo piano.</span>
+      </div>
+      <div class="choice-card" onclick="obChoice(this)">
+        <span class="choice-emoji">🌊</span>
+        <span class="choice-title">Rilassante & Soft</span>
+        <span class="choice-desc">Colori pastello, bordi arrotondati, atmosfera tranquilla. Per benessere, SPA, yoga.</span>
+      </div>
+    </div>
+
+    <div class="field-group" style="margin-top:8px;">
+      <label>Siti web che ti piacciono (ispirazione)</label>
+      <span class="hint">Inserisci l'indirizzo di 1-3 siti (anche di altri settori) che trovi belli o che ti ispirano.</span>
+      <div class="ref-list" id="ob-refs">
+        <div class="ref-row">
+          <input type="url" placeholder="https://esempio.com" class="ref-input">
+          <button class="ref-del" onclick="obDelRef(this)">✕</button>
+        </div>
+      </div>
+      <button class="add-ref" onclick="obAddRef()">+ Aggiungi un altro sito</button>
+    </div>
+
+    <div class="field-group">
+      <label>Livello di animazioni e effetti</label>
+      <div class="choices col-3" style="margin-top:8px;">
+        <div class="choice-card" onclick="obOne(this,'anim')" style="padding:12px;">
+          <span class="choice-title" style="font-size:13px;">🪨 Essenziale</span>
+          <span class="choice-desc">Poche animazioni, caricamento velocissimo</span>
+        </div>
+        <div class="choice-card selected" onclick="obOne(this,'anim')" style="padding:12px;">
+          <span class="choice-title" style="font-size:13px;">✨ Bilanciato</span>
+          <span class="choice-desc">Animazioni eleganti al scroll</span>
+        </div>
+        <div class="choice-card" onclick="obOne(this,'anim')" style="padding:12px;">
+          <span class="choice-title" style="font-size:13px;">🎬 Dinamico</span>
+          <span class="choice-desc">Effetti ricchi, molto interattivo</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="field-group">
+      <label for="s3-note">Altre note sullo stile</label>
+      <textarea id="ob-s3-note" rows="2" placeholder="Es: voglio che sembri artigianale e fatto a mano. Oppure: ispiratevi ai ristoranti stellati."></textarea>
+    </div>
+
+    <div class="ob-nav">
+      <button class="btn-back" onclick="obBack(3)">← Indietro</button>
+      <span class="step-nav-note"></span>
+      <button class="btn-next" onclick="obNext(3)">Avanti → Funzionalità</button>
+    </div>
+  </div>
+
+  <!-- STEP 4: Funzionalità (dinamico per piano) -->
+  <div class="ob-step" id="ob-s4">
+    <h1 class="step-title">Di cosa ha bisogno<br><em>il tuo sito?</em></h1>
+    <p class="step-desc">Seleziona tutte le funzionalità che ti servono. Le includeremo nel progetto o ti diremo se richiedono un upgrade.</p>
+
+    <!-- Funzionalità comuni -->
+    <div class="checklist" id="ob-funz">
+      <label class="check-item" onclick="obCheck(this)">
+        <input type="checkbox" checked>
+        <div class="check-item-text">
+          <strong>📞 Form di contatto</strong>
+          <span>I clienti possono scriverti direttamente dal sito</span>
+        </div>
+      </label>
+      <label class="check-item" onclick="obCheck(this)">
+        <input type="checkbox">
+        <div class="check-item-text">
+          <strong>📍 Mappa Google integrata</strong>
+          <span>Mostra dove si trova la tua attività</span>
+        </div>
+      </label>
+      <label class="check-item" onclick="obCheck(this)">
+        <input type="checkbox">
+        <div class="check-item-text">
+          <strong>📱 Chat WhatsApp sul sito</strong>
+          <span>Pulsante flottante per contattarti via WhatsApp</span>
+        </div>
+      </label>
+      <label class="check-item" onclick="obCheck(this)">
+        <input type="checkbox">
+        <div class="check-item-text">
+          <strong>📸 Galleria foto</strong>
+          <span>Mostra il locale, i prodotti, il team</span>
+        </div>
+      </label>
+      <label class="check-item" onclick="obCheck(this)">
+        <input type="checkbox">
+        <div class="check-item-text">
+          <strong>⭐ Sezione recensioni</strong>
+          <span>Mostra le migliori recensioni Google o TripAdvisor</span>
+        </div>
+      </label>
+      <label class="check-item" onclick="obCheck(this)">
+        <input type="checkbox">
+        <div class="check-item-text">
+          <strong>✍️ Blog / News</strong>
+          <span>Pubblica articoli, aggiornamenti, eventi</span>
+        </div>
+      </label>
+
+      <!-- Ristorante-specific -->
+      <div class="conditional" id="ob-funz-r">
+        <label class="check-item" onclick="obCheck(this)">
+          <input type="checkbox" checked>
+          <div class="check-item-text">
+            <strong>🍽️ Menù QR digitale</strong>
+            <span>Menù aggiornabile da te in autonomia, accessibile via QR</span>
+          </div>
+        </label>
+        <label class="check-item" onclick="obCheck(this)">
+          <input type="checkbox" checked>
+          <div class="check-item-text">
+            <strong>📅 Sistema prenotazioni</strong>
+            <span>Integrazione OpenTable, TheFork o modulo prenotazione custom</span>
+          </div>
+        </label>
+        <label class="check-item" onclick="obCheck(this)">
+          <input type="checkbox">
+          <div class="check-item-text">
+            <strong>🎉 Pagina eventi speciali</strong>
+            <span>Cene tematiche, Capodanno, compleanni, catering</span>
+          </div>
+        </label>
+        <label class="check-item" onclick="obCheck(this)">
+          <input type="checkbox">
+          <div class="check-item-text">
+            <strong>🛵 Ordini da asporto / delivery</strong>
+            <span>Integrazione con Glovo, Deliveroo o sistema interno</span>
+          </div>
+        </label>
+      </div>
+
+      <!-- E-commerce specific -->
+      <div class="conditional" id="ob-funz-e">
+        <label class="check-item" onclick="obCheck(this)">
+          <input type="checkbox" checked>
+          <div class="check-item-text">
+            <strong>🛒 Catalogo prodotti</strong>
+            <span>Pagine prodotto con foto, prezzi, varianti</span>
+          </div>
+        </label>
+        <label class="check-item" onclick="obCheck(this)">
+          <input type="checkbox" checked>
+          <div class="check-item-text">
+            <strong>💳 Pagamento online</strong>
+            <span>Stripe, PayPal, Klarna, Satispay</span>
+          </div>
+        </label>
+        <label class="check-item" onclick="obCheck(this)">
+          <input type="checkbox">
+          <div class="check-item-text">
+            <strong>🔍 Filtri e ricerca prodotti</strong>
+            <span>I clienti filtrano per categoria, prezzo, colore</span>
+          </div>
+        </label>
+        <label class="check-item" onclick="obCheck(this)">
+          <input type="checkbox">
+          <div class="check-item-text">
+            <strong>📦 Gestione spedizioni</strong>
+            <span>Integrazione corrieri: BRT, GLS, SDA, DHL</span>
+          </div>
+        </label>
+        <label class="check-item" onclick="obCheck(this)">
+          <input type="checkbox">
+          <div class="check-item-text">
+            <strong>🎁 Codici sconto</strong>
+            <span>Coupon e promozioni per i clienti</span>
+          </div>
+        </label>
+      </div>
+
+      <!-- Professionista specific -->
+      <div class="conditional" id="ob-funz-p">
+        <label class="check-item" onclick="obCheck(this)">
+          <input type="checkbox" checked>
+          <div class="check-item-text">
+            <strong>🗂️ Portfolio / Galleria lavori</strong>
+            <span>Mostra i tuoi progetti con descrizioni</span>
+          </div>
+        </label>
+        <label class="check-item" onclick="obCheck(this)">
+          <input type="checkbox" checked>
+          <div class="check-item-text">
+            <strong>📅 Prenotazione appuntamenti</strong>
+            <span>Calendly o sistema di booking integrato</span>
+          </div>
+        </label>
+        <label class="check-item" onclick="obCheck(this)">
+          <input type="checkbox">
+          <div class="check-item-text">
+            <strong>🏅 Certificazioni e riconoscimenti</strong>
+            <span>Badge, loghi partner, premi ricevuti</span>
+          </div>
+        </label>
+        <label class="check-item" onclick="obCheck(this)">
+          <input type="checkbox">
+          <div class="check-item-text">
+            <strong>💼 Sezione servizi dettagliata</strong>
+            <span>Pagina dedicata per ogni servizio offerto</span>
+          </div>
+        </label>
+      </div>
+    </div>
+
+    <div class="field-group">
+      <label for="s4-extra">Hai bisogno di qualcos'altro non presente nella lista?</label>
+      <textarea id="ob-s4-extra" rows="2" placeholder="Es: newsletter, area riservata per clienti, traduzione in inglese, integrazione con gestionale..."></textarea>
+    </div>
+
+    <div class="ob-nav">
+      <button class="btn-back" onclick="obBack(4)">← Indietro</button>
+      <span class="step-nav-note"></span>
+      <button class="btn-next" onclick="obNext(4)">Avanti → Contenuti</button>
+    </div>
+  </div>
+
+  <!-- STEP 5: Contenuti -->
+  <div class="ob-step" id="ob-s5">
+    <h1 class="step-title">I contenuti<br><em>del sito.</em></h1>
+    <p class="step-desc">Dimmi cosa hai già pronto e cosa dobbiamo creare insieme. Più materiale hai, più veloce sarà il progetto.</p>
+
+    <div class="field-group">
+      <label>Cosa hai già pronto? (seleziona tutto quello che hai)</label>
+      <div class="checklist" style="margin-top:8px;">
+        <label class="check-item" onclick="obCheck(this)">
+          <input type="checkbox">
+          <div class="check-item-text"><strong>📝 Testi scritti</strong><span>Descrizione attività, servizi, chi siamo</span></div>
+        </label>
+        <label class="check-item" onclick="obCheck(this)">
+          <input type="checkbox">
+          <div class="check-item-text"><strong>📸 Foto professionali</strong><span>Scattate da un fotografo</span></div>
+        </label>
+        <label class="check-item" onclick="obCheck(this)">
+          <input type="checkbox">
+          <div class="check-item-text"><strong>📱 Foto da smartphone</strong><span>Da usare provvisoriamente o come base</span></div>
+        </label>
+        <label class="check-item" onclick="obCheck(this)">
+          <input type="checkbox">
+          <div class="check-item-text"><strong>🎨 Logo in alta qualità</strong><span>File vettoriale SVG, AI o PDF</span></div>
+        </label>
+        <label class="check-item" onclick="obCheck(this)">
+          <input type="checkbox">
+          <div class="check-item-text"><strong>🎬 Video del locale / prodotti</strong><span>Anche da Instagram o YouTube</span></div>
+        </label>
+      </div>
+    </div>
+
+    <div class="field-group">
+      <label for="s5-testi">Hai già testi da usare?</label>
+      <span class="hint">Incolla qui eventuali descrizioni, about us, elenco servizi. Anche grezzo va bene, ci pensiamo noi a sistemarlo.</span>
+      <textarea id="ob-s5-testi" rows="5" placeholder="Incolla qui i testi che hai o scrivi le informazioni principali che vuoi sul sito..."></textarea>
+    </div>
+
+    <div class="field-group">
+      <label for="s5-foto-link">Link a foto / materiali online</label>
+      <span class="hint">Google Drive, Dropbox, WeTransfer, link Instagram, YouTube...</span>
+      <input type="url" id="ob-s5-foto-link" placeholder="https://drive.google.com/...">
+    </div>
+
+    <div class="field-group">
+      <label>Hai bisogno che scriviamo noi i testi?</label>
+      <div class="choices col-3" style="margin-top:8px;">
+        <div class="choice-card" onclick="obOne(this,'testi')" style="padding:12px;">
+          <span class="choice-title" style="font-size:13px;">✅ No, scrivo io</span>
+          <span class="choice-desc">Mi occupo dei testi da solo/a</span>
+        </div>
+        <div class="choice-card selected" onclick="obOne(this,'testi')" style="padding:12px;">
+          <span class="choice-title" style="font-size:13px;">🤝 Revisione</span>
+          <span class="choice-desc">Ho una bozza, volete migliorarla?</span>
+        </div>
+        <div class="choice-card" onclick="obOne(this,'testi')" style="padding:12px;">
+          <span class="choice-title" style="font-size:13px;">✍️ Sì, fate voi</span>
+          <span class="choice-desc">Preferisco che scriviate voi</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="field-group">
+      <label>Hai bisogno di un servizio fotografico professionale?</label>
+      <div class="choices col-2" style="margin-top:8px;">
+        <div class="choice-card selected" onclick="obOne(this,'foto')" style="padding:12px;">
+          <span class="choice-title" style="font-size:13px;">📸 No, ho già le foto</span>
+          <span class="choice-desc">Ho materiale sufficiente</span>
+        </div>
+        <div class="choice-card" onclick="obOne(this,'foto')" style="padding:12px;">
+          <span class="choice-title" style="font-size:13px;">📷 Sì, voglio saperne di più</span>
+          <span class="choice-desc">Chiedetemi un preventivo foto</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="ob-nav">
+      <button class="btn-back" onclick="obBack(5)">← Indietro</button>
+      <span class="step-nav-note"></span>
+      <button class="btn-next" onclick="obNext(5)">Avanti → Dati tecnici</button>
+    </div>
+  </div>
+
+  <!-- STEP 6: Tecnico -->
+  <div class="ob-step" id="ob-s6">
+    <h1 class="step-title">Dati tecnici<br><em>e dominio.</em></h1>
+    <p class="step-desc">Non preoccuparti se non capisci tutto — ci pensiamo noi. Dimmi solo quello che sai.</p>
+
+    <div class="field-group">
+      <label for="s6-dominio">Hai già un dominio? (es. ristorantedamarco.it)</label>
+      <input type="text" id="ob-s6-dominio" placeholder="ristorantedamarco.it  oppure  No, devo ancora comprarlo">
+    </div>
+
+    <div class="field-group">
+      <label for="s6-sito-attuale">Hai già un sito web attuale?</label>
+      <input type="url" id="ob-s6-sito-attuale" placeholder="https://miosito.it  oppure  No, è il primo sito">
+    </div>
+
+    <div class="field-group">
+      <label>Se hai un sito attuale, cosa vuoi mantenere?</label>
+      <div class="checklist" style="margin-top:8px;">
+        <label class="check-item" onclick="obCheck(this)">
+          <input type="checkbox">
+          <div class="check-item-text"><strong>📧 Email professionale</strong><span>es. <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="b2dbdcd4ddf2c6c7ddd6dddfdbdcdbdd9cdbc6">[email&#160;protected]</a></span></div>
+        </label>
+        <label class="check-item" onclick="obCheck(this)">
+          <input type="checkbox">
+          <div class="check-item-text"><strong>🔍 Posizionamento Google attuale</strong><span>Voglio non perdere le ricerche organiche</span></div>
+        </label>
+        <label class="check-item" onclick="obCheck(this)">
+          <input type="checkbox">
+          <div class="check-item-text"><strong>📝 Contenuti del vecchio sito</strong><span>Voglio migrare testi e foto</span></div>
+        </label>
+      </div>
+    </div>
+
+    <div class="field-group">
+      <label>Lingua/e del sito</label>
+      <div class="choices col-3" style="margin-top:8px;">
+        <div class="choice-card selected" onclick="obOne(this,'lingua')" style="padding:12px;">
+          <span class="choice-title" style="font-size:13px;">🇮🇹 Solo italiano</span>
+        </div>
+        <div class="choice-card" onclick="obOne(this,'lingua')" style="padding:12px;">
+          <span class="choice-title" style="font-size:13px;">🇮🇹🇬🇧 IT + Inglese</span>
+        </div>
+        <div class="choice-card" onclick="obOne(this,'lingua')" style="padding:12px;">
+          <span class="choice-title" style="font-size:13px;">🌍 Altra lingua</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="field-group">
+      <label>Con quale urgenza hai bisogno del sito?</label>
+      <div class="urgency-wrap" style="margin-top:12px;">
+        <input type="range" id="ob-s6-urgenza" min="1" max="5" value="3" oninput="updateUrgency(this.value)">
+        <div class="urgency-labels">
+          <span>Nessuna fretta</span>
+          <span>Entro 3 mesi</span>
+          <span>Entro 1 mese</span>
+          <span>Entro 2 sett.</span>
+          <span>🔥 Subito!</span>
+        </div>
+        <div class="urgency-value" id="ob-urgency">Entro 3-4 settimane</div>
+      </div>
+    </div>
+
+    <div class="field-group">
+      <label for="s6-budget">Budget indicativo (opzionale)</label>
+      <span class="hint">Aiutaci a capire le tue aspettative. Non è vincolante.</span>
+      <select id="ob-s6-budget">
+        <option value="" disabled selected>Seleziona un range...</option>
+        <option>Sotto €1.000</option>
+        <option>€1.000 – €2.000</option>
+        <option>€2.000 – €3.500</option>
+        <option>€3.500 – €5.000</option>
+        <option>Oltre €5.000</option>
+        <option>Non so ancora</option>
+      </select>
+    </div>
+
+    <div class="ob-nav">
+      <button class="btn-back" onclick="obBack(6)">← Indietro</button>
+      <span class="step-nav-note"></span>
+      <button class="btn-next" onclick="obNext(6)">Avanti → I tuoi contatti</button>
+    </div>
+  </div>
+
+  <!-- STEP 7: Contatti + invio -->
+  <div class="ob-step" id="ob-s7">
+    <h1 class="step-title">Quasi fatto!<br><em>Come ti contatto?</em></h1>
+    <p class="step-desc">Inserisci i tuoi contatti e invia il brief. Ti risponderemo entro 24 ore con una proposta su misura.</p>
+
+    <div class="row-2">
+      <div class="field-group">
+        <label for="s7-nome">Nome e cognome *</label>
+        <input type="text" id="ob-s7-nome" placeholder="Mario Rossi">
+      </div>
+      <div class="field-group">
+        <label for="s7-email">Email *</label>
+        <input type="email" id="ob-s7-email" placeholder="mario@esempio.it">
+      </div>
+    </div>
+    <div class="row-2">
+      <div class="field-group">
+        <label for="s7-tel">Telefono / WhatsApp *</label>
+        <input type="tel" id="ob-s7-tel" placeholder="+39 334 892 7948">
+      </div>
+      <div class="field-group">
+        <label for="s7-orario">Orario preferito per chiamarvi</label>
+        <select id="ob-s7-orario">
+          <option value="" disabled selected>Seleziona...</option>
+          <option>Mattina (9:00–12:00)</option>
+          <option>Primo pomeriggio (12:00–15:00)</option>
+          <option>Pomeriggio (15:00–18:00)</option>
+          <option>Sera (18:00–20:00)</option>
+          <option>Qualsiasi orario</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="field-group">
+      <label>Come preferisci essere contattato?</label>
+      <div class="choices col-3" style="margin-top:8px;">
+        <div class="choice-card selected" onclick="obOne(this,'contatto')" style="padding:12px;">
+          <span class="choice-title" style="font-size:13px;">💬 WhatsApp</span>
+        </div>
+        <div class="choice-card" onclick="obOne(this,'contatto')" style="padding:12px;">
+          <span class="choice-title" style="font-size:13px;">📧 Email</span>
+        </div>
+        <div class="choice-card" onclick="obOne(this,'contatto')" style="padding:12px;">
+          <span class="choice-title" style="font-size:13px;">📞 Chiamata</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="field-group">
+      <label for="s7-note">Vuoi aggiungere qualcosa che non abbiamo chiesto?</label>
+      <textarea id="ob-s7-note" rows="3" placeholder="Qualsiasi altra informazione utile, richiesta speciale, deadline importante..."></textarea>
+    </div>
+
+    <div class="info-box" style="background:var(--bg-sage);border-color:rgba(78,138,106,.2);">
+      <span class="info-box-ico">🎉</span>
+      <p><strong>Stai per inviare il tuo brief!</strong> Riceveremo tutte le informazioni che hai inserito e ti contatteremo entro 24 ore con una proposta personalizzata e il preventivo definitivo. La consulenza è <strong>completamente gratuita</strong>.</p>
+    </div>
+
+    <div class="ob-nav">
+      <button class="btn-back" onclick="obBack(7)">← Indietro</button>
+      <span class="step-nav-note">Invio sicuro 🔒 · Dati protetti</span>
+      <button class="btn-next btn-submit" id="ob-sub-btn" onclick="obSubmit()">
+        <span id="ob-sub-text">🚀 Invia il brief</span>
+        <span id="ob-sub-loading" style="display:none;">Invio...</span>
+      </button>
+    </div>
+    <p id="ob-sub-error" style="display:none;color:#E24B4A;font-size:13px;text-align:center;margin-top:12px;">Si è verificato un errore. <a href="https://wa.me/393348927948" onclick="openWA('https://wa.me/393348927948');">Scrivici su WhatsApp →</a></p>
+  </div>
+
+  <!-- SUCCESS -->
+  <div id="ob-success">
+    <div class="success-ico">🎉</div>
+    <div class="success-screen">
+      <h2>Brief inviato!<br><em>A presto.</em></h2>
+      <p>Abbiamo ricevuto tutte le informazioni sul tuo progetto. Ti contatteremo entro 24 ore con una proposta su misura e il preventivo definitivo.</p>
+      <div>
+        <a href="https://wa.me/393348927948?text=Ciao%21%20Ho%20appena%20inviato%20il%20brief%20sul%20sito." onclick="openWA('https://wa.me/393348927948?text=Ciao%21%20Ho%20appena%20inviato%20il%20brief%20sul%20sito.');">💬 Scrivici anche su WhatsApp</a>
+        <a href="index.html" class="success-route email">← Torna al sito</a>
+      </div>
+      <p class="success-next">Nel frattempo, <a href="https://www.instagram.com" target="_blank">seguici su Instagram</a> per vedere i nostri ultimi lavori.</p>
+    </div>
+  </div>
+
+</main>
+  <div id="ob-success">
+    <div style="font-size:60px;margin-bottom:20px;">🎉</div>
+    <h2 style="font-family:var(--font-d);font-size:36px;font-weight:500;color:var(--navy);margin-bottom:12px;">Brief inviato!<br><em style="font-style:italic;color:var(--teal);">A presto.</em></h2>
+    <p style="font-size:16px;color:var(--text-mid);max-width:460px;margin:0 auto 32px;line-height:1.75;">Abbiamo ricevuto tutte le informazioni. Ti contatteremo entro 24 ore con una proposta su misura.</p>
+    <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;">
+      <a href="https://wa.me/393348927948" onclick="openWA('https://wa.me/393348927948');" style="display:inline-flex;align-items:center;gap:8px;background:#25D366;color:#fff;font-family:var(--font-b);font-size:14px;font-weight:700;padding:14px 28px;border-radius:100px;text-decoration:none;">💬 Scrivici su WhatsApp</a>
+      <button onclick="closeOnboarding();" style="display:inline-flex;align-items:center;background:var(--bg-blue);color:var(--navy);font-family:var(--font-b);font-size:14px;font-weight:700;padding:14px 28px;border-radius:100px;border:1.5px solid var(--border);cursor:pointer;">← Torna al sito</button>
+    </div>
+  </div>
+</div>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+// ════ BWEB DESIGN — Complete JS ════
+
+// WA Helper
+function openWA(url) { window.open(url || 'https://wa.me/393348927948', '_blank'); }
+
+// Nav scroll
+var bNav = document.getElementById('nav');
+if (bNav) window.addEventListener('scroll', function(){ bNav.classList.toggle('scrolled', window.scrollY > 40); }, {passive:true});
+
+// Smooth scroll
+function smoothTo(id) {
+  var el = document.getElementById(id);
+  if (el) { var top = el.getBoundingClientRect().top + window.pageYOffset - 80; window.scrollTo({top:top,behavior:'smooth'}); }
+}
+
+// Reveal
+var rvEls = document.querySelectorAll('.rv');
+var rvObs = new IntersectionObserver(function(entries){
+  entries.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); rvObs.unobserve(e.target); } });
+},{threshold:.08,rootMargin:'0px 0px -30px 0px'});
+rvEls.forEach(function(el){ rvObs.observe(el); });
+setTimeout(function(){ document.querySelectorAll('.hero .rv').forEach(function(el){ el.classList.add('in'); }); },80);
+
+// FAQ
+function doFaq(btn) {
+  var item = btn.parentElement;
+  var ans = item.querySelector('.faq-a');
+  var isOpen = item.classList.contains('open');
+  document.querySelectorAll('.faq-item.open').forEach(function(i){ i.classList.remove('open'); i.querySelector('.faq-a').style.maxHeight='0'; });
+  if(!isOpen){ item.classList.add('open'); ans.style.maxHeight=ans.scrollHeight+'px'; }
+}
+
+// Preventivo rapido
+var PREV = {
+  starter:{base:840,full:990,label:'Piano Starter'},
+  vetrina:{base:1520,full:1790,label:'Vetrina Pro'},
+  ristorante:{base:2115,full:2490,label:'Piano Ristorante'},
+  shop:{base:3135,full:3690,label:'Shop Online'}
+};
+function calcPrev() {
+  var t = document.getElementById('pf-tipo');
+  var m = document.getElementById('pf-mig');
+  var el = document.getElementById('pf-val');
+  if(!t||!el) return;
+  if(!t.value){ el.textContent='Seleziona il tipo'; return; }
+  var p = PREV[t.value];
+  var base = p.base, full = p.full;
+  if(m&&m.value==='si'){ base=Math.round(base*1.1); full=Math.round(full*1.1); }
+  el.innerHTML='<s style="font-size:14px;color:#7A909E;margin-right:6px;">€'+full+'</s><strong style="color:var(--teal);font-size:22px;">€'+base+'</strong><small style="color:var(--sage);font-size:11px;margin-left:5px;">-15%</small>';
+}
+function inviaPrev() {
+  var t = document.getElementById('pf-tipo');
+  if(!t||!t.value){ if(t){t.style.borderColor='#E24B4A';setTimeout(function(){t.style.borderColor='';},2000);} return; }
+  var p = PREV[t.value];
+  var nome = document.getElementById('pf-nome');
+  var n = (nome&&nome.value.trim())?nome.value.trim():'Ciao';
+  var m = document.getElementById('pf-mig');
+  var mig = (m&&m.value==='si')?' (con migrazione)':'';
+  var el = document.getElementById('pf-val');
+  var stima = el?el.textContent.replace(/<[^>]+>/g,'').trim():'';
+  var msg = 'Ciao BWEB! Mi chiamo '+n+', sono interessato al '+p.label+mig+'. Stima: '+stima+'. Possiamo parlarne?';
+  openWA('https://wa.me/393348927948?text='+encodeURIComponent(msg));
+}
+
+// Contact form routing
+function showRouting(piano) {
+  var h = document.getElementById('routing-hint');
+  if(!h) return;
+  if(!piano){h.style.display='none';return;}
+  var imp = ['Vetrina Pro','Ristorante','Shop Online'].some(function(p){return piano.indexOf(p)!==-1;});
+  h.style.display='block';
+  if(imp){h.style.background='#EBF2F8';h.style.color='#2B4666';h.innerHTML='📧 Ti risponderemo via <strong>email</strong> entro 24 ore.';}
+  else{h.style.background='#E8FBF0';h.style.color='#166534';h.innerHTML='💬 Ti risponderemo su <strong>WhatsApp</strong> entro poche ore.';}
+}
+
+function submitForm(e) {
+  e.preventDefault();
+  var ok=true;
+  ['cf-nome','cf-email','cf-settore'].forEach(function(id){
+    var el=document.getElementById(id);
+    if(!el) return;
+    if(!el.value.trim()){el.style.borderColor='#E24B4A';ok=false;el.addEventListener('input',function(){el.style.borderColor='';},{once:true});}
+  });
+  if(!ok) return;
+  var btn=document.getElementById('cf-btn');
+  document.getElementById('cf-btn-text').style.display='none';
+  document.getElementById('cf-btn-loading').style.display='inline';
+  document.getElementById('cf-btn-arrow').style.display='none';
+  document.getElementById('cf-error').style.display='none';
+  btn.disabled=true; btn.style.opacity='0.75';
+  var data={
+    nome:document.getElementById('cf-nome').value.trim(),
+    email:document.getElementById('cf-email').value.trim(),
+    telefono:document.getElementById('cf-telefono').value.trim(),
+    settore:document.getElementById('cf-settore').value,
+    piano:document.getElementById('cf-piano').value,
+    messaggio:document.getElementById('cf-msg').value.trim()
+  };
+  var imp=['Vetrina Pro','Ristorante','Shop Online'].some(function(p){return data.piano&&data.piano.indexOf(p)!==-1;});
+  if(imp){
+    fetch('https://api.web3forms.com/submit',{
+      method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},
+      body:JSON.stringify({access_key:'e5e5f2e2-7713-49a8-9e09-84d645c24680',subject:'Nuovo progetto BWEB - '+data.piano,from_name:'BWEB Sito',replyto:'infobwebdesigns@gmail.com',nome:data.nome,email:data.email,telefono:data.telefono,settore:data.settore,piano:data.piano,messaggio:data.messaggio})
+    }).then(function(r){return r.json();}).then(function(res){
+      if(res.success){
+        document.getElementById('contactForm').style.display='none';
+        document.getElementById('formSuccess').style.display='block';
+        document.getElementById('fs-icon').textContent='✅';
+        document.getElementById('fs-title').textContent='Richiesta ricevuta!';
+        document.getElementById('fs-text').textContent='Ti risponderemo entro 24 ore con una proposta personalizzata.';
+      } else throw new Error();
+    }).catch(function(){
+      document.getElementById('cf-btn-text').style.display='inline';
+      document.getElementById('cf-btn-loading').style.display='none';
+      document.getElementById('cf-btn-arrow').style.display='inline';
+      document.getElementById('cf-error').style.display='block';
+      btn.disabled=false; btn.style.opacity='1';
+    });
+  } else {
+    var msg='Ciao BWEB! Ho compilato il form sul sito.\n\nNome: '+data.nome+'\nEmail: '+data.email+'\nTelefono: '+(data.telefono||'non indicato')+'\nAttivita: '+data.settore+'\nPiano: '+(data.piano||'consulenza')+'\n\nMessaggio:\n'+(data.messaggio||'nessuno');
+    setTimeout(function(){ openWA('https://wa.me/393348927948?text='+encodeURIComponent(msg)); },300);
+    document.getElementById('contactForm').style.display='none';
+    document.getElementById('formSuccess').style.display='block';
+    document.getElementById('fs-icon').textContent='💬';
+    document.getElementById('fs-title').textContent='Apertura WhatsApp...';
+    document.getElementById('fs-text').textContent='Ti risponderemo entro poche ore. Se WA non apre scrivici al +39 334 892 7948.';
+  }
+}
+
+// Onboarding overlay
+var OB_STEP=1, OB_TOTAL=7, OB_PIANO='Non specificato';
+var OB_LABELS=['Informazioni attività','Brand & Logo','Stile grafico','Funzionalità','Contenuti','Dati tecnici','Contatti & Invio'];
+var OB_URG=['Nessuna fretta (3-6 mesi)','Entro 3-4 mesi','Entro 3-4 settimane','Entro 2 settimane','Il prima possibile!'];
+
+function openOnboarding(piano) {
+  var ov=document.getElementById('ob-ov');
+  if(!ov) return;
+  ov.classList.add('open');
+  document.body.style.overflow='hidden';
+  OB_STEP=1;
+  document.querySelectorAll('.ob-step').forEach(function(s){s.classList.remove('active');});
+  var s1=document.getElementById('ob-s1'); if(s1) s1.classList.add('active');
+  var pw=document.getElementById('ob-prog-wrap'); if(pw) pw.style.display='block';
+  var ss=document.getElementById('ob-success'); if(ss) ss.style.display='none';
+  if(piano) obInitPiano(piano);
+  ov.scrollTop=0;
+}
+function closeOnboarding() {
+  var ov=document.getElementById('ob-ov');
+  if(ov) ov.classList.remove('open');
+  document.body.style.overflow='';
+}
+document.addEventListener('keydown',function(e){if(e.key==='Escape') closeOnboarding();});
+
+function obInitPiano(piano) {
+  var map={starter:'⚡ Piano Starter — €840',vetrina:'💼 Vetrina Pro — €1.520',ristorante:'🍽️ Piano Ristorante — €2.115',shop:'🛒 Shop Online — €3.135'};
+  OB_PIANO=map[piano]||'Consulenza';
+  document.querySelectorAll('.ob-badge').forEach(function(el){el.textContent=OB_PIANO;});
+  var isR=piano==='ristorante',isS=piano==='shop',isP=piano==='vetrina';
+  ['ob-funz-r','ob-funz-e','ob-funz-p'].forEach(function(id){
+    var el=document.getElementById(id);
+    if(el) el.style.display='none';
+  });
+  var toShow=isR?'ob-funz-r':isS?'ob-funz-e':'ob-funz-p';
+  var sh=document.getElementById(toShow); if(sh) sh.style.display='block';
+}
+
+function obNext(from){if(!obValidate(from)) return; obGo(from+1);}
+function obBack(from){obGo(from-1);}
+function obGo(n){
+  if(n<1||n>OB_TOTAL) return;
+  var cur=document.getElementById('ob-s'+OB_STEP); if(cur) cur.classList.remove('active');
+  OB_STEP=n;
+  var nx=document.getElementById('ob-s'+n); if(nx) nx.classList.add('active');
+  obProg();
+  var ov=document.getElementById('ob-ov'); if(ov) ov.scrollTop=0;
+}
+function obProg(){
+  var pct=Math.round((OB_STEP/OB_TOTAL)*100);
+  var f=document.getElementById('ob-prog-fill'); if(f) f.style.width=pct+'%';
+  var l=document.getElementById('ob-prog-lbl'); if(l) l.textContent='Step '+OB_STEP+' di '+OB_TOTAL;
+  var c=document.getElementById('ob-prog-cnt'); if(c) c.textContent=OB_LABELS[OB_STEP-1];
+  document.querySelectorAll('.ob-dot').forEach(function(d){
+    var s=parseInt(d.getAttribute('data-step'));
+    d.classList.toggle('active',s===OB_STEP);
+    d.classList.toggle('done',s<OB_STEP);
+  });
+}
+function obValidate(step){
+  var req={1:['ob-s1-nome','ob-s1-bizname','ob-s1-settore','ob-s1-desc','ob-s1-citta'],7:['ob-s7-nome','ob-s7-email','ob-s7-tel']};
+  if(!req[step]) return true;
+  var ok=true;
+  req[step].forEach(function(id){
+    var el=document.getElementById(id);
+    if(!el) return;
+    if(!el.value.trim()){el.style.borderColor='#E24B4A';ok=false;el.addEventListener('input',function(){el.style.borderColor='';},{once:true});}
+  });
+  if(!ok){ var first=document.getElementById('ob-ov').querySelector('[style*="E24B4A"]'); if(first) first.scrollIntoView({behavior:'smooth',block:'center'}); }
+  return ok;
+}
+function obChoice(el){el.classList.toggle('selected');}
+function obOne(el){el.closest('.choices').querySelectorAll('.choice-card').forEach(function(c){c.classList.remove('selected');});el.classList.add('selected');}
+function obCheck(el){el.classList.toggle('checked',el.querySelector('input').checked);}
+function obAddRef(){
+  var l=document.getElementById('ob-refs'); if(!l) return;
+  var r=document.createElement('div'); r.className='ref-row';
+  r.innerHTML='<input type="url" placeholder="https://esempio.com" class="ref-input"><button onclick="obDelRef(this)" style="background:none;border:none;color:var(--text-muted);cursor:pointer;font-size:18px;padding:4px;">✕</button>';
+  l.appendChild(r);
+}
+function obDelRef(btn){if(document.querySelectorAll('.ref-row').length>1) btn.closest('.ref-row').remove();}
+function obUrgency(val){var el=document.getElementById('ob-urgency'); if(el) el.textContent=OB_URG[val-1];}
+function obUpload(zoneId,inputId){
+  var f=document.getElementById(inputId);
+  var n=document.getElementById(zoneId+'-note');
+  if(f&&f.files.length>0&&n){n.textContent='✓ '+Array.from(f.files).map(function(x){return x.name;}).join(', ');n.style.color='var(--sage)';}
+}
+
+function obSubmit(){
+  if(!obValidate(7)) return;
+  var btn=document.getElementById('ob-sub-btn');
+  var stxt=document.getElementById('ob-sub-text');
+  var sld=document.getElementById('ob-sub-loading');
+  var serr=document.getElementById('ob-sub-error');
+  if(stxt) stxt.style.display='none';
+  if(sld) sld.style.display='inline';
+  if(btn) btn.disabled=true;
+  if(serr) serr.style.display='none';
+
+  function g(id){var el=document.getElementById(id);return el?el.value:'';}
+  function getSel(id){return Array.from(document.querySelectorAll('#'+id+' .choice-card.selected')).map(function(c){return c.querySelector('.choice-title')?c.querySelector('.choice-title').textContent:'';}).join(', ');}
+  function getCh(id){return Array.from(document.querySelectorAll('#'+id+' .check-item input:checked')).map(function(c){var t=c.closest('.check-item-text');return t&&t.querySelector('strong')?t.querySelector('strong').textContent:'';}).join(', ');}
+
+  var d={
+    piano:OB_PIANO,
+    nome:g('ob-s1-nome'),biz:g('ob-s1-bizname'),settore:g('ob-s1-settore'),desc:g('ob-s1-desc'),citta:g('ob-s1-citta'),anno:g('ob-s1-anno'),punti:g('ob-s1-punti'),target:g('ob-s1-target'),
+    c1:g('ob-s2-color1'),c2:g('ob-s2-color2'),c3:g('ob-s2-color3'),brand:g('ob-s2-colori-note'),social:g('ob-s2-social'),
+    stile:getSel('ob-stile'),refs:Array.from(document.querySelectorAll('.ref-input')).map(function(i){return i.value;}).filter(Boolean).join(', '),s3note:g('ob-s3-note'),
+    funz:getCh('ob-funz'),extra:g('ob-s4-extra'),
+    testi:g('ob-s5-testi'),link:g('ob-s5-foto-link'),
+    dominio:g('ob-s6-dominio'),sito:g('ob-s6-sito-attuale'),
+    urgenza:(function(){var el=document.getElementById('ob-urgency');return el?el.textContent:'';}()),
+    budget:g('ob-s6-budget'),
+    nome7:g('ob-s7-nome'),email7:g('ob-s7-email'),tel7:g('ob-s7-tel'),orario7:g('ob-s7-orario'),note7:g('ob-s7-note')
+  };
+
+  var msgParts=['BRIEF: '+d.piano,'','CLIENTE','Nome: '+d.nome,'Email: '+d.email7,'Tel: '+d.tel7,'Orario: '+d.orario7,'','ATTIVITA','Nome: '+d.biz+' | Settore: '+d.settore,'Citta: '+d.citta+' | Anno: '+d.anno,'Desc: '+d.desc,'Punti: '+d.punti,'Target: '+d.target,'','BRAND','Colori: '+d.c1+' '+d.c2+' '+d.c3,'Note: '+d.brand,'Social: '+d.social,'','STILE: '+d.stile,'Ispir: '+d.refs,'','FUNZ: '+d.funz,'Extra: '+d.extra,'','CONTENUTI','Link: '+d.link,'','TECNICO','Dominio: '+d.dominio+' | Sito: '+d.sito,'Urgenza: '+d.urgenza+' | Budget: '+d.budget,'','NOTE: '+d.note7];
+  var msg=msgParts.join('\n');
+  fetch('https://api.web3forms.com/submit',{
+    method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},
+    body:JSON.stringify({access_key:'e5e5f2e2-7713-49a8-9e09-84d645c24680',subject:'Brief: '+d.biz+' — '+d.piano,from_name:'BWEB Onboarding',replyto:d.email7,message:msg})
+  }).then(function(r){return r.json();}).then(function(res){
+    if(res.success){
+      var pw=document.getElementById('ob-prog-wrap'); if(pw) pw.style.display='none';
+      var s7=document.getElementById('ob-s7'); if(s7) s7.style.display='none';
+      var ss=document.getElementById('ob-success'); if(ss) ss.style.display='block';
+      var ov=document.getElementById('ob-ov'); if(ov) ov.scrollTop=0;
+    } else throw new Error();
+  }).catch(function(){
+    if(stxt) stxt.style.display='inline';
+    if(sld) sld.style.display='none';
+    if(btn) btn.disabled=false;
+    if(serr) serr.style.display='block';
+  });
+}
+
+// Cookie
+var CK_KEY='bweb_ck_v1';
+function loadGA(){
+  if(document.getElementById('ga-s')) return;
+  var s=document.createElement('script');s.id='ga-s';s.async=true;s.src='https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX';document.head.appendChild(s);
+  window.dataLayer=window.dataLayer||[];function gtag(){window.dataLayer.push(arguments);}window.gtag=gtag;gtag('js',new Date());gtag('config','G-XXXXXXXXXX',{anonymize_ip:true});
+}
+function loadFbq(){
+  if(document.getElementById('fbq-s')) return;
+  var n=window.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments);};
+  if(!window._fbq) window._fbq=n;n.push=n;n.loaded=true;n.version='2.0';n.queue=[];
+  var s=document.createElement('script');s.id='fbq-s';s.async=true;s.src='https://connect.facebook.net/en_US/fbevents.js';document.head.appendChild(s);
+  window.fbq('init','XXXXXXXXXXXXXXXXX');window.fbq('track','PageView');
+}
+function applyConsent(p){if(p.analytics) loadGA(); if(p.marketing) loadFbq();}
+function saveCookies(type){
+  var p=type==='all'?{essential:true,analytics:true,marketing:true,preferences:true}:{essential:true,analytics:false,marketing:false,preferences:false};
+  localStorage.setItem(CK_KEY,JSON.stringify(p));hideCkBanner();closeCkModal();applyConsent(p);
+}
+function saveCustomCookies(){
+  var a=document.getElementById('ck-analytics'),m=document.getElementById('ck-marketing'),pr=document.getElementById('ck-prefs');
+  var p={essential:true,analytics:a&&a.checked,marketing:m&&m.checked,preferences:pr&&pr.checked};
+  localStorage.setItem(CK_KEY,JSON.stringify(p));hideCkBanner();closeCkModal();applyConsent(p);
+}
+function hideCkBanner(){var b=document.getElementById('ck-banner');if(!b) return;b.classList.remove('vis');setTimeout(function(){b.style.display='none';},480);}
+function openCkModal(){
+  var saved=JSON.parse(localStorage.getItem(CK_KEY)||'{}');
+  var a=document.getElementById('ck-analytics'),m=document.getElementById('ck-marketing'),pr=document.getElementById('ck-prefs');
+  if(a) a.checked=!!saved.analytics; if(m) m.checked=!!saved.marketing; if(pr) pr.checked=!!saved.preferences;
+  var modal=document.getElementById('ck-modal');
+  if(modal){modal.style.display='flex';}
+  document.body.style.overflow='hidden';
+}
+function closeCkModal(){
+  var modal=document.getElementById('ck-modal');
+  if(modal) modal.style.display='none';
+  var ov=document.getElementById('ob-ov');
+  if(!ov||!ov.classList.contains('open')) document.body.style.overflow='';
+}
+function closeCkModalOutside(e){if(e.target===document.getElementById('ck-modal')) closeCkModal();}
+(function(){
+  var saved=localStorage.getItem(CK_KEY);
+  if(!saved){
+    setTimeout(function(){
+      var b=document.getElementById('ck-banner');
+      if(!b) return;
+      b.style.display='flex';
+      requestAnimationFrame(function(){requestAnimationFrame(function(){b.classList.add('vis');});});
+    },1400);
+  } else { applyConsent(JSON.parse(saved)); }
+}());
+</script>
+</body>
+</html>

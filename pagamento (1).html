@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Come pagare — BWEB Design</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Nunito:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#F5F3EE;--bg2:#FFFFFF;--bg-blue:#EBF2F8;--bg-sage:#EDF4EF;
+  --navy:#2B4666;--navy-l:#3A5A80;--teal:#3D8A9E;--teal-l:#5BA8BB;--sage:#4E8A6A;
+  --amber:#C47B2B;--text:#1C2D3E;--text-mid:#4A5F72;--text-muted:#7A909E;
+  --border:#DDE4EA;--border-s:#EBF0F4;
+  --shadow-md:0 4px 24px rgba(43,70,102,.10);--shadow-lg:0 8px 48px rgba(43,70,102,.13);
+  --font-d:'Lora',Georgia,serif;--font-b:'Nunito',system-ui,sans-serif;
+  --r-md:14px;--r-lg:20px;--r-xl:28px;
+}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:var(--font-b);font-size:16px;line-height:1.65;-webkit-font-smoothing:antialiased;}
+
+/* NAV */
+.topbar{background:var(--bg2);border-bottom:1px solid var(--border);padding:16px 32px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100;box-shadow:0 1px 0 var(--border)}
+.logo{font-family:var(--font-d);font-size:21px;font-weight:600;color:var(--navy);text-decoration:none}
+.logo span{color:var(--teal)}
+.btn-back{display:inline-flex;align-items:center;gap:8px;font-size:14px;font-weight:600;color:var(--text-mid);background:none;border:1.5px solid var(--border);padding:9px 20px;border-radius:100px;text-decoration:none;transition:color .2s,border-color .2s}
+.btn-back:hover{color:var(--navy);border-color:var(--navy)}
+.btn-wa{display:inline-flex;align-items:center;gap:7px;background:#25D366;color:#fff;font-size:13px;font-weight:700;padding:9px 18px;border-radius:100px;text-decoration:none;transition:background .2s}
+.btn-wa:hover{background:#1eb85a}
+
+/* HERO */
+.page-hero{padding:64px 0 48px;text-align:center;background:var(--bg2);border-bottom:1px solid var(--border)}
+.page-hero .chip{display:inline-flex;align-items:center;gap:6px;background:var(--bg-blue);color:var(--navy);border:1px solid rgba(43,70,102,.14);border-radius:100px;padding:5px 14px;font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;margin-bottom:18px}
+.page-hero h1{font-family:var(--font-d);font-size:clamp(32px,4vw,52px);font-weight:500;line-height:1.15;color:var(--navy);margin-bottom:14px;letter-spacing:-.02em}
+.page-hero h1 em{font-style:italic;color:var(--teal)}
+.page-hero p{font-size:17px;color:var(--text-mid);max-width:520px;margin:0 auto;line-height:1.75}
+
+/* CONTAINER */
+.container{max-width:860px;margin:0 auto;padding:0 32px}
+
+/* METHOD CARDS */
+.methods{padding:60px 0 80px}
+.method-card{background:var(--bg2);border-radius:var(--r-xl);border:1.5px solid var(--border);margin-bottom:24px;overflow:hidden;transition:box-shadow .25s}
+.method-card:hover{box-shadow:var(--shadow-md)}
+.mc-header{display:flex;align-items:center;gap:18px;padding:28px 32px 24px;border-bottom:1px solid var(--border-s)}
+.mc-icon{width:56px;height:56px;border-radius:var(--r-lg);display:flex;align-items:center;justify-content:center;font-size:26px;flex-shrink:0}
+.mc-icon.blue{background:var(--bg-blue)}
+.mc-icon.pp{background:#EEF4FB}
+.mc-icon.stripe{background:#F0EDFF}
+.mc-title{font-family:var(--font-d);font-size:22px;font-weight:500;color:var(--navy)}
+.mc-sub{font-size:13px;color:var(--text-muted);margin-top:3px}
+.mc-badge{margin-left:auto;font-size:11px;font-weight:700;padding:4px 12px;border-radius:100px;white-space:nowrap}
+.mc-badge.active{background:var(--bg-sage);color:var(--sage)}
+.mc-badge.soon{background:#FBF2E8;color:var(--amber)}
+
+.mc-body{padding:28px 32px}
+.mc-body p{font-size:14px;color:var(--text-mid);line-height:1.75;margin-bottom:22px}
+
+/* Data rows */
+.data-grid{display:flex;flex-direction:column;gap:10px;margin-bottom:24px}
+.data-row{display:flex;align-items:center;justify-content:space-between;gap:16px;background:var(--bg);border-radius:var(--r-md);border:1px solid var(--border-s);padding:14px 18px}
+.data-row:hover{border-color:var(--border)}
+.dr-label{font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--text-muted);white-space:nowrap;flex-shrink:0;min-width:120px}
+.dr-value{font-size:14px;font-weight:600;color:var(--navy);font-family:monospace;letter-spacing:.04em;word-break:break-all}
+.dr-value.normal{font-family:var(--font-b);letter-spacing:0}
+.copy-btn{flex-shrink:0;background:none;border:1.5px solid var(--border);border-radius:8px;padding:6px 12px;font-size:12px;font-weight:600;color:var(--text-muted);cursor:pointer;transition:all .2s;white-space:nowrap;font-family:var(--font-b)}
+.copy-btn:hover{background:var(--bg-blue);border-color:var(--teal);color:var(--navy)}
+.copy-btn.copied{background:var(--bg-sage);border-color:var(--sage);color:var(--sage)}
+
+.mc-alert{display:flex;align-items:flex-start;gap:12px;background:var(--bg-blue);border-radius:var(--r-md);border:1px solid rgba(43,70,102,.12);padding:14px 18px;margin-bottom:22px}
+.mc-alert-ico{font-size:18px;flex-shrink:0;margin-top:1px}
+.mc-alert p{font-size:13px;color:var(--navy);line-height:1.65;margin:0}
+.mc-alert strong{font-weight:700}
+
+.mc-steps{list-style:none;margin-bottom:22px}
+.mc-steps li{display:flex;align-items:flex-start;gap:14px;padding:10px 0;border-bottom:1px solid var(--border-s);font-size:14px;color:var(--text-mid);line-height:1.6}
+.mc-steps li:last-child{border-bottom:none}
+.step-n{width:26px;height:26px;border-radius:50%;background:var(--navy);color:#fff;font-size:12px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px}
+
+/* Rate section */
+.rate-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:24px}
+.rate-card{background:var(--bg);border-radius:var(--r-md);border:1px solid var(--border-s);padding:16px;text-align:center}
+.rate-card.featured{background:var(--bg-blue);border-color:rgba(43,70,102,.2)}
+.rate-plan{font-size:11px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--teal);margin-bottom:6px}
+.rate-amount{font-family:var(--font-d);font-size:22px;font-weight:500;color:var(--navy);line-height:1;margin-bottom:4px}
+.rate-note{font-size:11px;color:var(--text-muted)}
+.rate-detail{font-size:12px;color:var(--text-mid);margin-top:6px;font-weight:600}
+
+/* CTA box */
+.cta-box{background:var(--navy);border-radius:var(--r-xl);padding:40px;text-align:center;margin-top:12px}
+.cta-box h3{font-family:var(--font-d);font-size:26px;font-weight:500;color:#fff;margin-bottom:10px}
+.cta-box h3 em{font-style:italic;color:var(--teal-l)}
+.cta-box p{font-size:15px;color:rgba(255,255,255,.65);margin-bottom:28px;line-height:1.75}
+.cta-btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+.btn-prim{display:inline-flex;align-items:center;gap:8px;background:var(--teal);color:#fff;font-family:var(--font-b);font-size:15px;font-weight:700;padding:14px 28px;border-radius:100px;text-decoration:none;border:none;cursor:pointer;transition:background .2s,transform .15s}
+.btn-prim:hover{background:var(--teal-l);transform:translateY(-2px)}
+.btn-out{display:inline-flex;align-items:center;gap:8px;background:transparent;color:rgba(255,255,255,.8);font-family:var(--font-b);font-size:15px;font-weight:600;padding:14px 28px;border-radius:100px;text-decoration:none;border:1.5px solid rgba(255,255,255,.3);cursor:pointer;transition:border-color .2s,color .2s}
+.btn-out:hover{border-color:rgba(255,255,255,.7);color:#fff}
+
+/* SICUREZZA */
+.security-bar{display:flex;align-items:center;justify-content:center;gap:32px;flex-wrap:wrap;padding:24px 32px;background:var(--bg2);border-top:1px solid var(--border);border-bottom:1px solid var(--border);margin-top:8px}
+.sec-item{display:flex;align-items:center;gap:8px;font-size:13px;font-weight:500;color:var(--text-muted)}
+
+@media(max-width:768px){
+  [style*="grid-template-columns:1fr 1fr"]{grid-template-columns:1fr !important}
+
+  .container{padding:0 20px}
+  .topbar{padding:14px 20px}
+  .mc-header{padding:22px 20px 18px;flex-wrap:wrap}
+  .mc-body{padding:22px 20px}
+  .data-row{flex-direction:column;align-items:flex-start;gap:8px}
+  .dr-label{min-width:auto}
+  .rate-grid{grid-template-columns:1fr 1fr}
+  .copy-btn{width:100%}
+  .cta-box{padding:28px 20px}
+  .security-bar{gap:16px;padding:18px 20px}
+  .mc-badge{display:none}
+}
+</style>
+</head>
+<body>
+
+<!-- TOP BAR -->
+<header class="topbar">
+  <a href="index.html" class="logo">B<span>WEB</span> Design</a>
+  <div style="display:flex;align-items:center;gap:12px;">
+    <a href="index.html" class="btn-back">← Torna al sito</a>
+    <a href="https://wa.me/393348927948?text=Ciao%21%20Ho%20bisogno%20di%20aiuto%20con%20il%20pagamento." onclick="window.open('https://wa.me/393348927948?text=Ciao%21%20Ho%20bisogno%20di%20aiuto%20con%20il%20pagamento.','_blank');" class="btn-wa">💬 Aiuto</a>
+  </div>
+</header>
+
+<!-- HERO -->
+<div class="page-hero">
+  <div class="container">
+    <div class="chip">💳 Metodi di pagamento</div>
+    <h1>Come pagare<br><em>il tuo progetto.</em></h1>
+    <p>Accettiamo bonifico bancario, PayPal e Stripe. Tutti i pagamenti sono sicuri e tracciabili. Per qualsiasi dubbio scrivici su WhatsApp.</p>
+  </div>
+</div>
+
+<!-- SECURITY BAR -->
+<div class="security-bar">
+  <div class="sec-item">🔒 Pagamenti sicuri e cifrati</div>
+  <div class="sec-item">📋 Ricevuta/fattura per ogni pagamento</div>
+  <div class="sec-item">✅ Nessun costo nascosto</div>
+  <div class="sec-item">💬 Supporto dedicato h24</div>
+</div>
+
+<!-- RATE BREAKDOWN -->
+<div class="methods">
+<div class="container">
+
+  <!-- PIANO RATE INFO -->
+  <div style="margin-bottom:40px;">
+    <h2 style="font-family:var(--font-d);font-size:28px;font-weight:500;color:var(--navy);margin-bottom:8px;">Piano pagamenti per ogni pacchetto</h2>
+    <p style="font-size:15px;color:var(--text-mid);margin-bottom:24px;">Offriamo pagamenti rateizzati senza interessi. Il saldo finale si paga solo dopo la tua approvazione del sito finito.</p>
+    <div class="rate-grid">
+      <div class="rate-card">
+        <div class="rate-plan">⚡ Starter</div>
+        <div class="rate-amount">€990</div>
+        <div class="rate-note">Pagamento unico</div>
+        <div class="rate-detail">100% alla firma</div>
+      </div>
+      <div class="rate-card">
+        <div class="rate-plan">💼 Vetrina Pro</div>
+        <div class="rate-amount">€1.790</div>
+        <div class="rate-note">2 rate</div>
+        <div class="rate-detail">€895 firma · €895 consegna</div>
+      </div>
+      <div class="rate-card featured">
+        <div class="rate-plan">🍽️ Ristorante</div>
+        <div class="rate-amount">€2.490</div>
+        <div class="rate-note">2 rate</div>
+        <div class="rate-detail">€1.245 firma · €1.245 consegna</div>
+      </div>
+      <div class="rate-card">
+        <div class="rate-plan">🛒 Shop Online</div>
+        <div class="rate-amount">€3.690</div>
+        <div class="rate-note">3 rate</div>
+        <div class="rate-detail">€1.230 × 3 rate mensili</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ BONIFICO ═══ -->
+  <div class="method-card">
+    <div class="mc-header">
+      <div class="mc-icon blue">🏦</div>
+      <div>
+        <div class="mc-title">Bonifico Bancario / SEPA</div>
+        <div class="mc-sub">Trasferimento diretto — nessuna commissione</div>
+      </div>
+      <span class="mc-badge active">✓ Attivo</span>
+    </div>
+    <div class="mc-body">
+      <p>Metodo preferito per pagamenti aziendali e con fattura. Utilizza i dati qui sotto per effettuare il bonifico dalla tua banca o app bancaria. Per i bonifici internazionali usa il BIC/SWIFT.</p>
+
+      <div class="mc-alert">
+        <span class="mc-alert-ico">ℹ️</span>
+        <p><strong>Causale importante:</strong> Nella causale del bonifico scrivi sempre il tuo nome e il servizio scelto. Es: <em>"Mario Rossi — Piano Ristorante BWEB Design"</em>. Ci aiuta a identificare il pagamento rapidamente.</p>
+      </div>
+
+      <div class="data-grid">
+        <div class="data-row">
+          <span class="dr-label">Beneficiario</span>
+          <span class="dr-value normal">EMMANUEL MOHAMMED BELLU</span>
+          <button class="copy-btn" onclick="copyText('EMMANUEL MOHAMMED BELLU', this)">📋 Copia</button>
+        </div>
+        <div class="data-row">
+          <span class="dr-label">IBAN</span>
+          <span class="dr-value">LT48 3250 0869 6648 7403</span>
+          <button class="copy-btn" onclick="copyText('LT483250086966487403', this)">📋 Copia</button>
+        </div>
+        <div class="data-row">
+          <span class="dr-label">BIC / SWIFT</span>
+          <span class="dr-value">REVOLT21</span>
+          <button class="copy-btn" onclick="copyText('REVOLT21', this)">📋 Copia</button>
+        </div>
+        <div class="data-row">
+          <span class="dr-label">Banca</span>
+          <span class="dr-value normal">Revolut Bank UAB</span>
+          <button class="copy-btn" onclick="copyText('Revolut Bank UAB', this)">📋 Copia</button>
+        </div>
+        <div class="data-row">
+          <span class="dr-label">Sede banca</span>
+          <span class="dr-value normal" style="font-size:13px;">Konstitucijos ave. 21B, 08130, Vilnius, Lithuania</span>
+          <button class="copy-btn" onclick="copyText('Konstitucijos ave. 21B, 08130, Vilnius, Lithuania', this)">📋 Copia</button>
+        </div>
+        <div class="data-row">
+          <span class="dr-label">BIC corrispondente</span>
+          <span class="dr-value">CHASDEFX</span>
+          <button class="copy-btn" onclick="copyText('CHASDEFX', this)">📋 Copia</button>
+        </div>
+      </div>
+
+      <div class="mc-alert" style="background:#FBF2E8;border-color:rgba(196,123,43,.2);">
+        <span class="mc-alert-ico">⏱</span>
+        <p><strong>Tempi di accredito:</strong> Bonifici SEPA (Italia/Europa) 1-2 giorni lavorativi. Bonifici internazionali 2-5 giorni. Dopo l'invio mandaci la contabile via WhatsApp per accelerare l'avvio del progetto.</p>
+      </div>
+
+      <ul class="mc-steps">
+        <li><div class="step-n">1</div>Apri la tua app bancaria e scegli "Bonifico SEPA" o "Bonifico internazionale"</li>
+        <li><div class="step-n">2</div>Inserisci l'IBAN: <strong style="color:var(--navy);font-family:monospace;">LT48 3250 0869 6648 7403</strong></li>
+        <li><div class="step-n">3</div>Inserisci la causale con il tuo nome e il piano scelto</li>
+        <li><div class="step-n">4</div>Invia la ricevuta via WhatsApp al <strong style="color:var(--navy);">+39 334 892 7948</strong></li>
+        <li><div class="step-n">5</div>Avviamo il progetto entro 24 ore dalla conferma</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- ═══ PAYPAL ═══ -->
+  <div class="method-card">
+    <div class="mc-header">
+      <div class="mc-icon pp">🅿️</div>
+      <div>
+        <div class="mc-title">PayPal</div>
+        <div class="mc-sub">Pagamento online istantaneo — carta o saldo PayPal</div>
+      </div>
+      <span class="mc-badge active">✓ Attivo</span>
+    </div>
+    <div class="mc-body">
+      <p>Clicca il pulsante qui sotto per pagare direttamente tramite PayPal. Puoi usare il tuo saldo PayPal, una carta di credito o debito, oppure PayPal "Paga in 3 rate" senza interessi. Ricevi conferma immediata via email.</p>
+
+      <div class="data-grid">
+        <div class="data-row">
+          <span class="dr-label">Link PayPal</span>
+          <span class="dr-value normal">https://paypal.me/bwebdesnigs</span>
+          <button class="copy-btn" onclick="copyText('https://paypal.me/bwebdesnigs', this)">📋 Copia</button>
+        </div>
+      </div>
+
+      <a href="https://paypal.me/bwebdesnigs" onclick="window.open('https://paypal.me/bwebdesnigs','_blank');" style="display:inline-flex;align-items:center;gap:10px;background:#0070BA;color:#fff;font-family:var(--font-b);font-size:15px;font-weight:700;padding:14px 28px;border-radius:100px;text-decoration:none;margin-bottom:22px;transition:background .2s;" onmouseover="this.style.background='#005ea6'" onmouseout="this.style.background='#0070BA'">
+        🅿️ Paga ora con PayPal
+      </a>
+
+      <div class="mc-alert">
+        <span class="mc-alert-ico">ℹ️</span>
+        <p><strong>Come funziona:</strong> Clicca il link, inserisci l'importo del tuo piano, aggiungi in oggetto il tuo nome e piano scelto (es. "Mario Rossi — Piano Ristorante"). Riceverai conferma email da PayPal e noi avvieremo il progetto entro 24 ore.</p>
+      </div>
+
+      <ul class="mc-steps">
+        <li><div class="step-n">1</div>Clicca "Paga ora con PayPal" qui sopra</li>
+        <li><div class="step-n">2</div>Inserisci l'importo del piano scelto</li>
+        <li><div class="step-n">3</div>Scrivi nella nota: il tuo nome + piano (es. "Mario Rossi — Vetrina Pro")</li>
+        <li><div class="step-n">4</div>Completa il pagamento con carta o saldo PayPal</li>
+        <li><div class="step-n">5</div>Inviaci la ricevuta via WhatsApp al <strong style="color:var(--navy);">+39 334 892 7948</strong></li>
+      </ul>
+
+      <div class="mc-alert" style="background:var(--bg-sage);border-color:rgba(78,138,106,.2);">
+        <span class="mc-alert-ico">🛡</span>
+        <p><strong>Protezione acquirente inclusa.</strong> Tutti i pagamenti PayPal sono coperti dalla protezione acquirente. Puoi pagare con Visa, Mastercard, Amex, saldo PayPal o attivare "Paga in 3 rate" senza interessi direttamente nell'app PayPal.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ STRIPE ═══ -->
+  <div class="method-card">
+    <div class="mc-header">
+      <div class="mc-icon stripe">💳</div>
+      <div>
+        <div class="mc-title">Stripe — Carta di credito/debito</div>
+        <div class="mc-sub">Pagamento sicuro con qualsiasi carta, Apple Pay, Google Pay</div>
+      </div>
+      <span class="mc-badge active">✓ Attivo</span>
+    </div>
+    <div class="mc-body">
+      <p>Clicca il pulsante del tuo piano e completa il pagamento in modo sicuro. Accettiamo tutte le carte, Apple Pay, Google Pay. Ricevi ricevuta immediata via email.</p>
+
+      <div class="mc-alert" style="background:var(--bg-sage);border-color:rgba(78,138,106,.2);">
+        <span class="mc-alert-ico">🛡</span>
+        <p><strong>Massima sicurezza.</strong> Stripe è certificato <strong>PCI DSS Level 1</strong> — lo standard più alto per i pagamenti online. I tuoi dati carta non vengono mai memorizzati da noi.</p>
+      </div>
+
+      <!-- Piano buttons -->
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:24px;">
+
+        <div style="background:var(--bg);border:1.5px solid var(--border-s);border-radius:var(--r-lg);padding:20px;display:flex;flex-direction:column;gap:10px;">
+          <div style="font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--teal);">⚡ Starter</div>
+          <div style="font-family:var(--font-d);font-size:28px;font-weight:500;color:var(--navy);line-height:1;">€990</div>
+          <div style="font-size:12px;color:var(--text-muted);">Pagamento unico · IVA esclusa</div>
+          <a href="https://buy.stripe.com/5kQ4gtc72gL42Yy1nAfw404" onclick="window.open('https://buy.stripe.com/5kQ4gtc72gL42Yy1nAfw404','_blank');" style="display:flex;align-items:center;justify-content:center;gap:7px;background:#635BFF;color:#fff;font-family:var(--font-b);font-size:13px;font-weight:700;padding:11px 16px;border-radius:100px;text-decoration:none;margin-top:4px;transition:background .2s;" onmouseover="this.style.background='#4F46E5'" onmouseout="this.style.background='#635BFF'">💳 Paga con Stripe</a>
+        </div>
+
+        <div style="background:var(--bg);border:1.5px solid var(--border-s);border-radius:var(--r-lg);padding:20px;display:flex;flex-direction:column;gap:10px;">
+          <div style="font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--teal);">💼 Vetrina Pro</div>
+          <div style="font-family:var(--font-d);font-size:28px;font-weight:500;color:var(--navy);line-height:1;">€895</div>
+          <div style="font-size:12px;color:var(--text-muted);">1ª rata · totale €1.790</div>
+          <a href="https://buy.stripe.com/aFa00dgnigL4cz85DQfw405" onclick="window.open('https://buy.stripe.com/aFa00dgnigL4cz85DQfw405','_blank');" style="display:flex;align-items:center;justify-content:center;gap:7px;background:#635BFF;color:#fff;font-family:var(--font-b);font-size:13px;font-weight:700;padding:11px 16px;border-radius:100px;text-decoration:none;margin-top:4px;transition:background .2s;" onmouseover="this.style.background='#4F46E5'" onmouseout="this.style.background='#635BFF'">💳 Paga con Stripe</a>
+        </div>
+
+        <div style="background:var(--bg-blue);border:1.5px solid rgba(43,70,102,.2);border-radius:var(--r-lg);padding:20px;display:flex;flex-direction:column;gap:10px;">
+          <div style="font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--teal);">🍽️ Ristorante</div>
+          <div style="font-family:var(--font-d);font-size:28px;font-weight:500;color:var(--navy);line-height:1;">€1.245</div>
+          <div style="font-size:12px;color:var(--text-muted);">1ª rata · totale €2.490</div>
+          <a href="https://buy.stripe.com/cNifZb8UQ66q2Yyd6ifw406" onclick="window.open('https://buy.stripe.com/cNifZb8UQ66q2Yyd6ifw406','_blank');" style="display:flex;align-items:center;justify-content:center;gap:7px;background:#635BFF;color:#fff;font-family:var(--font-b);font-size:13px;font-weight:700;padding:11px 16px;border-radius:100px;text-decoration:none;margin-top:4px;transition:background .2s;" onmouseover="this.style.background='#4F46E5'" onmouseout="this.style.background='#635BFF'">💳 Paga con Stripe</a>
+        </div>
+
+        <div style="background:var(--bg);border:1.5px solid var(--border-s);border-radius:var(--r-lg);padding:20px;display:flex;flex-direction:column;gap:10px;">
+          <div style="font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--teal);">🛒 Shop Online</div>
+          <div style="font-family:var(--font-d);font-size:28px;font-weight:500;color:var(--navy);line-height:1;">€1.230</div>
+          <div style="font-size:12px;color:var(--text-muted);">1ª rata · totale €3.690</div>
+          <a href="https://buy.stripe.com/28E6oBfje3Yiar0c2efw407" onclick="window.open('https://buy.stripe.com/28E6oBfje3Yiar0c2efw407','_blank');" style="display:flex;align-items:center;justify-content:center;gap:7px;background:#635BFF;color:#fff;font-family:var(--font-b);font-size:13px;font-weight:700;padding:11px 16px;border-radius:100px;text-decoration:none;margin-top:4px;transition:background .2s;" onmouseover="this.style.background='#4F46E5'" onmouseout="this.style.background='#635BFF'">💳 Paga con Stripe</a>
+        </div>
+
+      </div>
+
+      <ul class="mc-steps">
+        <li><div class="step-n">1</div>Clicca il pulsante del tuo piano qui sopra</li>
+        <li><div class="step-n">2</div>Inserisci i dati della tua carta (o usa Apple Pay / Google Pay)</li>
+        <li><div class="step-n">3</div>Ricevi conferma e ricevuta via email in automatico</li>
+        <li><div class="step-n">4</div>Avviamo il progetto entro 24 ore 🚀</li>
+      </ul>
+
+      <div class="mc-alert">
+        <span class="mc-alert-ico">💡</span>
+        <p>Accettiamo <strong>Visa, Mastercard, Amex, Apple Pay, Google Pay</strong>. Per pagamenti rateali (2ª e 3ª rata) ti invieremo un nuovo link Stripe al momento della scadenza. Hai domande? <a href="https://wa.me/393348927948" onclick="window.open('https://wa.me/393348927948','_blank');" style="color:var(--teal);font-weight:700;">Scrivici su WhatsApp</a>.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- CTA BOX -->
+  <div class="cta-box">
+    <h3>Hai domande<br>sul <em>pagamento?</em></h3>
+    <p>Siamo disponibili per guidarti passo per passo. Scrivi il tuo piano scelto e ti mandiamo tutte le istruzioni personalizzate.</p>
+    <div class="cta-btns">
+      <a href="https://wa.me/393348927948?text=Ciao%21%20Ho%20bisogno%20di%20informazioni%20sul%20pagamento%20del%20mio%20progetto." onclick="window.open('https://wa.me/393348927948?text=Ciao%21%20Ho%20bisogno%20di%20informazioni%20sul%20pagamento%20del%20mio%20progetto.','_blank');" class="btn-prim">💬 Scrivici su WhatsApp</a>
+      <a href="/cdn-cgi/l/email-protection#d5bcbbb3bab7a2b0b7b1b0a6bcb2bba695b2b8b4bcb9fbb6bab8" onclick="window.open('mailto:infobwebdesigns@gmail.com');" class="btn-out">📧 Invia una email</a>
+      <a href="index.html#prezzi" class="btn-out">← Torna ai prezzi</a>
+    </div>
+  </div>
+
+</div>
+</div>
+
+<!-- FOOTER MINI -->
+<footer style="background:var(--navy);padding:28px 0;text-align:center;">
+  <div style="font-family:var(--font-d);font-size:18px;font-weight:600;color:#fff;margin-bottom:8px;">
+    B<span style="color:var(--teal-l);">WEB</span> Design
+  </div>
+  <p style="font-size:12px;color:rgba(255,255,255,.4);">
+    © 2025 BWEB Design · P.IVA: XXXXXXXXXXXXXXX ·
+    <a href="index.html" style="color:var(--teal-l);text-decoration:none;">Torna al sito</a> ·
+    <a href="privacy-policy.html" style="color:var(--teal-l);text-decoration:none;">Privacy Policy</a>
+  </p>
+</footer>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+function copyText(text, btn) {
+  navigator.clipboard.writeText(text).then(function() {
+    var orig = btn.textContent;
+    btn.textContent = '✅ Copiato!';
+    btn.classList.add('copied');
+    setTimeout(function() {
+      btn.textContent = orig;
+      btn.classList.remove('copied');
+    }, 2000);
+  }).catch(function() {
+    // Fallback for older browsers
+    var el = document.createElement('textarea');
+    el.value = text;
+    el.style.position = 'fixed';
+    el.style.opacity = '0';
+    document.body.appendChild(el);
+    el.select();
+    document.execCommand('copy');
+    document.body.removeChild(el);
+    var orig = btn.textContent;
+    btn.textContent = '✅ Copiato!';
+    btn.classList.add
