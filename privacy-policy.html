@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Privacy Policy & Cookie Policy — BWEB Design</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Nunito:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#F5F3EE;--bg2:#FFFFFF;--bg-blue:#EBF2F8;--bg-sage:#EDF4EF;
+  --navy:#2B4666;--teal:#3D8A9E;--teal-l:#5BA8BB;--sage:#4E8A6A;
+  --text:#1C2D3E;--text-mid:#4A5F72;--text-muted:#7A909E;
+  --border:#DDE4EA;--border-s:#EBF0F4;
+  --shadow-md:0 4px 24px rgba(43,70,102,.10);
+  --font-d:'Lora',Georgia,serif;--font-b:'Nunito',system-ui,sans-serif;
+  --r-md:14px;--r-lg:20px;--r-xl:28px;
+}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:var(--font-b);font-size:16px;line-height:1.7;-webkit-font-smoothing:antialiased;}
+
+/* NAV */
+.topbar{background:var(--bg2);border-bottom:1px solid var(--border);padding:16px 32px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100;}
+.logo{font-family:var(--font-d);font-size:21px;font-weight:600;color:var(--navy);text-decoration:none}
+.logo span{color:var(--teal)}
+.btn-back{display:inline-flex;align-items:center;gap:8px;font-size:14px;font-weight:600;color:var(--text-mid);background:none;border:1.5px solid var(--border);padding:9px 20px;border-radius:100px;text-decoration:none;transition:color .2s,border-color .2s}
+.btn-back:hover{color:var(--navy);border-color:var(--navy)}
+
+/* HERO */
+.page-hero{padding:56px 0 40px;background:var(--bg2);border-bottom:1px solid var(--border);text-align:center}
+.chip{display:inline-flex;align-items:center;gap:6px;background:var(--bg-blue);color:var(--navy);border:1px solid rgba(43,70,102,.14);border-radius:100px;padding:5px 14px;font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;margin-bottom:16px}
+.page-hero h1{font-family:var(--font-d);font-size:clamp(28px,3.5vw,44px);font-weight:500;color:var(--navy);margin-bottom:10px;letter-spacing:-.02em}
+.page-hero p{font-size:14px;color:var(--text-muted);max-width:500px;margin:0 auto}
+
+/* LAYOUT */
+.layout{display:grid;grid-template-columns:240px 1fr;gap:48px;max-width:1060px;margin:0 auto;padding:48px 32px 80px;align-items:start}
+
+/* SIDEBAR */
+.sidebar{position:sticky;top:100px}
+.sidebar-title{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--text-muted);margin-bottom:14px}
+.sidebar-nav{list-style:none}
+.sidebar-nav li{margin-bottom:4px}
+.sidebar-nav a{display:block;font-size:13px;font-weight:500;color:var(--text-mid);text-decoration:none;padding:7px 12px;border-radius:var(--r-md);border:1px solid transparent;transition:all .2s}
+.sidebar-nav a:hover{background:var(--bg-blue);color:var(--navy);border-color:var(--border-s)}
+.sidebar-nav a.active{background:var(--bg-blue);color:var(--navy);font-weight:700;border-color:rgba(43,70,102,.15)}
+.sidebar-box{background:var(--bg2);border-radius:var(--r-lg);border:1px solid var(--border);padding:18px;margin-top:20px;text-align:center}
+.sidebar-box p{font-size:12px;color:var(--text-muted);line-height:1.65;margin-bottom:12px}
+.sidebar-box a{display:inline-flex;align-items:center;gap:6px;background:#25D366;color:#fff;font-size:13px;font-weight:700;padding:9px 16px;border-radius:100px;text-decoration:none}
+
+/* CONTENT */
+.content section{margin-bottom:56px;scroll-margin-top:100px}
+.content h2{font-family:var(--font-d);font-size:26px;font-weight:500;color:var(--navy);margin-bottom:16px;padding-bottom:12px;border-bottom:1px solid var(--border);letter-spacing:-.01em}
+.content h3{font-family:var(--font-d);font-size:18px;font-weight:600;color:var(--navy);margin:24px 0 10px}
+.content p{font-size:15px;color:var(--text-mid);margin-bottom:14px;line-height:1.8}
+.content ul,.content ol{margin:0 0 14px 20px}
+.content ul li,.content ol li{font-size:15px;color:var(--text-mid);margin-bottom:8px;line-height:1.75}
+.content strong{color:var(--navy);font-weight:700}
+.content a{color:var(--teal);text-decoration:none;font-weight:600}
+.content a:hover{text-decoration:underline}
+
+/* INFO BOX */
+.info-box{background:var(--bg-blue);border-radius:var(--r-lg);border:1px solid rgba(43,70,102,.12);padding:20px 24px;margin-bottom:20px;display:flex;gap:14px;align-items:flex-start}
+.info-box-ico{font-size:20px;flex-shrink:0;margin-top:2px}
+.info-box p{margin:0;font-size:14px;color:var(--navy);line-height:1.7}
+.info-box.green{background:var(--bg-sage);border-color:rgba(78,138,106,.2)}
+.info-box.green p{color:#1a4d2e}
+
+/* DATA TABLE */
+.data-table{width:100%;border-collapse:collapse;margin-bottom:20px;font-size:14px}
+.data-table th{background:var(--navy);color:#fff;text-align:left;padding:10px 16px;font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase}
+.data-table th:first-child{border-radius:10px 0 0 0}
+.data-table th:last-child{border-radius:0 10px 0 0}
+.data-table td{padding:12px 16px;border-bottom:1px solid var(--border-s);vertical-align:top;color:var(--text-mid);line-height:1.6}
+.data-table tr:last-child td{border-bottom:none}
+.data-table tr:nth-child(even) td{background:var(--bg)}
+.data-table tr:hover td{background:var(--bg-blue)}
+
+/* COOKIE SECTION */
+.cookie-type{background:var(--bg2);border-radius:var(--r-lg);border:1.5px solid var(--border);padding:22px 24px;margin-bottom:14px}
+.cookie-header{display:flex;align-items:center;gap:12px;margin-bottom:10px}
+.cookie-ico{width:38px;height:38px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0}
+.cookie-name{font-family:var(--font-d);font-size:16px;font-weight:600;color:var(--navy)}
+.cookie-badge{margin-left:auto;font-size:11px;font-weight:700;padding:3px 10px;border-radius:100px}
+.badge-req{background:var(--bg-blue);color:var(--navy)}
+.badge-opt{background:var(--bg-sage);color:var(--sage)}
+.cookie-type p{font-size:14px;color:var(--text-mid);margin:0;line-height:1.7}
+
+/* RIGHTS GRID */
+.rights-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:20px}
+.right-card{background:var(--bg2);border-radius:var(--r-md);border:1px solid var(--border-s);padding:18px}
+.right-card h4{font-family:var(--font-d);font-size:15px;font-weight:600;color:var(--navy);margin-bottom:6px;display:flex;align-items:center;gap:8px}
+.right-card p{font-size:13px;color:var(--text-mid);margin:0;line-height:1.65}
+
+/* UPDATE TAG */
+.update-tag{display:inline-flex;align-items:center;gap:6px;background:var(--bg-sage);color:var(--sage);border-radius:100px;padding:4px 12px;font-size:12px;font-weight:700;margin-bottom:20px}
+
+@media(max-width:900px){
+  .layout{grid-template-columns:1fr}
+  .sidebar{position:static}
+  .sidebar-nav{display:none}
+}
+@media(max-width:600px){
+  .topbar{padding:14px 20px}
+  .layout{padding:32px 20px 60px}
+  .content h2{font-size:22px}
+  .rights-grid{grid-template-columns:1fr}
+  .data-table{font-size:13px}
+}
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <a href="index.html" class="logo">B<span>WEB</span> Design</a>
+  <a href="index.html" class="btn-back">← Torna al sito</a>
+</header>
+
+<div class="page-hero">
+  <div class="chip">🔒 Documenti legali</div>
+  <h1>Privacy Policy<br>& Cookie Policy</h1>
+  <p>Ultimo aggiornamento: 2 aprile 2025 — Conforme al Regolamento UE 2016/679 (GDPR)</p>
+</div>
+
+<div class="layout">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <p class="sidebar-title">Indice</p>
+    <ul class="sidebar-nav">
+      <li><a href="#titolare" class="active">1. Titolare del trattamento</a></li>
+      <li><a href="#dati">2. Dati raccolti</a></li>
+      <li><a href="#finalita">3. Finalità del trattamento</a></li>
+      <li><a href="#base-legale">4. Base legale</a></li>
+      <li><a href="#conservazione">5. Conservazione</a></li>
+      <li><a href="#terze-parti">6. Terze parti</a></li>
+      <li><a href="#diritti">7. I tuoi diritti</a></li>
+      <li><a href="#cookie" id="cookie-link">8. Cookie Policy</a></li>
+      <li><a href="#minori">9. Minori</a></li>
+      <li><a href="#modifiche">10. Modifiche</a></li>
+      <li><a href="#contatti-privacy">11. Contatti</a></li>
+    </ul>
+    <div class="sidebar-box">
+      <p>Hai domande sulla privacy o vuoi esercitare i tuoi diritti?</p>
+      <a href="https://wa.me/393348927948?text=Ciao%21%20Ho%20una%20domanda%20sulla%20privacy." onclick="window.open('https://wa.me/393348927948?text=Ciao%21%20Ho%20una%20domanda%20sulla%20privacy.','_blank');">💬 Scrivici</a>
+    </div>
+  </aside>
+
+  <!-- CONTENT -->
+  <div class="content">
+
+    <div class="update-tag">📅 Aggiornato il 2 aprile 2025</div>
+
+    <div class="info-box green">
+      <span class="info-box-ico">✅</span>
+      <p>BWEB Design rispetta la tua privacy e tratta i tuoi dati personali in conformità al <strong>Regolamento UE 2016/679 (GDPR)</strong> e al <strong>D.Lgs. 196/2003</strong> (Codice Privacy italiano) come modificato dal D.Lgs. 101/2018.</p>
+    </div>
+
+    <!-- 1. TITOLARE -->
+    <section id="titolare">
+      <h2>1. Titolare del trattamento</h2>
+      <p>Il titolare del trattamento dei dati personali raccolti attraverso il sito web <strong>bweb-design.pages.dev</strong> (e relativi domini collegati) è:</p>
+      <table class="data-table">
+        <tr><th>Campo</th><th>Informazione</th></tr>
+        <tr><td><strong>Denominazione</strong></td><td>BWEB Design</td></tr>
+        <tr><td><strong>Titolare</strong></td><td>Emmanuel Mohammed Bellu</td></tr>
+        <tr><td><strong>Sede</strong></td><td>Verona, Italia</td></tr>
+        <tr><td><strong>Email</strong></td><td><a href="mailto:infobwebdesigns@gmail.com">infobwebdesigns@gmail.com</a></td></tr>
+        <tr><td><strong>WhatsApp</strong></td><td>+39 334 892 7948</td></tr>
+        <tr><td><strong>P.IVA</strong></td><td>In fase di registrazione</td></tr>
+      </table>
+      <p>Per qualsiasi questione relativa alla privacy puoi contattarci in qualsiasi momento all'indirizzo email sopra indicato.</p>
+    </section>
+
+    <!-- 2. DATI RACCOLTI -->
+    <section id="dati">
+      <h2>2. Dati personali raccolti</h2>
+      <p>Raccogliamo i seguenti dati personali attraverso il sito:</p>
+
+      <h3>2.1 Dati forniti volontariamente</h3>
+      <p>Quando compili il modulo di contatto, il preventivo rapido o il modulo di onboarding, raccogliamo:</p>
+      <ul>
+        <li>Nome e cognome</li>
+        <li>Indirizzo email</li>
+        <li>Numero di telefono (opzionale)</li>
+        <li>Nome e descrizione della tua attività</li>
+        <li>Informazioni sul progetto richiesto</li>
+        <li>Qualsiasi altra informazione che decidi di condividere nei campi liberi</li>
+      </ul>
+
+      <h3>2.2 Dati raccolti automaticamente</h3>
+      <p>Se accetti i cookie analitici, raccogliamo automaticamente:</p>
+      <ul>
+        <li>Indirizzo IP (anonimizzato)</li>
+        <li>Tipo di browser e sistema operativo</li>
+        <li>Pagine visitate e tempo di permanenza</li>
+        <li>Sorgente del traffico (come hai trovato il sito)</li>
+        <li>Risoluzione schermo e dispositivo utilizzato</li>
+      </ul>
+
+      <h3>2.3 Dati di pagamento</h3>
+      <p>I dati di pagamento (carte di credito, ecc.) non vengono mai trattati direttamente da BWEB Design. I pagamenti sono gestiti in modo sicuro da:</p>
+      <ul>
+        <li><strong>Stripe</strong> — certificato PCI DSS Level 1</li>
+        <li><strong>PayPal</strong> — con protezione acquirente inclusa</li>
+        <li><strong>Bonifico bancario</strong> — trattato dalla tua banca</li>
+      </ul>
+    </section>
+
+    <!-- 3. FINALITÀ -->
+    <section id="finalita">
+      <h2>3. Finalità del trattamento</h2>
+      <table class="data-table">
+        <tr><th>Finalità</th><th>Dati utilizzati</th><th>Base legale</th></tr>
+        <tr><td>Rispondere alle tue richieste di contatto e preventivo</td><td>Nome, email, telefono, messaggio</td><td>Consenso / Contratto</td></tr>
+        <tr><td>Gestire il processo di onboarding e progettazione</td><td>Tutti i dati del brief</td><td>Contratto</td></tr>
+        <tr><td>Inviare comunicazioni relative al progetto</td><td>Email, telefono</td><td>Contratto</td></tr>
+        <tr><td>Statistiche anonime di utilizzo del sito</td><td>Dati di navigazione anonimi</td><td>Consenso</td></tr>
+        <tr><td>Campagne pubblicitarie (se consenso dato)</td><td>Dati di navigazione</td><td>Consenso</td></tr>
+        <tr><td>Adempimenti fiscali e contabili</td><td>Dati di fatturazione</td><td>Obbligo legale</td></tr>
+      </table>
+      <div class="info-box">
+        <span class="info-box-ico">ℹ️</span>
+        <p><strong>Non utilizziamo i tuoi dati per scopi di marketing diretto</strong> senza il tuo esplicito consenso, né li cediamo a terzi per finalità commerciali.</p>
+      </div>
+    </section>
+
+    <!-- 4. BASE LEGALE -->
+    <section id="base-legale">
+      <h2>4. Base legale del trattamento</h2>
+      <p>Il trattamento dei tuoi dati personali si basa sulle seguenti basi legali ai sensi dell'art. 6 GDPR:</p>
+      <ul>
+        <li><strong>Consenso (art. 6.1.a):</strong> per i cookie analitici e di marketing, e per l'invio di comunicazioni promozionali.</li>
+        <li><strong>Esecuzione di un contratto (art. 6.1.b):</strong> per gestire le richieste di preventivo e i progetti commissionati.</li>
+        <li><strong>Obbligo legale (art. 6.1.c):</strong> per adempiere agli obblighi fiscali e contabili previsti dalla legge italiana.</li>
+        <li><strong>Legittimo interesse (art. 6.1.f):</strong> per proteggere la sicurezza del sito web e prevenire frodi.</li>
+      </ul>
+    </section>
+
+    <!-- 5. CONSERVAZIONE -->
+    <section id="conservazione">
+      <h2>5. Periodo di conservazione</h2>
+      <table class="data-table">
+        <tr><th>Tipo di dato</th><th>Periodo di conservazione</th></tr>
+        <tr><td>Richieste di contatto e preventivo</td><td>24 mesi dalla ricezione</td></tr>
+        <tr><td>Dati relativi a progetti completati</td><td>10 anni (obblighi fiscali)</td></tr>
+        <tr><td>Dati di navigazione (analytics)</td><td>14 mesi (policy Google Analytics)</td></tr>
+        <tr><td>Preferenze cookie</td><td>12 mesi (poi chiediamo nuovo consenso)</td></tr>
+        <tr><td>Dati di fatturazione</td><td>10 anni (D.P.R. 633/1972)</td></tr>
+      </table>
+      <p>Trascorso il periodo indicato, i dati vengono cancellati o anonimizzati in modo irreversibile.</p>
+    </section>
+
+    <!-- 6. TERZE PARTI -->
+    <section id="terze-parti">
+      <h2>6. Condivisione con terze parti</h2>
+      <p>I tuoi dati possono essere condivisi con i seguenti soggetti terzi, esclusivamente per le finalità indicate:</p>
+
+      <table class="data-table">
+        <tr><th>Soggetto</th><th>Finalità</th><th>Paese</th><th>Garanzie</th></tr>
+        <tr><td><strong>Web3Forms</strong></td><td>Inoltro email dai form di contatto</td><td>USA</td><td>Clausole contrattuali standard UE</td></tr>
+        <tr><td><strong>Google Analytics</strong></td><td>Statistiche di utilizzo (se consenso)</td><td>USA</td><td>Dati anonimizzati, DPA firmato</td></tr>
+        <tr><td><strong>Meta Pixel</strong></td><td>Campagne pubblicitarie (se consenso)</td><td>USA</td><td>Privacy Shield successor framework</td></tr>
+        <tr><td><strong>Stripe</strong></td><td>Elaborazione pagamenti</td><td>USA/UE</td><td>PCI DSS Level 1, SCCs</td></tr>
+        <tr><td><strong>PayPal</strong></td><td>Elaborazione pagamenti</td><td>USA/UE</td><td>DPA firmato, SCCs</td></tr>
+        <tr><td><strong>Cloudflare</strong></td><td>Hosting e CDN del sito</td><td>USA/UE</td><td>DPA firmato, server EU disponibili</td></tr>
+      </table>
+
+      <div class="info-box">
+        <span class="info-box-ico">🔒</span>
+        <p><strong>Non vendiamo mai i tuoi dati.</strong> Non cediamo i tuoi dati personali a terzi per finalità di marketing o profilazione commerciale. Tutti i fornitori di servizi sono vincolati da accordi di trattamento dati (DPA) conformi al GDPR.</p>
+      </div>
+    </section>
+
+    <!-- 7. DIRITTI -->
+    <section id="diritti">
+      <h2>7. I tuoi diritti</h2>
+      <p>Ai sensi degli artt. 15-22 del GDPR, hai i seguenti diritti in relazione ai tuoi dati personali:</p>
+      <div class="rights-grid">
+        <div class="right-card">
+          <h4>👁 Diritto di accesso</h4>
+          <p>Puoi richiedere una copia di tutti i dati personali che trattiamo su di te.</p>
+        </div>
+        <div class="right-card">
+          <h4>✏️ Diritto di rettifica</h4>
+          <p>Puoi chiedere la correzione di dati inesatti o incompleti che ti riguardano.</p>
+        </div>
+        <div class="right-card">
+          <h4>🗑 Diritto alla cancellazione</h4>
+          <p>Puoi chiedere la cancellazione dei tuoi dati ("diritto all'oblio") quando non sono più necessari.</p>
+        </div>
+        <div class="right-card">
+          <h4>⏸ Diritto di limitazione</h4>
+          <p>Puoi richiedere la limitazione del trattamento in determinate circostanze previste dal GDPR.</p>
+        </div>
+        <div class="right-card">
+          <h4>📦 Diritto alla portabilità</h4>
+          <p>Puoi ricevere i tuoi dati in formato strutturato e leggibile da macchina (JSON/CSV).</p>
+        </div>
+        <div class="right-card">
+          <h4>🚫 Diritto di opposizione</h4>
+          <p>Puoi opporti al trattamento basato su legittimo interesse in qualsiasi momento.</p>
+        </div>
+        <div class="right-card">
+          <h4>↩️ Revoca del consenso</h4>
+          <p>Puoi revocare il consenso in qualsiasi momento senza pregiudicare la liceità del trattamento precedente.</p>
+        </div>
+        <div class="right-card">
+          <h4>⚖️ Diritto di reclamo</h4>
+          <p>Puoi presentare reclamo al Garante per la Protezione dei Dati Personali (<a href="https://www.garanteprivacy.it" target="_blank">garanteprivacy.it</a>).</p>
+        </div>
+      </div>
+      <div class="info-box green">
+        <span class="info-box-ico">📧</span>
+        <p>Per esercitare qualsiasi diritto, scrivi a <a href="mailto:infobwebdesigns@gmail.com"><strong>infobwebdesigns@gmail.com</strong></a> indicando la tua richiesta. Risponderemo entro <strong>30 giorni</strong> come previsto dal GDPR, gratuitamente.</p>
+      </div>
+    </section>
+
+    <!-- 8. COOKIE -->
+    <section id="cookie">
+      <h2>8. Cookie Policy</h2>
+      <p>Il nostro sito utilizza cookie e tecnologie simili. Questa sezione spiega cosa sono, quali usiamo e come puoi gestirli.</p>
+
+      <h3>Cosa sono i cookie</h3>
+      <p>I cookie sono piccoli file di testo che i siti web salvano sul tuo dispositivo quando li visiti. Servono a far funzionare il sito correttamente, ricordare le tue preferenze e raccogliere informazioni statistiche anonime.</p>
+
+      <h3>Cookie che utilizziamo</h3>
+
+      <div class="cookie-type">
+        <div class="cookie-header">
+          <div class="cookie-ico" style="background:var(--bg-blue);">🔧</div>
+          <div>
+            <div class="cookie-name">Cookie tecnici / necessari</div>
+          </div>
+          <span class="cookie-badge badge-req">Sempre attivi</span>
+        </div>
+        <p>Essenziali per il funzionamento del sito. Non richiedono consenso. Includono: gestione delle preferenze cookie (<code>bweb_cookie_v1</code>), sicurezza della sessione e funzionalità di base del sito.</p>
+      </div>
+
+      <div class="cookie-type">
+        <div class="cookie-header">
+          <div class="cookie-ico" style="background:var(--bg-blue);">📊</div>
+          <div>
+            <div class="cookie-name">Cookie analitici — Google Analytics 4</div>
+          </div>
+          <span class="cookie-badge badge-opt">Consenso richiesto</span>
+        </div>
+        <p>Utilizziamo Google Analytics 4 per capire come i visitatori usano il sito (pagine viste, tempo di permanenza, provenienza). I dati sono <strong>anonimi e aggregati</strong> — non è possibile identificare singoli utenti. L'IP viene anonimizzato prima dell'invio a Google. Puoi disattivarli in qualsiasi momento tramite le preferenze cookie.</p>
+        <p style="margin-top:8px;font-size:13px;color:var(--text-muted);">Cookie: <code>_ga</code>, <code>_ga_*</code>, <code>_gid</code> — Durata: fino a 14 mesi</p>
+      </div>
+
+      <div class="cookie-type">
+        <div class="cookie-header">
+          <div class="cookie-ico" style="background:#FBF2E8;">📣</div>
+          <div>
+            <div class="cookie-name">Cookie di marketing — Meta Pixel</div>
+          </div>
+          <span class="cookie-badge badge-opt">Consenso richiesto</span>
+        </div>
+        <p>Il Meta Pixel (Facebook) ci permette di misurare l'efficacia delle campagne pubblicitarie e mostrare annunci pertinenti su Facebook e Instagram. Attivo solo con il tuo consenso esplicito. Puoi disattivarlo nelle preferenze cookie o nelle impostazioni pubblicitarie del tuo account Facebook.</p>
+        <p style="margin-top:8px;font-size:13px;color:var(--text-muted);">Cookie: <code>_fbp</code>, <code>_fbc</code> — Durata: 90 giorni</p>
+      </div>
+
+      <div class="cookie-type">
+        <div class="cookie-header">
+          <div class="cookie-ico" style="background:var(--bg-sage);">⚙️</div>
+          <div>
+            <div class="cookie-name">Cookie di preferenze</div>
+          </div>
+          <span class="cookie-badge badge-opt">Consenso richiesto</span>
+        </div>
+        <p>Ricordano le tue scelte tra una visita e l'altra (es. lingua, preferenze di visualizzazione). Non contengono dati personali identificabili.</p>
+        <p style="margin-top:8px;font-size:13px;color:var(--text-muted);">Cookie: <code>bweb_cookie_v1</code> — Durata: 12 mesi</p>
+      </div>
+
+      <h3>Come gestire i cookie</h3>
+      <p>Hai sempre il controllo completo sui cookie:</p>
+      <ul>
+        <li><strong>Banner cookie:</strong> alla prima visita puoi accettare tutti, solo i necessari, o personalizzare la scelta.</li>
+        <li><strong>Preferenze cookie:</strong> clicca "Gestisci cookie" nel footer del sito in qualsiasi momento.</li>
+        <li><strong>Impostazioni browser:</strong> puoi eliminare o bloccare i cookie direttamente dal tuo browser (Chrome, Firefox, Safari, Edge).</li>
+        <li><strong>Google Analytics opt-out:</strong> installa il <a href="https://tools.google.com/dlpage/gaoptout" target="_blank">plugin ufficiale di Google</a>.</li>
+        <li><strong>Meta opt-out:</strong> gestisci le preferenze pubblicitarie su <a href="https://www.facebook.com/ads/preferences" target="_blank">facebook.com/ads/preferences</a>.</li>
+      </ul>
+
+      <div class="info-box">
+        <span class="info-box-ico">ℹ️</span>
+        <p>Disabilitare alcuni cookie potrebbe influire sulla funzionalità del sito. I cookie tecnici non possono essere disabilitati perché necessari al funzionamento di base.</p>
+      </div>
+    </section>
+
+    <!-- 9. MINORI -->
+    <section id="minori">
+      <h2>9. Minori</h2>
+      <p>Il nostro sito e i nostri servizi sono rivolti esclusivamente a persone maggiorenni (18 anni o più). Non raccogliamo consapevolmente dati personali di minori di 18 anni.</p>
+      <p>Se sei un genitore o tutore e ritieni che tuo figlio ci abbia fornito dati personali, ti invitiamo a contattarci immediatamente a <a href="mailto:infobwebdesigns@gmail.com">infobwebdesigns@gmail.com</a> e provvederemo alla cancellazione immediata di tali dati.</p>
+    </section>
+
+    <!-- 10. MODIFICHE -->
+    <section id="modifiche">
+      <h2>10. Modifiche alla presente informativa</h2>
+      <p>Ci riserviamo il diritto di aggiornare questa Privacy Policy in qualsiasi momento, in particolare a seguito di:</p>
+      <ul>
+        <li>Modifiche normative (nuove leggi sulla privacy o orientamenti delle autorità)</li>
+        <li>Cambiamenti nei servizi o strumenti utilizzati sul sito</li>
+        <li>Nuove finalità di trattamento dei dati</li>
+      </ul>
+      <p>In caso di modifiche sostanziali, provvederemo a informarti tramite un avviso in evidenza sul sito o via email (se ci hai fornito il tuo indirizzo). La data di "Ultimo aggiornamento" in cima alla pagina indica sempre la versione più recente.</p>
+      <p>Ti invitiamo a consultare periodicamente questa pagina. La versione corrente è la <strong>1.0</strong>, pubblicata il <strong>2 aprile 2025</strong>.</p>
+    </section>
+
+    <!-- 11. CONTATTI -->
+    <section id="contatti-privacy">
+      <h2>11. Contatti per la privacy</h2>
+      <p>Per qualsiasi domanda, richiesta o reclamo relativo al trattamento dei tuoi dati personali, puoi contattarci:</p>
+      <table class="data-table">
+        <tr><th>Canale</th><th>Riferimento</th></tr>
+        <tr><td>📧 Email</td><td><a href="mailto:infobwebdesigns@gmail.com">infobwebdesigns@gmail.com</a></td></tr>
+        <tr><td>💬 WhatsApp</td><td><a href="https://wa.me/393348927948" onclick="window.open('https://wa.me/393348927948','_blank');">+39 334 892 7948</a></td></tr>
+        <tr><td>🏛 Autorità di controllo</td><td><a href="https://www.garanteprivacy.it" target="_blank">Garante Privacy Italia</a> — garanteprivacy.it</td></tr>
+      </table>
+      <div class="info-box green">
+        <span class="info-box-ico">⏱</span>
+        <p>Ci impegniamo a rispondere a tutte le richieste relative alla privacy <strong>entro 30 giorni</strong> dalla ricezione, come previsto dall'art. 12 del GDPR. In casi complessi il termine può essere esteso a 90 giorni, con comunicazione motivata.</p>
+      </div>
+    </section>
+
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer style="background:var(--navy);padding:28px 0;text-align:center;">
+  <div style="font-family:var(--font-d);font-size:18px;font-weight:600;color:#fff;margin-bottom:8px;">
+    B<span style="color:var(--teal-l);">WEB</span> Design
+  </div>
+  <p style="font-size:12px;color:rgba(255,255,255,.4);">
+    © 2025 BWEB Design · Tutti i diritti riservati ·
+    <a href="index.html" style="color:var(--teal-l);text-decoration:none;">Torna al sito</a>
+  </p>
+</footer>
+
+<script>
+// Highlight active sidebar link on scroll
+var sections = document.querySelectorAll('.content section');
+var navLinks = document.querySelectorAll('.sidebar-nav a');
+
+window.addEventListener('scroll', function() {
+  var current = '';
+  sections.forEach(function(s) {
+    if (window.scrollY >= s.offsetTop - 120) current = s.id;
+  });
+  navLinks.forEach(function(a) {
+    a.classList.remove('active');
+    if (a.getAttribute('href') === '#' + current) a.classList.add('active');
+  });
+}, { passive: true });
+</script>
+</body>
+</html>
