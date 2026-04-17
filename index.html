@@ -5,9 +5,24 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>BWEB Design — Siti Webflow Premium</title>
 <meta name="description" content="Siti Webflow premium per ristoranti, e-commerce e professionisti. Veloci, belli, facili da gestire.">
+<!-- Performance & SEO -->
+<meta name="theme-color" content="#2B4666">
+<meta name="robots" content="index, follow">
+<meta property="og:title" content="BWEB Design — Siti Webflow Premium">
+<meta property="og:description" content="Siti Webflow premium per ristoranti, e-commerce e professionisti. Veloci, belli, facili da gestire.">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="it_IT">
+<meta name="twitter:card" content="summary_large_image">
+
+<!-- DNS Prefetch & Preconnect -->
+<link rel="dns-prefetch" href="https://fonts.googleapis.com">
+<link rel="dns-prefetch" href="https://fonts.gstatic.com">
+<link rel="dns-prefetch" href="https://api.web3forms.com">
+<link rel="dns-prefetch" href="https://wa.me">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Nunito:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="preload" href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Nunito:wght@300;400;500;600;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Nunito:wght@300;400;500;600;700&display=swap" rel="stylesheet"></noscript>
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
@@ -390,9 +405,1134 @@ footer ul li a:hover{color:#fff}
   #ck-banner{padding:16px 20px}
   .band-in{flex-direction:column;align-items:flex-start;gap:12px}
 }
+
+/* ═══ PERFORMANCE OPTIMIZATIONS ═══ */
+
+/* GPU acceleration for animated elements */
+.rv, nav, .hcard, .pcard, .pc, .sc, .tc, .gc, .pfc {
+  will-change: transform;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+}
+.rv.in { will-change: auto; }
+
+/* Smoother scroll */
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .rv { opacity: 1 !important; transform: none !important; transition: none !important; }
+  * { animation-duration: .01ms !important; transition-duration: .01ms !important; }
+}
+
+/* Optimized font rendering */
+body { text-rendering: optimizeLegibility; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+
+/* Smoother hover transitions */
+a, button { -webkit-tap-highlight-color: transparent; }
+
+/* Prevent layout shifts */
+img, video { max-width: 100%; height: auto; }
+
+/* Optimized reveal animation */
+.rv {
+  opacity: 0;
+  transform: translateY(22px);
+  transition: opacity .65s cubic-bezier(.25,.46,.45,.94), transform .65s cubic-bezier(.25,.46,.45,.94);
+}
+.rv.in { opacity: 1; transform: translateZ(0); }
+.rv.from-left { transform: translateX(-22px); }
+.rv.from-right { transform: translateX(22px); }
+.rv.from-left.in, .rv.from-right.in { transform: translateZ(0); }
+
+/* Stagger delays */
+.d1 { transition-delay: .08s; }
+.d2 { transition-delay: .16s; }
+.d3 { transition-delay: .24s; }
+.d4 { transition-delay: .32s; }
+
+/* Smooth card hovers with GPU */
+.pc, .sc, .tc, .gc, .pfc, .pcard {
+  transition: transform .28s cubic-bezier(.34,1.56,.64,1), box-shadow .28s ease, border-color .22s ease !important;
+}
+
+/* Smooth nav */
+nav { transition: background .3s ease, box-shadow .3s ease; }
+
+/* Smooth buttons */
+.btn-p, .btn-s, .btn-nav, .pcard-cta {
+  transition: background .2s ease, transform .2s cubic-bezier(.34,1.56,.64,1), box-shadow .2s ease !important;
+}
+.btn-p:active, .btn-s:active, .btn-nav:active { transform: scale(.97) !important; }
+
+/* FAQ smooth */
+.faq-a { transition: max-height .38s cubic-bezier(.4,0,.2,1); }
+.faq-tog svg { transition: transform .3s cubic-bezier(.4,0,.2,1); }
+
+/* Smooth overlay */
+/* ob-ov transition handled in main rule */
+
+/* Floating badges smooth */
+@keyframes flt {
+  0%,100% { transform: translateY(0) rotate(-.5deg); }
+  50% { transform: translateY(-8px) rotate(.5deg); }
+}
+.fb { animation: flt 4.5s ease-in-out infinite; }
+.fb.f2 { animation-delay: 2.2s; }
+
+/* Nav pulse */
+@keyframes navPulse {
+  0%,100% { box-shadow: 0 0 0 0 rgba(61,138,158,0); }
+  50% { box-shadow: 0 0 0 6px rgba(61,138,158,.15); }
+}
+.btn-nav { animation: navPulse 3.5s ease-in-out infinite; }
+
+/* Smooth scrollbar */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: var(--teal); }
+
+/* Content visibility for off-screen sections */
+section { content-visibility: auto; contain-intrinsic-size: 0 600px; }
+.hero { content-visibility: visible; }
+
+
+/* Portfolio image hover */
+.pfc:hover .pfc-vis img { opacity: .9; }
+.pfc-vis img { transition: opacity .3s ease, transform .4s ease; }
+.pfc:hover .pfc-vis img { transform: scale(1.04); }
+
+/* Service card image hover */
+.sc:hover img { transform: scale(1.07) !important; }
+
+/* Hero image */
+.hero-img-wrap { border-radius: var(--r-xl); overflow: hidden; box-shadow: var(--shadow-lg); }
+
+
+/* ═══ ANIMAZIONI AVANZATE & COLORI ═══ */
+
+/* Gradient text utility */
+.grad-text {
+  background: linear-gradient(135deg, var(--teal) 0%, var(--navy) 60%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ── HERO IMPROVEMENTS ── */
+.hero { background: linear-gradient(160deg, #F0F4F8 0%, var(--bg) 50%, #EBF2F8 100%); }
+.hero::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background:
+    radial-gradient(ellipse 60% 40% at 80% 20%, rgba(61,138,158,.08) 0%, transparent 70%),
+    radial-gradient(ellipse 40% 60% at 10% 80%, rgba(43,70,102,.06) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+/* Hero h1 word animation */
+@keyframes wordSlide {
+  from { opacity: 0; transform: translateY(20px) rotate(-1deg); }
+  to   { opacity: 1; transform: translateY(0) rotate(0deg); }
+}
+.hero h1 { animation: wordSlide .8s cubic-bezier(.34,1.56,.64,1) both .2s; }
+.hero .hero-lead { animation: wordSlide .7s cubic-bezier(.34,1.56,.64,1) both .4s; }
+.hero .hero-cta  { animation: wordSlide .7s cubic-bezier(.34,1.56,.64,1) both .55s; }
+.hero .trust-row { animation: wordSlide .7s cubic-bezier(.34,1.56,.64,1) both .7s; }
+
+/* ── FLOATING ORBS ── */
+.orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(60px);
+  pointer-events: none;
+  z-index: 0;
+}
+.orb-1 {
+  width: 400px; height: 400px;
+  background: radial-gradient(circle, rgba(61,138,158,.12) 0%, transparent 70%);
+  top: -100px; right: -100px;
+  animation: orbFloat1 8s ease-in-out infinite;
+}
+.orb-2 {
+  width: 300px; height: 300px;
+  background: radial-gradient(circle, rgba(78,138,106,.1) 0%, transparent 70%);
+  bottom: 50px; left: -80px;
+  animation: orbFloat2 10s ease-in-out infinite;
+}
+.orb-3 {
+  width: 200px; height: 200px;
+  background: radial-gradient(circle, rgba(196,123,43,.08) 0%, transparent 70%);
+  top: 40%; right: 10%;
+  animation: orbFloat3 7s ease-in-out infinite;
+}
+@keyframes orbFloat1 {
+  0%,100% { transform: translate(0,0) scale(1); }
+  33%      { transform: translate(-30px,20px) scale(1.05); }
+  66%      { transform: translate(20px,-15px) scale(.95); }
+}
+@keyframes orbFloat2 {
+  0%,100% { transform: translate(0,0) scale(1); }
+  50%      { transform: translate(25px,-20px) scale(1.1); }
+}
+@keyframes orbFloat3 {
+  0%,100% { transform: translate(0,0); }
+  50%      { transform: translate(-15px,10px); }
+}
+
+/* ── BAND SCROLL ── */
+.band-track {
+  display: flex;
+  animation: bandScroll 20s linear infinite;
+  width: max-content;
+}
+.band-track:hover { animation-play-state: paused; }
+@keyframes bandScroll {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+/* ── SECTION DECORATORS ── */
+.section-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: linear-gradient(135deg, rgba(61,138,158,.1), rgba(43,70,102,.08));
+  border: 1px solid rgba(61,138,158,.2);
+  border-radius: 100px;
+  padding: 5px 14px;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--teal);
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  margin-bottom: 14px;
+}
+.section-tag::before {
+  content: '';
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--teal);
+  animation: tagPulse 2s ease-in-out infinite;
+}
+@keyframes tagPulse {
+  0%,100% { opacity: 1; transform: scale(1); }
+  50%      { opacity: .5; transform: scale(.7); }
+}
+
+/* ── ENHANCED CARD HOVERS ── */
+.pc, .gc {
+  position: relative;
+  overflow: hidden;
+}
+.pc::before, .gc::before {
+  content: '';
+  position: absolute;
+  top: -2px; left: -2px; right: -2px; bottom: -2px;
+  background: linear-gradient(135deg, var(--teal), var(--navy), var(--sage));
+  border-radius: inherit;
+  opacity: 0;
+  transition: opacity .35s ease;
+  z-index: -1;
+}
+.pc:hover::before, .gc:hover::before { opacity: .12; }
+.pc:hover { border-color: var(--teal) !important; transform: translateY(-6px) scale(1.01) !important; }
+
+/* ── GRADIENT BORDER CARDS ── */
+.pcard {
+  position: relative;
+  background: var(--bg2);
+}
+.pcard::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: linear-gradient(135deg, rgba(61,138,158,0), rgba(43,70,102,0));
+  transition: background .35s ease;
+  pointer-events: none;
+}
+.pcard:hover::after {
+  background: linear-gradient(135deg, rgba(61,138,158,.04), rgba(43,70,102,.06));
+}
+.pcard.feat {
+  background: linear-gradient(160deg, #fff 0%, rgba(61,138,158,.04) 100%);
+}
+
+/* ── NUMBER SECTION GLOW ── */
+.nums-sec {
+  background: linear-gradient(135deg, #1e3554 0%, var(--navy) 40%, #1a3a50 100%);
+  position: relative;
+  overflow: hidden;
+}
+.nums-sec::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 50% 80% at 20% 50%, rgba(61,138,158,.15) 0%, transparent 60%),
+    radial-gradient(ellipse 40% 60% at 80% 50%, rgba(78,138,106,.1) 0%, transparent 60%);
+}
+.nv-val {
+  position: relative;
+  display: inline-block;
+}
+.nv-val::after {
+  content: '';
+  position: absolute;
+  bottom: -4px; left: 50%; transform: translateX(-50%);
+  width: 0; height: 2px;
+  background: linear-gradient(to right, var(--teal-l), transparent);
+  border-radius: 1px;
+  transition: width .6s ease .3s;
+}
+.nv:hover .nv-val::after { width: 80%; }
+
+/* ── PROCESSO STEPS ENHANCED ── */
+.step {
+  position: relative;
+  padding: 24px 20px;
+  background: var(--bg2);
+  border-radius: var(--r-lg);
+  border: 1px solid var(--border-s);
+  transition: transform .3s ease, box-shadow .3s ease, border-color .3s ease;
+}
+.step:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
+  border-color: var(--teal);
+}
+.step-num {
+  background: linear-gradient(135deg, var(--bg-blue), rgba(61,138,158,.15));
+  transition: background .3s ease, transform .3s cubic-bezier(.34,1.56,.64,1);
+}
+.step:hover .step-num {
+  background: linear-gradient(135deg, var(--teal), var(--navy));
+  color: #fff !important;
+  transform: scale(1.1) rotate(-3deg);
+}
+
+/* ── GLOWING BUTTON ── */
+@keyframes glowPulse {
+  0%,100% { box-shadow: 0 0 0 0 rgba(61,138,158,0), 0 4px 15px rgba(43,70,102,.2); }
+  50%      { box-shadow: 0 0 20px 4px rgba(61,138,158,.2), 0 4px 15px rgba(43,70,102,.25); }
+}
+.btn-p { animation: glowPulse 3s ease-in-out infinite; }
+.btn-p:hover { animation: none; box-shadow: 0 8px 30px rgba(43,70,102,.35) !important; }
+
+/* ── TEAL ACCENT LINE ── */
+.accent-line {
+  width: 48px; height: 3px;
+  background: linear-gradient(to right, var(--teal), var(--sage));
+  border-radius: 2px;
+  margin-bottom: 16px;
+  position: relative;
+  overflow: hidden;
+}
+.accent-line::after {
+  content: '';
+  position: absolute;
+  top: 0; left: -100%;
+  width: 100%; height: 100%;
+  background: linear-gradient(to right, transparent, rgba(255,255,255,.6), transparent);
+  animation: shimmer 2.5s ease-in-out infinite;
+}
+@keyframes shimmer {
+  from { left: -100%; }
+  to   { left: 200%; }
+}
+
+/* ── PORTFOLIO CARD SHINE ── */
+.pfc {
+  position: relative;
+  overflow: hidden;
+}
+.pfc::before {
+  content: '';
+  position: absolute;
+  top: 0; left: -75%;
+  width: 50%; height: 100%;
+  background: linear-gradient(to right, transparent, rgba(255,255,255,.08), transparent);
+  transform: skewX(-15deg);
+  transition: left .6s ease;
+  z-index: 1;
+  pointer-events: none;
+}
+.pfc:hover::before { left: 125%; }
+
+/* ── CONTACT SECTION GRADIENT ── */
+.contact-sec {
+  background: linear-gradient(160deg, var(--bg2) 0%, #EDF2F7 100%);
+}
+
+/* ── FAQ ITEM ACCENT ── */
+.faq-item.open .faq-q { color: var(--teal); }
+.faq-item.open .faq-qt { color: var(--navy); }
+.faq-item { border-left: 3px solid transparent; transition: border-color .3s ease; padding-left: 4px; }
+.faq-item.open { border-left-color: var(--teal); }
+
+/* ── CHIP GRADIENT ── */
+.chip {
+  background: linear-gradient(135deg, rgba(61,138,158,.12), rgba(43,70,102,.08));
+  border: 1px solid rgba(61,138,158,.25);
+}
+
+/* ── FOOTER ENHANCED ── */
+footer {
+  background: linear-gradient(160deg, #1e3554 0%, var(--navy) 50%, #162840 100%);
+  position: relative;
+  overflow: hidden;
+}
+footer::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 1px;
+  background: linear-gradient(to right, transparent, rgba(61,138,158,.4), transparent);
+}
+
+/* ── SCROLL PROGRESS BAR ── */
+#scroll-progress {
+  position: fixed;
+  top: 0; left: 0;
+  height: 3px;
+  background: linear-gradient(to right, var(--teal), var(--sage), var(--navy));
+  z-index: 9999;
+  width: 0%;
+  transition: width .1s linear;
+}
+
+/* ── CURSOR GLOW (desktop) ── */
+#cursor-glow {
+  position: fixed;
+  width: 300px; height: 300px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(61,138,158,.06) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+  transform: translate(-50%,-50%);
+  transition: opacity .3s ease;
+}
+
+/* ── HERO STATS PILLS ── */
+.hero-stat {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(255,255,255,.85);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(43,70,102,.12);
+  border-radius: 100px;
+  padding: 6px 14px;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--navy);
+  box-shadow: 0 2px 12px rgba(43,70,102,.08);
+}
+
+/* Animate on reveal */
+@keyframes slideInLeft {
+  from { opacity: 0; transform: translateX(-30px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+@keyframes slideInRight {
+  from { opacity: 0; transform: translateX(30px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes scaleIn {
+  from { opacity: 0; transform: scale(.9); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+/* Service cards colored top border */
+.sc:nth-child(1) { border-top: 3px solid var(--teal); }
+.sc:nth-child(2) { border-top: 3px solid var(--sage); }
+.sc:nth-child(3) { border-top: 3px solid var(--amber); }
+
+/* Pricing featured glow */
+.pcard.feat {
+  animation: featGlow 4s ease-in-out infinite;
+}
+@keyframes featGlow {
+  0%,100% { box-shadow: 0 0 0 3px rgba(61,138,158,.15), var(--shadow-lg); }
+  50%      { box-shadow: 0 0 0 6px rgba(61,138,158,.1), 0 20px 60px rgba(43,70,102,.2); }
+}
+
+/* Guarantee icons colored */
+.g-ico { background: linear-gradient(135deg, var(--bg-blue), rgba(61,138,158,.08)) !important; }
+
+/* About section visual */
+.about-frame {
+  background: linear-gradient(135deg, var(--bg-blue) 0%, rgba(61,138,158,.08) 50%, var(--bg-sage) 100%) !important;
+}
+.about-frame::before {
+  content: '';
+  position: absolute;
+  inset: 20px;
+  border-radius: var(--r-lg);
+  border: 1px dashed rgba(61,138,158,.2);
+  pointer-events: none;
+}
+
+/* Prefers reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .orb, .band-track, .btn-p, .btn-nav, #cursor-glow { animation: none !important; }
+  .section-tag::before { animation: none !important; }
+}
+
+
+/* ═══ ONBOARDING REDESIGN ═══ */
+
+/* Overlay background */
+#ob-ov {
+  background: linear-gradient(160deg, #F0F4F8 0%, var(--bg) 60%, #EBF2F8 100%) !important;
+}
+
+/* Top bar enhanced */
+.ob-top {
+  background: rgba(255,255,255,.92) !important;
+  backdrop-filter: blur(16px) !important;
+  -webkit-backdrop-filter: blur(16px) !important;
+  border-bottom: 1px solid rgba(221,228,234,.6) !important;
+  box-shadow: 0 2px 20px rgba(43,70,102,.06) !important;
+  padding: 14px 40px !important;
+}
+
+/* Progress bar */
+#ob-prog-wrap {
+  background: rgba(255,255,255,.88) !important;
+  backdrop-filter: blur(12px) !important;
+  -webkit-backdrop-filter: blur(12px) !important;
+  border-bottom: 1px solid rgba(221,228,234,.5) !important;
+  padding: 16px 40px 0 !important;
+}
+
+/* Progress fill gradient */
+.progress-bar-fill {
+  background: linear-gradient(to right, var(--teal), var(--navy)) !important;
+  position: relative;
+  overflow: hidden;
+}
+.progress-bar-fill::after {
+  content: '';
+  position: absolute;
+  top: 0; left: -100%;
+  width: 60%; height: 100%;
+  background: linear-gradient(to right, transparent, rgba(255,255,255,.4), transparent);
+  animation: progShimmer 2s ease-in-out infinite;
+}
+@keyframes progShimmer {
+  from { left: -60%; }
+  to   { left: 160%; }
+}
+
+/* Dots */
+.ob-dot.active .ob-dn {
+  background: linear-gradient(135deg, var(--teal), var(--navy)) !important;
+  border-color: transparent !important;
+  box-shadow: 0 3px 12px rgba(61,138,158,.35) !important;
+  transform: scale(1.1);
+}
+.ob-dot.done .ob-dn {
+  background: var(--teal) !important;
+  border-color: transparent !important;
+}
+.ob-dot { transition: all .3s ease; }
+.ob-dot.active { border-bottom-color: var(--teal) !important; }
+
+/* Main content area */
+.ob-main {
+  max-width: 680px !important;
+  padding: 48px 40px 100px !important;
+}
+
+/* Step title - big and beautiful */
+.step-title {
+  font-family: var(--font-d) !important;
+  font-size: clamp(30px, 4vw, 46px) !important;
+  font-weight: 500 !important;
+  color: var(--navy) !important;
+  line-height: 1.12 !important;
+  letter-spacing: -.025em !important;
+  margin-bottom: 10px !important;
+}
+.step-title em {
+  font-style: italic !important;
+  background: linear-gradient(135deg, var(--teal), var(--navy));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Step description */
+.step-desc {
+  font-size: 15px !important;
+  color: var(--text-mid) !important;
+  line-height: 1.75 !important;
+  margin-bottom: 36px !important;
+  max-width: 520px !important;
+}
+
+/* Plan badge */
+.ob-badge {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+  background: linear-gradient(135deg, rgba(61,138,158,.1), rgba(43,70,102,.07)) !important;
+  border: 1px solid rgba(61,138,158,.25) !important;
+  color: var(--navy) !important;
+  border-radius: 100px !important;
+  padding: 6px 16px !important;
+  font-size: 12px !important;
+  font-weight: 700 !important;
+  letter-spacing: .06em !important;
+  margin-bottom: 22px !important;
+}
+
+/* Form fields */
+.field-group { margin-bottom: 18px !important; }
+.field-group label {
+  font-size: 13px !important;
+  font-weight: 700 !important;
+  color: var(--navy) !important;
+  letter-spacing: .02em !important;
+  margin-bottom: 6px !important;
+  display: block !important;
+}
+.field-group input,
+.field-group select,
+.field-group textarea {
+  width: 100% !important;
+  padding: 13px 16px !important;
+  border: 1.5px solid var(--border) !important;
+  border-radius: var(--r-md) !important;
+  background: var(--bg2) !important;
+  font-family: var(--font-b) !important;
+  font-size: 14px !important;
+  color: var(--text) !important;
+  outline: none !important;
+  transition: border-color .25s ease, box-shadow .25s ease, transform .15s ease !important;
+  box-shadow: 0 2px 8px rgba(43,70,102,.04) !important;
+}
+.field-group input:focus,
+.field-group select:focus,
+.field-group textarea:focus {
+  border-color: var(--teal) !important;
+  box-shadow: 0 0 0 4px rgba(61,138,158,.12), 0 2px 8px rgba(43,70,102,.06) !important;
+  background: #fff !important;
+  transform: translateY(-1px) !important;
+}
+.field-group input::placeholder,
+.field-group textarea::placeholder { color: var(--text-muted) !important; }
+.field-group input.error,
+.field-group select.error,
+.field-group textarea.error {
+  border-color: #E24B4A !important;
+  box-shadow: 0 0 0 4px rgba(226,75,74,.08) !important;
+}
+
+/* Grid layouts */
+.row-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 14px !important; }
+
+/* Choice cards - beautiful grid */
+.choices { display: grid; gap: 12px; margin-bottom: 24px; }
+.choices.col-2 { grid-template-columns: 1fr 1fr !important; }
+.choices.col-3 { grid-template-columns: repeat(3, 1fr) !important; }
+
+.choice-card {
+  border: 2px solid var(--border) !important;
+  border-radius: var(--r-lg) !important;
+  padding: 20px 18px !important;
+  cursor: pointer !important;
+  transition: all .25s cubic-bezier(.34,1.56,.64,1) !important;
+  background: var(--bg2) !important;
+  position: relative !important;
+  overflow: hidden !important;
+}
+.choice-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(61,138,158,.06), rgba(43,70,102,.04));
+  opacity: 0;
+  transition: opacity .25s ease;
+}
+.choice-card:hover {
+  border-color: var(--teal) !important;
+  transform: translateY(-3px) scale(1.01) !important;
+  box-shadow: 0 8px 24px rgba(43,70,102,.12) !important;
+}
+.choice-card:hover::before { opacity: 1; }
+.choice-card.selected {
+  border-color: var(--navy) !important;
+  background: linear-gradient(135deg, rgba(61,138,158,.06), rgba(43,70,102,.04)) !important;
+  box-shadow: 0 4px 16px rgba(43,70,102,.15) !important;
+}
+.choice-card.selected::after {
+  content: '✓';
+  position: absolute !important;
+  top: 10px; right: 12px !important;
+  width: 22px; height: 22px !important;
+  border-radius: 50% !important;
+  background: linear-gradient(135deg, var(--teal), var(--navy)) !important;
+  color: #fff !important;
+  font-size: 11px !important;
+  font-weight: 700 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+.choice-emoji { font-size: 26px !important; margin-bottom: 10px !important; display: block !important; }
+.choice-title { font-size: 14px !important; font-weight: 700 !important; color: var(--navy) !important; display: block !important; margin-bottom: 4px !important; }
+.choice-desc { font-size: 12px !important; color: var(--text-muted) !important; line-height: 1.55 !important; }
+
+/* Checklist items */
+.check-item {
+  display: flex !important;
+  align-items: flex-start !important;
+  gap: 14px !important;
+  padding: 14px 18px !important;
+  background: var(--bg2) !important;
+  border: 1.5px solid var(--border-s) !important;
+  border-radius: var(--r-md) !important;
+  cursor: pointer !important;
+  transition: all .2s ease !important;
+  margin-bottom: 10px !important;
+}
+.check-item:hover {
+  border-color: var(--teal) !important;
+  background: var(--bg-blue) !important;
+  transform: translateX(3px) !important;
+}
+.check-item.checked {
+  border-color: var(--teal) !important;
+  background: linear-gradient(135deg, rgba(61,138,158,.06), rgba(43,70,102,.03)) !important;
+}
+.check-item input[type=checkbox] {
+  width: 18px !important; height: 18px !important;
+  accent-color: var(--teal) !important;
+  flex-shrink: 0 !important;
+}
+.check-item-text strong {
+  font-size: 14px !important;
+  font-weight: 700 !important;
+  color: var(--navy) !important;
+  display: block !important;
+  margin-bottom: 2px !important;
+}
+
+/* Upload zone */
+.upload-zone {
+  border: 2px dashed var(--border) !important;
+  border-radius: var(--r-lg) !important;
+  padding: 32px 24px !important;
+  text-align: center !important;
+  cursor: pointer !important;
+  transition: all .25s ease !important;
+  background: var(--bg) !important;
+  position: relative !important;
+}
+.upload-zone:hover {
+  border-color: var(--teal) !important;
+  background: var(--bg-blue) !important;
+  transform: translateY(-2px) !important;
+}
+
+/* Navigation buttons */
+.ob-nav {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  margin-top: 32px !important;
+  padding-top: 24px !important;
+  border-top: 1px solid var(--border-s) !important;
+  gap: 12px !important;
+}
+.ob-nav .btn-back-step {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 7px !important;
+  font-size: 14px !important;
+  font-weight: 600 !important;
+  color: var(--text-muted) !important;
+  background: none !important;
+  border: 1.5px solid var(--border) !important;
+  padding: 12px 22px !important;
+  border-radius: 100px !important;
+  cursor: pointer !important;
+  font-family: var(--font-b) !important;
+  transition: all .2s ease !important;
+}
+.ob-nav .btn-back-step:hover { color: var(--navy) !important; border-color: var(--navy) !important; }
+.ob-nav .btn-next-step {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+  background: linear-gradient(135deg, var(--teal), var(--navy)) !important;
+  color: #fff !important;
+  font-size: 14px !important;
+  font-weight: 700 !important;
+  padding: 13px 28px !important;
+  border-radius: 100px !important;
+  border: none !important;
+  cursor: pointer !important;
+  font-family: var(--font-b) !important;
+  transition: all .25s cubic-bezier(.34,1.56,.64,1) !important;
+  box-shadow: 0 4px 16px rgba(43,70,102,.25) !important;
+  flex: 1 !important;
+  justify-content: center !important;
+  max-width: 280px !important;
+  margin-left: auto !important;
+}
+.ob-nav .btn-next-step:hover {
+  transform: translateY(-2px) !important;
+  box-shadow: 0 8px 28px rgba(43,70,102,.35) !important;
+}
+.ob-nav .btn-next-step:active { transform: scale(.97) !important; }
+
+/* Submit button */
+#ob-sub-btn {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 10px !important;
+  width: 100% !important;
+  padding: 16px !important;
+  background: linear-gradient(135deg, var(--teal), var(--navy)) !important;
+  color: #fff !important;
+  font-family: var(--font-b) !important;
+  font-size: 16px !important;
+  font-weight: 700 !important;
+  border: none !important;
+  border-radius: 100px !important;
+  cursor: pointer !important;
+  transition: all .25s ease !important;
+  box-shadow: 0 6px 24px rgba(43,70,102,.3) !important;
+  margin-top: 8px !important;
+}
+#ob-sub-btn:hover {
+  transform: translateY(-2px) !important;
+  box-shadow: 0 10px 32px rgba(43,70,102,.4) !important;
+}
+
+/* Color pickers */
+.cp-item input[type=color] {
+  width: 52px !important; height: 52px !important;
+  border-radius: var(--r-md) !important;
+  border: 2px solid var(--border) !important;
+  cursor: pointer !important;
+  padding: 3px !important;
+  transition: transform .2s ease, box-shadow .2s ease !important;
+}
+.cp-item input[type=color]:hover {
+  transform: scale(1.1) !important;
+  box-shadow: var(--shadow-md) !important;
+}
+
+/* Ref list */
+.ref-row input {
+  padding: 11px 14px !important;
+  border: 1.5px solid var(--border) !important;
+  border-radius: var(--r-md) !important;
+  font-family: var(--font-b) !important;
+  font-size: 14px !important;
+  outline: none !important;
+  flex: 1 !important;
+  transition: border-color .2s !important;
+}
+.ref-row input:focus { border-color: var(--teal) !important; }
+.add-ref {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 6px !important;
+  width: 100% !important;
+  padding: 10px !important;
+  border: 1.5px dashed var(--border) !important;
+  border-radius: var(--r-md) !important;
+  background: none !important;
+  color: var(--teal) !important;
+  font-size: 13px !important;
+  font-weight: 600 !important;
+  cursor: pointer !important;
+  font-family: var(--font-b) !important;
+  transition: all .2s ease !important;
+  margin-top: 8px !important;
+}
+.add-ref:hover { border-color: var(--teal) !important; background: var(--bg-blue) !important; }
+
+/* Urgency slider */
+input[type=range] {
+  width: 100% !important;
+  accent-color: var(--teal) !important;
+  height: 6px !important;
+  border-radius: 3px !important;
+}
+#ob-urgency {
+  display: inline-block !important;
+  background: linear-gradient(135deg, var(--bg-blue), rgba(61,138,158,.08)) !important;
+  border: 1px solid rgba(61,138,158,.2) !important;
+  border-radius: var(--r-md) !important;
+  padding: 8px 16px !important;
+  font-size: 14px !important;
+  font-weight: 600 !important;
+  color: var(--navy) !important;
+  margin-top: 10px !important;
+}
+
+/* Success screen */
+#ob-success {
+  background: linear-gradient(160deg, rgba(61,138,158,.04), rgba(78,138,106,.04)) !important;
+  border-radius: var(--r-xl) !important;
+  margin: 40px !important;
+  padding: 60px 40px !important;
+}
+
+/* Close button */
+.ob-close {
+  background: rgba(255,255,255,.8) !important;
+  backdrop-filter: blur(8px) !important;
+  font-size: 13px !important;
+  font-weight: 600 !important;
+  color: var(--text-mid) !important;
+  border: 1.5px solid var(--border) !important;
+  padding: 9px 20px !important;
+  border-radius: 100px !important;
+  cursor: pointer !important;
+  font-family: var(--font-b) !important;
+  transition: all .2s ease !important;
+}
+.ob-close:hover { color: var(--navy) !important; border-color: var(--navy) !important; background: #fff !important; }
+
+/* OB step animation */
+.ob-step.active {
+  animation: obStepIn .4s cubic-bezier(.34,1.56,.64,1) both !important;
+}
+@keyframes obStepIn {
+  from { opacity: 0; transform: translateX(20px) scale(.98); }
+  to   { opacity: 1; transform: translateX(0) scale(1); }
+}
+
+/* Hint text */
+.hint {
+  font-size: 12px !important;
+  color: var(--text-muted) !important;
+  line-height: 1.5 !important;
+  margin-top: 4px !important;
+}
+
+/* Section dividers inside steps */
+.step-section-title {
+  font-size: 11px !important;
+  font-weight: 700 !important;
+  letter-spacing: .1em !important;
+  text-transform: uppercase !important;
+  color: var(--text-muted) !important;
+  margin: 28px 0 14px !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 10px !important;
+}
+.step-section-title::after {
+  content: '' !important;
+  flex: 1 !important;
+  height: 1px !important;
+  background: var(--border) !important;
+}
+
+/* Mobile OB */
+@media (max-width: 768px) {
+  .ob-top { padding: 12px 20px !important; }
+  #ob-prog-wrap { padding: 14px 20px 0 !important; }
+  .ob-main { padding: 28px 20px 80px !important; }
+  .choices.col-2, .choices.col-3 { grid-template-columns: 1fr 1fr !important; }
+  .row-2 { grid-template-columns: 1fr !important; }
+  .ob-nav .btn-next-step { max-width: 100% !important; }
+  #ob-success { margin: 20px !important; padding: 40px 20px !important; }
+}
+@media (max-width: 480px) {
+  .choices.col-2, .choices.col-3 { grid-template-columns: 1fr !important; }
+}
+
+
+/* ═══ EARLY BIRD PROMO ═══ */
+#eb-banner {
+  background: linear-gradient(135deg, #1e3554 0%, var(--navy) 40%, #2a5a7a 100%);
+  color: #fff;
+  text-align: center;
+  padding: 10px 20px;
+  font-family: var(--font-b);
+  font-size: 14px;
+  font-weight: 600;
+  position: relative;
+  z-index: 200;
+  overflow: hidden;
+}
+#eb-banner::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,.05), transparent);
+  animation: bannerShine 3s ease-in-out infinite;
+}
+@keyframes bannerShine { from{transform:translateX(-100%)} to{transform:translateX(100%)} }
+#eb-banner .eb-tag {
+  display: inline-flex; align-items: center; gap: 6px;
+  background: rgba(255,255,255,.15); border: 1px solid rgba(255,255,255,.25);
+  border-radius: 100px; padding: 3px 12px; font-size: 11px; font-weight: 800;
+  letter-spacing: .08em; margin-right: 10px; color: #FFD700;
+}
+.eb-countdown {
+  display: inline-flex; align-items: center; gap: 4px;
+  background: rgba(255,255,255,.12); border-radius: 100px;
+  padding: 3px 12px; font-size: 12px; margin-left: 10px;
+}
+.eb-close {
+  position: absolute; right: 16px; top: 50%; transform: translateY(-50%);
+  background: none; border: none; color: rgba(255,255,255,.6);
+  cursor: pointer; font-size: 18px; line-height: 1; padding: 4px;
+  transition: color .2s; font-family: var(--font-b);
+}
+.eb-close:hover { color: #fff; }
+#eb-cta-link {
+  color: #FFD700; font-weight: 800; text-decoration: none;
+  margin-left: 6px; border-bottom: 1px solid rgba(255,215,0,.4);
+}
+#eb-cta-link:hover { border-color: #FFD700; }
+.eb-num { font-family: var(--font-d); font-size: 15px; font-weight: 600; color: #FFD700; }
+
+/* Promo badge */
+.promo-badge {
+  display: inline-flex; align-items: center; gap: 5px;
+  background: linear-gradient(135deg, #FFD700, #FFA500);
+  color: #1a1a1a; font-size: 11px; font-weight: 800;
+  letter-spacing: .05em; border-radius: 100px; padding: 4px 12px;
+  margin-bottom: 8px; box-shadow: 0 2px 10px rgba(255,165,0,.35);
+  animation: badgePulse 2.5s ease-in-out infinite;
+}
+@keyframes badgePulse {
+  0%,100% { box-shadow: 0 2px 10px rgba(255,165,0,.3); }
+  50%      { box-shadow: 0 4px 20px rgba(255,165,0,.6); }
+}
+.price-original {
+  font-family: var(--font-d); font-size: 16px;
+  color: var(--text-muted); text-decoration: line-through;
+  display: block; margin-bottom: 2px;
+}
+.price-savings {
+  background: rgba(78,138,106,.12); color: var(--sage);
+  font-size: 11px; font-weight: 700; border-radius: 100px;
+  padding: 2px 8px; margin-left: 6px;
+}
+
+/* Popup */
+#eb-popup {
+  position: fixed; inset: 0; z-index: 5000;
+  background: rgba(28,45,62,.65);
+  display: none; align-items: center; justify-content: center; padding: 20px;
+  opacity: 0; transition: opacity .4s ease;
+}
+#eb-popup.show { opacity: 1; }
+.eb-popup-card {
+  background: var(--bg2); border-radius: var(--r-xl);
+  max-width: 460px; width: 100%; overflow: hidden;
+  box-shadow: 0 24px 80px rgba(28,45,62,.4);
+  transform: translateY(20px) scale(.96);
+  transition: transform .4s cubic-bezier(.34,1.56,.64,1);
+  position: relative;
+}
+#eb-popup.show .eb-popup-card { transform: translateY(0) scale(1); }
+.eb-popup-top {
+  background: linear-gradient(135deg, #1e3554, var(--navy));
+  padding: 32px 28px 24px; text-align: center; position: relative;
+}
+.eb-popup-ico { font-size: 44px; margin-bottom: 10px; display: block; }
+.eb-popup-top h2 {
+  font-family: var(--font-d); font-size: 26px; font-weight: 500;
+  color: #fff; margin-bottom: 8px; line-height: 1.2;
+}
+.eb-popup-top h2 em { font-style: italic; color: #FFD700; }
+.eb-popup-top p { font-size: 14px; color: rgba(255,255,255,.75); line-height: 1.65; }
+.eb-popup-close {
+  position: absolute; top: 12px; right: 14px;
+  background: rgba(255,255,255,.15); border: none; color: rgba(255,255,255,.8);
+  width: 28px; height: 28px; border-radius: 50%; cursor: pointer;
+  font-size: 14px; display: flex; align-items: center; justify-content: center;
+  font-family: var(--font-b);
+}
+.eb-popup-body { padding: 24px 28px; }
+.eb-popup-plans { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 18px; }
+.eb-pp {
+  background: var(--bg); border-radius: var(--r-md);
+  border: 1px solid var(--border-s); padding: 12px; text-align: center;
+}
+.eb-pp-name { font-size: 10px; font-weight: 700; color: var(--teal); letter-spacing: .06em; margin-bottom: 3px; }
+.eb-pp-old { font-size: 11px; color: var(--text-muted); text-decoration: line-through; }
+.eb-pp-price { font-family: var(--font-d); font-size: 19px; font-weight: 500; color: var(--navy); }
+.eb-popup-btn {
+  display: flex; align-items: center; justify-content: center; gap: 8px;
+  width: 100%; padding: 13px; margin-bottom: 10px;
+  background: linear-gradient(135deg, var(--teal), var(--navy));
+  color: #fff; font-family: var(--font-b); font-size: 15px; font-weight: 700;
+  border: none; border-radius: 100px; cursor: pointer;
+  transition: all .25s ease; box-shadow: 0 6px 20px rgba(43,70,102,.3);
+}
+.eb-popup-btn:hover { transform: translateY(-2px); box-shadow: 0 10px 28px rgba(43,70,102,.4); }
+.eb-popup-skip {
+  display: block; width: 100%; text-align: center; font-size: 13px;
+  color: var(--text-muted); cursor: pointer; background: none;
+  border: none; font-family: var(--font-b); transition: color .2s;
+}
+.eb-popup-skip:hover { color: var(--navy); }
+.eb-deadline-note {
+  text-align: center; font-size: 12px; color: var(--text-muted);
+  margin-bottom: 14px; display: flex; align-items: center;
+  justify-content: center; gap: 5px;
+}
+
 </style>
 </head>
 <body>
+<div id="scroll-progress"></div>
+
+<!-- EARLY BIRD BANNER -->
+<div id="eb-banner">
+  <span class="eb-tag">🐦 EARLY BIRD</span>
+  <strong>-€200 su tutti i piani</strong> — Offerta valida fino al 22 novembre 2026
+  <a href="#prezzi" onclick="smoothTo('prezzi');" id="eb-cta-link">Approfitta ora →</a>
+  <span class="eb-countdown">⏱ <span id="eb-days" class="eb-num">--</span>g <span id="eb-hrs" class="eb-num">--</span>h <span id="eb-min" class="eb-num">--</span>m</span>
+  <button class="eb-close" onclick="closeEbBanner();">✕</button>
+</div>
+
+<div id="cursor-glow"></div>
+
+
+<!-- EARLY BIRD POPUP -->
+<div id="eb-popup" onclick="closeEbPopupOutside(event);">
+  <div class="eb-popup-card">
+    <div class="eb-popup-top">
+      <button class="eb-popup-close" onclick="closeEbPopup();">✕</button>
+      <span class="eb-popup-ico">🐦</span>
+      <h2>Early Bird:<br><em>-€200</em> su tutto!</h2>
+      <p>Prenota il tuo sito entro il <strong style="color:#FFD700;">22 novembre 2026</strong> e risparmi €200 su qualsiasi piano.</p>
+    </div>
+    <div class="eb-popup-body">
+      <div class="eb-deadline-note">📅 Scade il 22 novembre 2026</div>
+      <div class="eb-popup-plans">
+        <div class="eb-pp"><div class="eb-pp-name">⚡ Starter</div><div class="eb-pp-old">€990</div><div class="eb-pp-price">€790</div></div>
+        <div class="eb-pp"><div class="eb-pp-name">💼 Vetrina Pro</div><div class="eb-pp-old">€1.790</div><div class="eb-pp-price">€1.590</div></div>
+        <div class="eb-pp"><div class="eb-pp-name">🍽️ Ristorante</div><div class="eb-pp-old">€2.490</div><div class="eb-pp-price">€2.290</div></div>
+        <div class="eb-pp"><div class="eb-pp-name">🛒 Shop Online</div><div class="eb-pp-old">€3.690</div><div class="eb-pp-price">€3.490</div></div>
+      </div>
+      <button class="eb-popup-btn" onclick="closeEbPopup();smoothTo('prezzi');">🚀 Scegli il tuo piano →</button>
+      <button class="eb-popup-skip" onclick="closeEbPopup();">No grazie, continuo senza sconto</button>
+    </div>
+  </div>
+</div>
 
 <!-- COOKIE BANNER -->
 <div id="ck-banner">
@@ -459,7 +1599,7 @@ footer ul li a:hover{color:#fff}
 
 <!-- HERO -->
 <section class="hero">
-  <div class="hero-bg1"></div><div class="hero-bg2"></div>
+  <div class="orb orb-1"></div><div class="orb orb-2"></div><div class="orb orb-3"></div>
   <div class="container">
     <div class="hero-inner">
       <div>
@@ -478,6 +1618,14 @@ footer ul li a:hover{color:#fff}
       </div>
       <div class="hero-visual rv d2" style="position:relative;">
         <div class="fb f1"><span style="font-size:17px;">📈</span><div><div style="font-size:10px;color:var(--text-muted);font-weight:500;">Prenotazioni</div><span class="fv" style="color:var(--sage);">+210%</span></div></div>
+        <div style="position:relative;border-radius:var(--r-xl);overflow:hidden;margin-bottom:16px;box-shadow:var(--shadow-lg);">
+          <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=1200&q=80&fit=crop" alt="Sviluppo siti web professionali" style="width:100%;height:220px;object-fit:cover;display:block;" loading="eager">
+          <div style="position:absolute;inset:0;background:linear-gradient(to bottom,transparent 40%,rgba(43,70,102,.7));"></div>
+          <div style="position:absolute;bottom:16px;left:18px;right:18px;">
+            <div style="font-family:var(--font-d);font-size:15px;font-weight:500;color:#fff;margin-bottom:4px;">Siti che portano clienti reali</div>
+            <div style="font-size:12px;color:rgba(255,255,255,.8);">Design professionale · Webflow · Verona</div>
+          </div>
+        </div>
         <div class="hcard">
           <div class="hc-head"><div class="hc-av">B</div><div><div class="hc-t">Ristorante Da Marco</div><div class="hc-s">Dashboard · Marzo 2025</div></div></div>
           <div class="hc-metrics">
@@ -498,15 +1646,24 @@ footer ul li a:hover{color:#fff}
 
 <!-- BAND -->
 <div class="band">
-  <div class="band-in">
-    <span class="band-lbl">Scelti da</span>
-    <div style="width:1px;height:20px;background:var(--border);"></div>
-    <div style="display:flex;gap:24px;flex-wrap:wrap;">
-      <div class="bl"><span>🍽️</span>Osteria del Centro</div>
-      <div class="bl"><span>⚖️</span>Studio Legale Bianchi</div>
-      <div class="bl"><span>📐</span>Studio Archi Milano</div>
-      <div class="bl"><span>🛍️</span>Atelier Rossi</div>
-      <div class="bl"><span>📷</span>Foto Studio Verona</div>
+  <div style="max-width:1140px;margin:0 auto;padding:0 32px;display:flex;align-items:center;gap:20px;overflow:hidden;">
+    <span class="band-lbl" style="white-space:nowrap;">Scelti da</span>
+    <div style="width:1px;height:20px;background:var(--border);flex-shrink:0;"></div>
+    <div style="overflow:hidden;flex:1;mask-image:linear-gradient(to right,transparent,black 10%,black 90%,transparent);">
+      <div class="band-track">
+        <div class="bl" style="margin-right:40px;"><span>🍽️</span>Osteria del Centro</div>
+        <div class="bl" style="margin-right:40px;"><span>⚖️</span>Studio Legale Bianchi</div>
+        <div class="bl" style="margin-right:40px;"><span>📐</span>Studio Archi Milano</div>
+        <div class="bl" style="margin-right:40px;"><span>🛍️</span>Atelier Rossi</div>
+        <div class="bl" style="margin-right:40px;"><span>📷</span>Foto Studio Verona</div>
+        <div class="bl" style="margin-right:40px;"><span>🏥</span>Studio Medico Ferrari</div>
+        <div class="bl" style="margin-right:40px;"><span>🍽️</span>Osteria del Centro</div>
+        <div class="bl" style="margin-right:40px;"><span>⚖️</span>Studio Legale Bianchi</div>
+        <div class="bl" style="margin-right:40px;"><span>📐</span>Studio Archi Milano</div>
+        <div class="bl" style="margin-right:40px;"><span>🛍️</span>Atelier Rossi</div>
+        <div class="bl" style="margin-right:40px;"><span>📷</span>Foto Studio Verona</div>
+        <div class="bl" style="margin-right:40px;"><span>🏥</span>Studio Medico Ferrari</div>
+      </div>
     </div>
   </div>
 </div>
@@ -569,16 +1726,28 @@ footer ul li a:hover{color:#fff}
     </div>
     <div class="srv-cards">
       <div class="sc rv">
+        <div style="height:180px;overflow:hidden;position:relative;">
+          <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=800&q=80&fit=crop" alt="Siti web per ristoranti" style="width:100%;height:100%;object-fit:cover;display:block;transition:transform .4s ease;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+          <div style="position:absolute;inset:0;background:linear-gradient(to bottom,transparent 50%,rgba(43,70,102,.6));"></div>
+        </div>
         <div class="sc-head"><span class="sc-emoji">🍽️</span><div class="sc-cat">Ristoranti & Locali</div><h3>Porta i tavoli sempre pieni.</h3></div>
         <div class="sc-body"><p>Un sito che trasforma le visite online in prenotazioni reali. Con menù QR digitale e integrazione con i sistemi di prenotazione più usati.</p>
         <ul class="sc-list"><li><div class="sc-ck">✓</div>Menù QR digitale aggiornabile</li><li><div class="sc-ck">✓</div>Sistema prenotazioni (OpenTable, TheFork)</li><li><div class="sc-ck">✓</div>Scheda Google Maps ottimizzata</li><li><div class="sc-ck">✓</div>Galleria foto locale e piatti</li><li><div class="sc-ck">✓</div>Velocità mobile garantita</li></ul></div>
       </div>
       <div class="sc rv d1">
+        <div style="height:180px;overflow:hidden;position:relative;">
+          <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=800&q=80&fit=crop" alt="Siti e-commerce professionali" style="width:100%;height:100%;object-fit:cover;display:block;transition:transform .4s ease;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+          <div style="position:absolute;inset:0;background:linear-gradient(to bottom,transparent 50%,rgba(43,70,102,.6));"></div>
+        </div>
         <div class="sc-head"><span class="sc-emoji">🛒</span><div class="sc-cat">E-commerce</div><h3>Vendi online, anche di notte.</h3></div>
         <div class="sc-body"><p>Negozio online professionale con design che ispira fiducia, checkout semplice e gestione prodotti intuitiva anche per chi non è tecnico.</p>
         <ul class="sc-list"><li><div class="sc-ck">✓</div>Schede prodotto ad alta conversione</li><li><div class="sc-ck">✓</div>Pagamenti Stripe, PayPal, Klarna</li><li><div class="sc-ck">✓</div>Gestione ordini e inventario</li><li><div class="sc-ck">✓</div>SEO prodotti e categorie</li><li><div class="sc-ck">✓</div>Integrazione corrieri automatica</li></ul></div>
       </div>
       <div class="sc rv d2">
+        <div style="height:180px;overflow:hidden;position:relative;">
+          <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=800&q=80&fit=crop" alt="Siti web per professionisti" style="width:100%;height:100%;object-fit:cover;display:block;transition:transform .4s ease;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+          <div style="position:absolute;inset:0;background:linear-gradient(to bottom,transparent 50%,rgba(43,70,102,.6));"></div>
+        </div>
         <div class="sc-head"><span class="sc-emoji">💼</span><div class="sc-cat">Professionisti</div><h3>Il tuo miglior commerciale, sempre online.</h3></div>
         <div class="sc-body"><p>Per avvocati, architetti, consulenti, fotografi. Un sito che comunica serietà e genera contatti qualificati ogni giorno.</p>
         <ul class="sc-list"><li><div class="sc-ck">✓</div>Design su misura per il settore</li><li><div class="sc-ck">✓</div>Portfolio e galleria lavori</li><li><div class="sc-ck">✓</div>Prenotazione appuntamenti online</li><li><div class="sc-ck">✓</div>Blog e articoli SEO</li><li><div class="sc-ck">✓</div>Form contatti intelligenti</li></ul></div>
@@ -637,14 +1806,14 @@ footer ul li a:hover{color:#fff}
     </div>
     <div class="pz-grid">
       <div class="pcard rv">
-        <div class="pc-top"><span class="pc-emoji">⚡</span><div class="pc-cat">Per iniziare</div><h3>Starter</h3><p style="font-size:12px;color:var(--text-muted);">One-page, veloce da lanciare</p></div>
-        <div class="pc-pricing"><div class="price-new">€990</div><p class="price-note">Pagamento unico · IVA esclusa</p></div>
+        <div class="pc-top"><span class="promo-badge">🐦 Early Bird −€200</span><br><span class="pc-emoji">⚡</span><div class="pc-cat">Per iniziare</div><h3>Starter</h3><p style="font-size:12px;color:var(--text-muted);">One-page, veloce da lanciare</p></div>
+        <div class="pc-pricing"><span class="price-original">€990</span><div class="price-new">€790 <span class="price-savings">−€200</span></div><p class="price-note">Pagamento unico · IVA esclusa</p></div>
         <div class="pc-body"><ul class="pc-feats"><li><div class="pf-ck">✓</div>1 pagina completa (one-page)</li><li><div class="pf-ck">✓</div>Design professionale su misura</li><li><div class="pf-ck">✓</div>Form contatto + Google Analytics</li><li><div class="pf-ck">✓</div>SEO base configurata</li><li><div class="pf-ck">✓</div>Consegna in 7-10 giorni</li></ul>
         <button class="pcard-cta" onclick="openOnboarding('starter')">Inizia con Starter →</button></div>
       </div>
       <div class="pcard rv d1">
-        <div class="pc-top"><span class="pc-emoji">💼</span><div class="pc-cat">Professionisti</div><h3>Vetrina Pro</h3><p style="font-size:12px;color:var(--text-muted);">Portfolio, studi, consulenti</p></div>
-        <div class="pc-pricing"><div class="price-new">€1.790</div><p class="price-note">Pagamento in 2 rate · IVA esclusa</p></div>
+        <div class="pc-top"><span class="promo-badge">🐦 Early Bird −€200</span><br><span class="pc-emoji">💼</span><div class="pc-cat">Professionisti</div><h3>Vetrina Pro</h3><p style="font-size:12px;color:var(--text-muted);">Portfolio, studi, consulenti</p></div>
+        <div class="pc-pricing"><span class="price-original">€1.790</span><div class="price-new">€1.590 <span class="price-savings">−€200</span></div><p class="price-note">Pagamento in 2 rate · IVA esclusa</p></div>
         <div class="pc-body"><ul class="pc-feats"><li><div class="pf-ck">✓</div>Fino a 8 pagine personalizzate</li><li><div class="pf-ck">✓</div>Portfolio e galleria lavori</li><li><div class="pf-ck">✓</div>Blog con CMS gestibile da solo</li><li><div class="pf-ck">✓</div>SEO avanzata + Analytics</li><li><div class="pf-ck">✓</div>Hosting Webflow 1° anno incluso</li></ul>
         <button class="pcard-cta" onclick="openOnboarding('vetrina')">Scegli Vetrina Pro →</button></div>
       </div>
@@ -655,8 +1824,8 @@ footer ul li a:hover{color:#fff}
         <button class="pcard-cta" onclick="openOnboarding('ristorante')">Scegli Ristorante →</button></div>
       </div>
       <div class="pcard rv d3">
-        <div class="pc-top"><span class="pc-emoji">🛒</span><div class="pc-cat">E-commerce</div><h3>Shop Online</h3><p style="font-size:12px;color:var(--text-muted);">Negozio completo, pronto a vendere</p></div>
-        <div class="pc-pricing"><div class="price-new">€3.690</div><p class="price-note">Pagamento in 3 rate · IVA esclusa</p></div>
+        <div class="pc-top"><span class="promo-badge">🐦 Early Bird −€200</span><br><span class="pc-emoji">🛒</span><div class="pc-cat">E-commerce</div><h3>Shop Online</h3><p style="font-size:12px;color:var(--text-muted);">Negozio completo, pronto a vendere</p></div>
+        <div class="pc-pricing"><span class="price-original">€3.690</span><div class="price-new">€3.490 <span class="price-savings">−€200</span></div><p class="price-note">Pagamento in 3 rate · IVA esclusa</p></div>
         <div class="pc-body"><ul class="pc-feats"><li><div class="pf-ck">✓</div>Tutto del piano Vetrina Pro</li><li><div class="pf-ck">✓</div>Fino a 100 prodotti caricati</li><li><div class="pf-ck">✓</div>Stripe, PayPal, Klarna, Scalapay</li><li><div class="pf-ck">✓</div>Gestione ordini e spedizioni</li><li><div class="pf-ck">✓</div>SEO prodotti e categorie</li></ul>
         <button class="pcard-cta" onclick="openOnboarding('shop')">Scegli Shop Online →</button></div>
       </div>
@@ -726,39 +1895,52 @@ footer ul li a:hover{color:#fff}
     </div>
     <div class="pf-grid">
       <div class="pfc rv">
-        <div class="pfc-vis" style="background:linear-gradient(135deg,#E8F4EE,#D0EDD8);">
-          <div class="pfc-bar"><div class="pfc-dot" style="background:#FF5F57;"></div><div class="pfc-dot" style="background:#FFBD2E;"></div><div class="pfc-dot" style="background:#28C840;"></div><div class="pfc-url">ristorantedamarco.it</div></div>
-          <div class="pfc-mock">
-            <div style="height:50px;border-radius:8px;background:linear-gradient(135deg,#3D5A40,#5A8A60);display:flex;align-items:center;justify-content:center;"><span style="color:rgba(255,255,255,.9);font-family:var(--font-d);font-size:13px;">Ristorante Da Marco</span></div>
-            <div style="display:flex;gap:7px;"><div style="background:var(--teal);border-radius:100px;padding:5px 12px;font-size:8px;color:#fff;font-weight:700;">Prenota un tavolo</div><div style="border:1px solid var(--border);border-radius:100px;padding:5px 12px;font-size:8px;color:var(--text-mid);font-weight:600;">Vedi il menù</div></div>
-            <div style="display:flex;gap:5px;"><div style="flex:1;height:38px;border-radius:7px;background:rgba(255,255,255,.6);"></div><div style="flex:1;height:38px;border-radius:7px;background:rgba(255,255,255,.6);"></div><div style="width:38px;height:38px;border-radius:7px;background:var(--navy);display:grid;grid-template-columns:1fr 1fr;gap:3px;padding:5px;"><div style="background:rgba(255,255,255,.8);border-radius:1px;"></div><div style="background:rgba(255,255,255,.8);border-radius:1px;"></div><div style="background:rgba(255,255,255,.8);border-radius:1px;"></div><div style="background:rgba(255,255,255,.8);border-radius:1px;"></div></div></div>
+        <div class="pfc-vis" style="background:#1a1a1a;position:relative;overflow:hidden;">
+          <img src="https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?w=800&q=80&fit=crop" alt="Portfolio sito ristorante" style="width:100%;height:100%;object-fit:cover;display:block;opacity:.7;transition:opacity .3s;">
+          <div style="position:absolute;inset:0;background:linear-gradient(to bottom,transparent 30%,rgba(0,0,0,.65));"></div>
+          <div style="position:absolute;top:10px;left:10px;right:10px;background:rgba(255,255,255,.12);backdrop-filter:blur(8px);border-radius:8px;padding:6px 10px;display:flex;align-items:center;gap:5px;">
+            <div style="width:7px;height:7px;border-radius:50%;background:#FF5F57;"></div>
+            <div style="width:7px;height:7px;border-radius:50%;background:#FFBD2E;"></div>
+            <div style="width:7px;height:7px;border-radius:50%;background:#28C840;"></div>
+            <div style="flex:1;height:12px;background:rgba(255,255,255,.2);border-radius:3px;margin:0 6px;font-size:9px;color:rgba(255,255,255,.8);display:flex;align-items:center;padding:0 6px;">ristorantedamarco.it</div>
+          </div>
+          <div style="position:absolute;bottom:14px;left:14px;">
+            <div style="font-family:var(--font-d);font-size:13px;font-weight:500;color:#fff;margin-bottom:5px;">Ristorante Da Marco</div>
+            <div style="background:var(--teal);border-radius:100px;padding:4px 12px;font-size:9px;color:#fff;font-weight:700;display:inline-block;">Prenota un tavolo →</div>
           </div>
         </div>
         <div class="pfc-info"><div class="pfc-meta"><span class="pfc-cat">🍽️ Ristorante</span><span class="pfc-res">+210% prenotazioni</span></div><h3>Ristorante Da Marco</h3><p>Sito con menù QR digitale, sistema prenotazioni integrato e SEO locale. Il titolare aggiorna il menù da solo.</p><div class="pfc-pills"><span class="pfc-pill">Webflow CMS</span><span class="pfc-pill">Menù QR</span><span class="pfc-pill">SEO locale</span></div></div>
       </div>
       <div class="pfc rv d1">
-        <div class="pfc-vis" style="background:linear-gradient(135deg,#E8F0FB,#D0DFF0);">
-          <div class="pfc-bar"><div class="pfc-dot" style="background:#FF5F57;"></div><div class="pfc-dot" style="background:#FFBD2E;"></div><div class="pfc-dot" style="background:#28C840;"></div><div class="pfc-url">studiolongoarchitettura.it</div></div>
-          <div class="pfc-mock">
-            <div style="height:16px;width:55%;background:var(--navy);border-radius:3px;opacity:.8;"></div>
-            <div style="height:10px;width:75%;background:var(--border);border-radius:2px;"></div>
-            <div style="display:flex;gap:4px;flex-wrap:wrap;margin-top:4px;"><span style="background:var(--bg-blue);border-radius:100px;padding:3px 8px;font-size:7px;font-weight:600;color:var(--navy);">Residenziale</span><span style="background:var(--bg-blue);border-radius:100px;padding:3px 8px;font-size:7px;font-weight:600;color:var(--navy);">Commerciale</span></div>
-            <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:5px;margin-top:4px;"><div style="height:52px;border-radius:6px;background:linear-gradient(135deg,var(--bg-blue),var(--bg-sage));"></div><div style="height:36px;border-radius:6px;background:var(--bg-blue);"></div><div style="height:36px;border-radius:6px;background:var(--bg-sage);"></div></div>
+        <div class="pfc-vis" style="background:#1a1a1a;position:relative;overflow:hidden;">
+          <img src="https://images.unsplash.com/photo-1522542550221-31fd19575a2d?w=800&q=80&fit=crop" alt="Portfolio sito professionista" style="width:100%;height:100%;object-fit:cover;display:block;opacity:.7;transition:opacity .3s;">
+          <div style="position:absolute;inset:0;background:linear-gradient(to bottom,transparent 30%,rgba(0,0,0,.65));"></div>
+          <div style="position:absolute;top:10px;left:10px;right:10px;background:rgba(255,255,255,.12);backdrop-filter:blur(8px);border-radius:8px;padding:6px 10px;display:flex;align-items:center;gap:5px;">
+            <div style="width:7px;height:7px;border-radius:50%;background:#FF5F57;"></div>
+            <div style="width:7px;height:7px;border-radius:50%;background:#FFBD2E;"></div>
+            <div style="width:7px;height:7px;border-radius:50%;background:#28C840;"></div>
+            <div style="flex:1;height:12px;background:rgba(255,255,255,.2);border-radius:3px;margin:0 6px;font-size:9px;color:rgba(255,255,255,.8);display:flex;align-items:center;padding:0 6px;">studiolongoarchitettura.it</div>
+          </div>
+          <div style="position:absolute;bottom:14px;left:14px;">
+            <div style="font-family:var(--font-d);font-size:13px;font-weight:500;color:#fff;margin-bottom:5px;">Studio Longo Architettura</div>
+            <div style="background:var(--navy);border-radius:100px;padding:4px 12px;font-size:9px;color:#fff;font-weight:700;display:inline-block;">Vedi il portfolio →</div>
           </div>
         </div>
         <div class="pfc-info"><div class="pfc-meta"><span class="pfc-cat">💼 Portfolio</span><span class="pfc-res">3× richieste contatto</span></div><h3>Studio Longo Architettura</h3><p>Portfolio professionale con galleria dinamica, blog e prenotazione consulenze. Prima pagina Google per "architetta Verona".</p><div class="pfc-pills"><span class="pfc-pill">Webflow CMS</span><span class="pfc-pill">Calendly</span><span class="pfc-pill">Blog SEO</span></div></div>
       </div>
       <div class="pfc rv d2">
-        <div class="pfc-vis" style="background:linear-gradient(135deg,#F0E8FB,#E0D0F0);">
-          <div class="pfc-bar"><div class="pfc-dot" style="background:#FF5F57;"></div><div class="pfc-dot" style="background:#FFBD2E;"></div><div class="pfc-dot" style="background:#28C840;"></div><div class="pfc-url">atelierrossi.it/shop</div></div>
-          <div class="pfc-mock">
-            <div style="height:40px;border-radius:7px;background:linear-gradient(135deg,#6B4F8C,#9B7CC0);display:flex;align-items:center;justify-content:space-between;padding:0 10px;"><span style="font-size:9px;color:rgba(255,255,255,.9);font-weight:600;">Atelier Rossi</span><span style="font-size:9px;color:rgba(255,255,255,.9);">🛒 2</span></div>
-            <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:5px;margin-top:4px;">
-              <div style="border-radius:7px;overflow:hidden;border:1px solid var(--border-s);"><div style="height:34px;background:linear-gradient(135deg,#F2D6E8,#E8B4D0);"></div><div style="padding:4px 5px;"><div style="height:6px;background:var(--border);border-radius:2px;margin-bottom:3px;"></div><div style="height:6px;width:50%;background:var(--teal);border-radius:2px;opacity:.6;"></div></div></div>
-              <div style="border-radius:7px;overflow:hidden;border:1px solid var(--border-s);"><div style="height:34px;background:linear-gradient(135deg,#D6E8F2,#B4D0E8);"></div><div style="padding:4px 5px;"><div style="height:6px;background:var(--border);border-radius:2px;margin-bottom:3px;"></div><div style="height:6px;width:50%;background:var(--teal);border-radius:2px;opacity:.6;"></div></div></div>
-              <div style="border-radius:7px;overflow:hidden;border:1px solid var(--border-s);"><div style="height:34px;background:linear-gradient(135deg,#D6F2E0,#B4E8C4);"></div><div style="padding:4px 5px;"><div style="height:6px;background:var(--border);border-radius:2px;margin-bottom:3px;"></div><div style="height:6px;width:50%;background:var(--teal);border-radius:2px;opacity:.6;"></div></div></div>
-            </div>
-            <div style="height:20px;border-radius:5px;background:var(--navy);display:flex;align-items:center;justify-content:center;margin-top:5px;"><span style="font-size:8px;color:#fff;font-weight:600;">Aggiungi al carrello</span></div>
+        <div class="pfc-vis" style="background:#1a1a1a;position:relative;overflow:hidden;">
+          <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&q=80&fit=crop" alt="Portfolio e-commerce" style="width:100%;height:100%;object-fit:cover;display:block;opacity:.7;transition:opacity .3s;">
+          <div style="position:absolute;inset:0;background:linear-gradient(to bottom,transparent 30%,rgba(0,0,0,.65));"></div>
+          <div style="position:absolute;top:10px;left:10px;right:10px;background:rgba(255,255,255,.12);backdrop-filter:blur(8px);border-radius:8px;padding:6px 10px;display:flex;align-items:center;gap:5px;">
+            <div style="width:7px;height:7px;border-radius:50%;background:#FF5F57;"></div>
+            <div style="width:7px;height:7px;border-radius:50%;background:#FFBD2E;"></div>
+            <div style="width:7px;height:7px;border-radius:50%;background:#28C840;"></div>
+            <div style="flex:1;height:12px;background:rgba(255,255,255,.2);border-radius:3px;margin:0 6px;font-size:9px;color:rgba(255,255,255,.8);display:flex;align-items:center;padding:0 6px;">atelierrossi.it/shop</div>
+          </div>
+          <div style="position:absolute;bottom:14px;left:14px;">
+            <div style="font-family:var(--font-d);font-size:13px;font-weight:500;color:#fff;margin-bottom:5px;">Atelier Rossi — Shop Online</div>
+            <div style="background:#635BFF;border-radius:100px;padding:4px 12px;font-size:9px;color:#fff;font-weight:700;display:inline-block;">Acquista ora →</div>
           </div>
         </div>
         <div class="pfc-info"><div class="pfc-meta"><span class="pfc-cat">🛒 E-commerce</span><span class="pfc-res">+180% vendite online</span></div><h3>Atelier Rossi — Shop Online</h3><p>Negozio moda artigianale con 80+ prodotti, Stripe e Klarna, integrazione BRT. Gestito dalla titolare in autonomia.</p><div class="pfc-pills"><span class="pfc-pill">Webflow Commerce</span><span class="pfc-pill">Stripe</span><span class="pfc-pill">Klarna</span></div></div>
@@ -1906,6 +3088,236 @@ function closeCkModalOutside(e){if(e.target===document.getElementById('ck-modal'
     },1400);
   } else { applyConsent(JSON.parse(saved)); }
 }());
+
+// ═══ PERFORMANCE OPTIMIZATIONS ═══
+
+// Passive event listeners for scroll
+(function() {
+  // Throttle scroll handler
+  var ticking = false;
+  var origScroll = window.onscroll;
+  window.addEventListener('scroll', function() {
+    if (!ticking) {
+      requestAnimationFrame(function() {
+        if (bNav) bNav.classList.toggle('scrolled', window.scrollY > 40);
+        ticking = false;
+      });
+      ticking = true;
+    }
+  }, { passive: true });
+}());
+
+// Preload WA on hover
+(function() {
+  var waLinks = document.querySelectorAll('[href*="wa.me"]');
+  waLinks.forEach(function(link) {
+    link.addEventListener('mouseenter', function() {
+      var rel = document.createElement('link');
+      rel.rel = 'preconnect';
+      rel.href = 'https://wa.me';
+      document.head.appendChild(rel);
+    }, { once: true, passive: true });
+  });
+}());
+
+// Lazy load sections with IntersectionObserver
+(function() {
+  if (!('IntersectionObserver' in window)) return;
+  var lazyObs = new IntersectionObserver(function(entries) {
+    entries.forEach(function(e) {
+      if (e.isIntersecting) {
+        e.target.style.contentVisibility = 'visible';
+        lazyObs.unobserve(e.target);
+      }
+    });
+  }, { rootMargin: '200px' });
+  document.querySelectorAll('section').forEach(function(s) { lazyObs.observe(s); });
+}());
+
+// Smooth number counter animation
+(function() {
+  var numEls = document.querySelectorAll('.nv-val');
+  var numObs = new IntersectionObserver(function(entries) {
+    entries.forEach(function(e) {
+      if (!e.isIntersecting) return;
+      var el = e.target;
+      var text = el.textContent;
+      var num = parseFloat(text.replace(/[^0-9.]/g,''));
+      if (isNaN(num) || num > 200) { numObs.unobserve(el); return; }
+      var prefix = text.match(/^[^0-9]*/)[0];
+      var suffix = text.match(/[^0-9.]*$/)[0];
+      var start = 0, duration = 1200, startTime = null;
+      function step(ts) {
+        if (!startTime) startTime = ts;
+        var progress = Math.min((ts - startTime) / duration, 1);
+        var ease = 1 - Math.pow(1 - progress, 3);
+        var current = Math.round(ease * num * 10) / 10;
+        el.textContent = prefix + (Number.isInteger(num) ? Math.round(current) : current) + suffix;
+        if (progress < 1) requestAnimationFrame(step);
+      }
+      requestAnimationFrame(step);
+      numObs.unobserve(el);
+    });
+  }, { threshold: 0.5 });
+  numEls.forEach(function(el) { numObs.observe(el); });
+}());
+
+
+// ═══ VISUAL ENHANCEMENTS ═══
+
+// Scroll progress bar
+(function() {
+  var bar = document.getElementById('scroll-progress');
+  if (!bar) return;
+  window.addEventListener('scroll', function() {
+    var scrolled = (window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100;
+    bar.style.width = Math.min(scrolled, 100) + '%';
+  }, { passive: true });
+}());
+
+// Cursor glow (desktop only)
+(function() {
+  if (window.innerWidth < 768) return;
+  var glow = document.getElementById('cursor-glow');
+  if (!glow) return;
+  var mx = 0, my = 0, cx = 0, cy = 0;
+  document.addEventListener('mousemove', function(e) { mx = e.clientX; my = e.clientY; }, { passive: true });
+  (function animate() {
+    cx += (mx - cx) * 0.08;
+    cy += (my - cy) * 0.08;
+    glow.style.left = cx + 'px';
+    glow.style.top = cy + 'px';
+    requestAnimationFrame(animate);
+  }());
+  document.addEventListener('mouseleave', function() { glow.style.opacity = '0'; });
+  document.addEventListener('mouseenter', function() { glow.style.opacity = '1'; });
+}());
+
+// Stagger children on reveal
+(function() {
+  var grids = document.querySelectorAll('.pc-grid, .srv-cards, .pz-grid, .pf-grid, .tg, .gar-grid, .av-grid, .steps');
+  grids.forEach(function(grid) {
+    var children = grid.querySelectorAll('.rv');
+    children.forEach(function(child, i) {
+      if (!child.style.transitionDelay) {
+        child.style.transitionDelay = (i * 0.08) + 's';
+      }
+    });
+  });
+}());
+
+// Add shimmer on number section enter
+(function() {
+  var numSec = document.querySelector('.nums-sec');
+  if (!numSec) return;
+  var obs = new IntersectionObserver(function(entries) {
+    if (entries[0].isIntersecting) {
+      numSec.querySelectorAll('.nv').forEach(function(nv, i) {
+        nv.style.animationDelay = (i * 0.15) + 's';
+        nv.classList.add('rv','in');
+      });
+      obs.unobserve(numSec);
+    }
+  }, { threshold: 0.3 });
+  obs.observe(numSec);
+}());
+
+// Tilt effect on portfolio cards
+(function() {
+  if (window.innerWidth < 768) return;
+  var cards = document.querySelectorAll('.pfc');
+  cards.forEach(function(card) {
+    card.addEventListener('mousemove', function(e) {
+      var rect = card.getBoundingClientRect();
+      var x = (e.clientX - rect.left) / rect.width - 0.5;
+      var y = (e.clientY - rect.top) / rect.height - 0.5;
+      card.style.transform = 'translateY(-6px) rotateX(' + (-y * 6) + 'deg) rotateY(' + (x * 6) + 'deg)';
+      card.style.transformOrigin = 'center center';
+    }, { passive: true });
+    card.addEventListener('mouseleave', function() {
+      card.style.transform = '';
+    });
+  });
+}());
+
+// Magnetic buttons
+(function() {
+  if (window.innerWidth < 768) return;
+  document.querySelectorAll('.btn-p, .btn-nav').forEach(function(btn) {
+    btn.addEventListener('mousemove', function(e) {
+      var rect = btn.getBoundingClientRect();
+      var x = (e.clientX - rect.left - rect.width/2) * 0.25;
+      var y = (e.clientY - rect.top - rect.height/2) * 0.25;
+      btn.style.transform = 'translate(' + x + 'px,' + y + 'px) translateY(-2px)';
+    }, { passive: true });
+    btn.addEventListener('mouseleave', function() {
+      btn.style.transform = '';
+    });
+  });
+}());
+
+
+// ═══ EARLY BIRD PROMO ═══
+var EB_DEADLINE = new Date('2026-11-22T23:59:59');
+
+function updateEbCountdown() {
+  var now = new Date();
+  var diff = EB_DEADLINE - now;
+  if (diff <= 0) {
+    var banner = document.getElementById('eb-banner');
+    if (banner) banner.style.display = 'none';
+    return;
+  }
+  var days = Math.floor(diff / 86400000);
+  var hrs  = Math.floor((diff % 86400000) / 3600000);
+  var mins = Math.floor((diff % 3600000) / 60000);
+  var d = document.getElementById('eb-days');
+  var h = document.getElementById('eb-hrs');
+  var m = document.getElementById('eb-min');
+  if (d) d.textContent = days;
+  if (h) h.textContent = hrs < 10 ? '0'+hrs : hrs;
+  if (m) m.textContent = mins < 10 ? '0'+mins : mins;
+}
+updateEbCountdown();
+setInterval(updateEbCountdown, 30000);
+
+function closeEbBanner() {
+  var b = document.getElementById('eb-banner');
+  if (!b) return;
+  b.style.transition = 'transform .3s ease, opacity .3s ease';
+  b.style.transform = 'translateY(-100%)';
+  b.style.opacity = '0';
+  setTimeout(function() { b.style.display = 'none'; }, 320);
+  sessionStorage.setItem('eb_banner_closed', '1');
+}
+
+function closeEbPopup() {
+  var p = document.getElementById('eb-popup');
+  if (!p) return;
+  p.classList.remove('show');
+  p.style.opacity = '0';
+  setTimeout(function() { p.style.display = 'none'; }, 400);
+  sessionStorage.setItem('eb_popup_seen', '1');
+}
+function closeEbPopupOutside(e) {
+  if (e.target === document.getElementById('eb-popup')) closeEbPopup();
+}
+
+// Show popup after 4 seconds
+(function initEbPopup() {
+  if (sessionStorage.getItem('eb_popup_seen')) return;
+  var popup = document.getElementById('eb-popup');
+  if (!popup) return;
+  setTimeout(function() {
+    popup.style.display = 'flex';
+    requestAnimationFrame(function() {
+      requestAnimationFrame(function() {
+        popup.classList.add('show');
+      });
+    });
+  }, 4000);
+}());
+
 </script>
 </body>
 </html>
